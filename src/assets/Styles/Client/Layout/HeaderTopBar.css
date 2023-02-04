@@ -1,0 +1,23 @@
+.header-top-bar {
+    height: 44px;
+    background-color: rgb(255, 198, 2);
+}
+
+.header-top-bar__item-image {
+    width: 100%;
+    max-height: 44px;
+}
+
+.header-top-bar__swiper-button:hover polyline {
+    stroke: #fff;
+}
+
+.header-top-bar__swiper-icon {
+    width: 44px;
+    height: 44px;
+}
+
+.header-top-bar__swiper-icon>polyline {
+    stroke-width: 1.5;
+    stroke: #666;
+}

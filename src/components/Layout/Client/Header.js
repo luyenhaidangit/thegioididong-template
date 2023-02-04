@@ -1,8 +1,16 @@
 import React from 'react'
+import HeaderTopBar from './HeaderTopBar'
+
+import "../../../assets/Styles/Client/Layout/Header.css"
 
 const Header = () => {
     return (
-        <div>Header</div>
+        <div className='header'>
+            <HeaderTopBar />
+            <div>
+                Header
+            </div>
+        </div>
     )
 }
 
