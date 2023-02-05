@@ -1,11 +1,33 @@
-import React from 'react'
-import "../../../assets/Styles/Client/Layout/Header.css"
+// React
+import React, { useEffect, useState } from 'react'
+
+// Font
 import { AiOutlineCaretDown, AiOutlineSearch, AiOutlineShoppingCart, AiOutlineMenu } from "react-icons/ai"
 
+// Api
+import ProductCategoryHeaderMainApi from '../../../data/HeaderMain'
+
+// Style
+import "../../../assets/Styles/Client/Layout/Header.css"
+
+// Image
 import Logo from "../../../assets/Images/Logo/logo-dagstore.png"
 import LogoSmall from "../../../assets/Images/Logo/logo-dagstore-small.png"
 
 const Header = () => {
+    // Hook
+    const [dataProductCategory, setDataProductCategory] = useState([]);
+
+    useEffect(() => {
+        fetchProductCategoryHeaderMain();
+    }, []);
+
+    // Func
+    const fetchProductCategoryHeaderMain = async () => {
+        let res = await ProductCategoryHeaderMainApi;
+        setDataProductCategory(res);
+    }
+
     return (
         <header className='header pt-2'>
             <div className='container'>
@@ -53,9 +75,47 @@ const Header = () => {
                     </span>
                     <div className="header-search-result"></div>
                 </div>
-                <div className='header__main'>
-                    Main
-                </div>
+                <ul className='header__main main-nav d-flex justify-content-between align-items-center mt-4 mb-0 p-0'>
+                    {
+                        dataProductCategory && dataProductCategory.length > 0 &&
+                        dataProductCategory.map((categoryMain, index) => {
+                            return (
+                                <div key={`categoryMain-${index}`} className='main-nav__item pb-3'>
+                                    <span className="main-nav__item-link d-flex align-items-center">
+                                        {
+                                            categoryMain.icon && categoryMain.icon.length > 0 &&
+                                            <img src={categoryMain.icon} className="main-nav__item-icon img-fluid me-1" alt="icon-category"></img>
+                                        }
+                                        {categoryMain.name}
+                                        {
+                                            categoryMain.listProductCategoryChild && categoryMain.listProductCategoryChild.length > 0 &&
+                                            <AiOutlineCaretDown fontSize={"12px"} className="ms-1" />
+                                        }
+                                        {
+                                            categoryMain.listProductCategoryGroup && categoryMain.listProductCategoryGroup.length > 0 &&
+                                            <AiOutlineCaretDown fontSize={"12px"} className="ms-1" />
+                                        }
+                                    </span>
+                                    {
+                                        categoryMain.listProductCategoryChild && categoryMain.listProductCategoryChild.length > 0 &&
+                                        <ul className="main-sub-nav">
+                                            <div className="main-sub-nav__group d-flex flex-column">
+                                                {
+                                                    categoryMain.listProductCategoryChild && categoryMain.listProductCategoryChild.length > 0 &&
+                                                    categoryMain.listProductCategoryChild.map((categoryChild, index) => {
+                                                        return (
+                                                            <h3 key={`main-sub-nav__item-${index}`} className='main-sub-nav__item mt-2 mb-1'>{categoryChild.name}</h3>
+                                                        )
+                                                    })
+                                                }
+                                            </div>
+                                        </ul>
+                                    }
+                                </div>
+                            )
+                        })
+                    }
+                </ul>
             </div>
         </header>
     )
