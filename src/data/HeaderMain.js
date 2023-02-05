@@ -5,16 +5,14 @@ const HeaderMain_LogoPhuKien = require("../assets/Images/HeaderMain/icon-phu-kie
 const HeaderMain_LogoSmartWatch = require("../assets/Images/HeaderMain/icon-smartwatch.png")
 const HeaderMain_LogoWatch = require("../assets/Images/HeaderMain/icon-watch.png")
 const HeaderMain_LogoPhone = require("../assets/Images/HeaderMain/icon-phone.png")
-const HeaderMain_LogoPC = require("../assets/Images/HeaderMain/icon-pc.png")
+const HeaderMain_LogoPC = require("../assets/Images/HeaderMain/logo-pc.png")
 
 const HeaderMain = [
     {
         id: 1,
         name: "Điện thoại",
         icon: HeaderMain_LogoDienThoai,
-        idParentProductCategory: null,
         listProductCategoryChild: null,
-        idProductCategoryGroup: null,
         listProductCategoryGroup: null,
     },
     {
@@ -22,9 +20,7 @@ const HeaderMain = [
         name: "Laptop",
         description: null,
         icon: HeaderMain_LogoLaptop,
-        idParentProductCategory: null,
         listProductCategoryChild: null,
-        idProductCategoryGroup: null,
         listProductCategoryGroup: null,
     },
     {
@@ -32,19 +28,15 @@ const HeaderMain = [
         name: "Tablet",
         description: null,
         icon: HeaderMain_LogoTablet,
-        idParentProductCategory: null,
         listProductCategoryChild: null,
-        idProductCategoryGroup: null,
         listProductCategoryGroup: null,
     },
     {
         id: 4,
         name: "Phụ kiện",
         description: null,
-        logo: HeaderMain_LogoPhuKien,
-        idParentProductCategory: null,
+        icon: HeaderMain_LogoPhuKien,
         listProductCategoryChild: null,
-        idProductCategoryGroup: null,
         listProductCategoryGroup: [
             {
                 id: 1,
@@ -250,38 +242,31 @@ const HeaderMain = [
         id: 5,
         name: "SmartWatch",
         description: null,
-        logo: HeaderMain_LogoSmartWatch,
-        idParentProductCategory: null,
+        icon: HeaderMain_LogoSmartWatch,
         listProductCategoryChild: null,
-        idCategoryGroup: null,
         listCategoryGroup: null,
     },
     {
         id: 6,
         name: "Đồng hồ",
         description: null,
-        logo: HeaderMain_LogoWatch,
-        idParentProductCategory: null,
+        icon: HeaderMain_LogoWatch,
         listProductCategoryChild: null,
-        idCategoryGroup: null,
         listCategoryGroup: null,
     },
     {
         id: 7,
         name: "Máy cũ giá rẻ",
         description: null,
-        logo: HeaderMain_LogoPhone,
-        idParentProductCategory: null,
+        icon: HeaderMain_LogoPhone,
         listProductCategoryChild: null,
-        idCategoryGroup: null,
         listCategoryGroup: null,
     },
     {
         id: 8,
         name: "PC, máy in",
         description: null,
-        logo: HeaderMain_LogoPC,
-        idParentProductCategory: null,
+        icon: HeaderMain_LogoPC,
         listProductCategoryChild: [
             {
                 id: 46,
@@ -300,27 +285,22 @@ const HeaderMain = [
                 name: "Màn tính để bàn",
             },
         ],
-        idCategoryGroup: null,
         listCategoryGroup: null,
     },
     {
         id: 9,
         name: "Sim, thẻ cào",
         description: null,
-        logo: null,
-        idParentProductCategory: null,
+        icon: null,
         listProductCategoryChild: null,
-        idCategoryGroup: null,
         listCategoryGroup: null,
     },
     {
         id: 10,
         name: "Dịch vụ tiện ích",
         description: null,
-        logo: null,
-        idParentProductCategory: null,
+        icon: null,
         listProductCategoryChild: null,
-        idCategoryGroup: null,
         listProductCategoryGroup: [
             {
                 id: 8,
