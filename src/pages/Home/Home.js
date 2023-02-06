@@ -3,7 +3,7 @@ import BigBanner from './BigBanner'
 
 const Home = () => {
     return (
-        <body>
+        <div className='content'>
             <BigBanner />
             <div className='main-content container'>
                 <div className='big-campaign'>big-campaign</div>
@@ -21,7 +21,7 @@ const Home = () => {
                 <div className='newchain'>newchain</div>
                 <div className='promo-bhx'>promo-bhx</div>
             </div>
-        </body>
+        </div>
     )
 }
 

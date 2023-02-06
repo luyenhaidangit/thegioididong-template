@@ -31,7 +31,6 @@ const HeaderTopBar = () => {
     // Func
     const fetchSlidesHeaderTopBar = async () => {
         let res = await HeaderTopBarApi;
-        console.log(res);
         setSlideData(res);
     }
 
