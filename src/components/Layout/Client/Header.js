@@ -89,11 +89,11 @@ const Header = () => {
                                         {categoryMain.name}
                                         {
                                             categoryMain.listProductCategoryChild && categoryMain?.listProductCategoryChild?.length > 0 &&
-                                            <AiOutlineCaretDown fontSize={"12px"} className="ms-1" />
+                                            <AiOutlineCaretDown fontSize={"12px"} className="main-nav__item-icon ms-1" />
                                         }
                                         {
                                             categoryMain.listProductCategoryGroup && categoryMain?.listProductCategoryGroup?.length > 0 &&
-                                            <AiOutlineCaretDown fontSize={"12px"} className="ms-1" />
+                                            <AiOutlineCaretDown fontSize={"12px"} className="main-nav__item-icon ms-1" />
                                         }
                                     </span>
                                     {

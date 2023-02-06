@@ -124,7 +124,7 @@
     display: none;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 992px) {
     .header__order {
         margin-right: 1rem;
     }
@@ -138,7 +138,7 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
     .header__logo {
         max-width: 32px;
     }
@@ -253,4 +253,20 @@
 #root>div>header>div>ul>div:nth-child(4)>ul {
     width: 800px;
     max-height: 380px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .main-nav__item-icon {
+        display: none;
+    }
+
+    .main-nav__item:nth-child(8)~.main-nav__item {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .main-nav__item:nth-child(6)~.main-nav__item {
+        display: none;
+    }
 }
