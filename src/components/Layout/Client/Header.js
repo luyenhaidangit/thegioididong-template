@@ -88,23 +88,49 @@ const Header = () => {
                                         }
                                         {categoryMain.name}
                                         {
-                                            categoryMain.listProductCategoryChild && categoryMain.listProductCategoryChild.length > 0 &&
+                                            categoryMain.listProductCategoryChild && categoryMain?.listProductCategoryChild?.length > 0 &&
                                             <AiOutlineCaretDown fontSize={"12px"} className="ms-1" />
                                         }
                                         {
-                                            categoryMain.listProductCategoryGroup && categoryMain.listProductCategoryGroup.length > 0 &&
+                                            categoryMain.listProductCategoryGroup && categoryMain?.listProductCategoryGroup?.length > 0 &&
                                             <AiOutlineCaretDown fontSize={"12px"} className="ms-1" />
                                         }
                                     </span>
                                     {
-                                        categoryMain.listProductCategoryChild && categoryMain.listProductCategoryChild.length > 0 &&
+                                        (categoryMain?.listProductCategoryChild?.length > 0 || categoryMain?.listProductCategoryGroup?.length > 0) &&
                                         <ul className="main-sub-nav">
-                                            <div className="main-sub-nav__group d-flex flex-column">
+                                            {
+                                                categoryMain.listProductCategoryChild && categoryMain?.listProductCategoryChild?.length > 0 &&
+                                                <div className="main-sub-nav__group d-flex flex-column">
+                                                    {
+                                                        categoryMain.listProductCategoryChild && categoryMain?.listProductCategoryChild?.length > 0 &&
+                                                        categoryMain.listProductCategoryChild.map((categoryChild, index) => {
+                                                            return (
+                                                                <h3 key={`main-sub-nav__item-${index}`} className='main-sub-nav__item mt-2 mb-1'>{categoryChild.name}</h3>
+                                                            )
+                                                        })
+                                                    }
+                                                </div>
+                                            }
+
+                                            <div className="main-sub-nav__group group-product-category d-flex flex-column flex-wrap">
                                                 {
-                                                    categoryMain.listProductCategoryChild && categoryMain.listProductCategoryChild.length > 0 &&
-                                                    categoryMain.listProductCategoryChild.map((categoryChild, index) => {
+                                                    categoryMain.listProductCategoryGroup && categoryMain?.listProductCategoryGroup?.length > 0 &&
+                                                    categoryMain.listProductCategoryGroup.map((productCategoryProduct, index) => {
                                                         return (
-                                                            <h3 key={`main-sub-nav__item-${index}`} className='main-sub-nav__item mt-2 mb-1'>{categoryChild.name}</h3>
+                                                            <div key={`group-product-category__item-${index}`} className='group-product-category__item pb-1 mt-2'>
+                                                                <strong className='group-product-category__title pb-1'>
+                                                                    {productCategoryProduct.name}
+                                                                </strong>
+                                                                {
+                                                                    productCategoryProduct && productCategoryProduct?.listCategory?.length > 0 &&
+                                                                    productCategoryProduct?.listCategory.map((productCategoryGroupItem, index) => {
+                                                                        return (
+                                                                            <h3 key={`group-product-category__item-category-${index}`} className='group-product-category__item-category mb-0'>{productCategoryGroupItem.name}</h3>
+                                                                        )
+                                                                    })
+                                                                }
+                                                            </div>
                                                         )
                                                     })
                                                 }

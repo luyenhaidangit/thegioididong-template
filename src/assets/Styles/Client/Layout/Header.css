@@ -217,6 +217,40 @@
     font: 14px/18px Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
 }
 
-.main-sub-nav__item:hover {
+.main-sub-nav__item:hover,
+.group-product-category__item-category:hover {
     font-weight: bold;
+}
+
+.main-sub-nav__group {
+    min-width: 160px;
+}
+
+.group-product-category__title {
+    min-width: 200px;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+.group-product-category__item-category {
+    display: block;
+    padding: 10px 5px 0 0;
+    color: #000;
+    font-size: 11px;
+    position: relative;
+    font: 14px/18px Arial, Helvetica, sans-serif;
+    color: #333;
+    outline: none;
+}
+
+.main-nav__item:nth-child(4) .main-sub-nav__group.group-product-category {
+    min-width: 800px;
+    max-height: 380px;
+}
+
+#root>div>header>div>ul>div:nth-child(4)>ul {
+    width: 800px;
+    max-height: 380px;
 }
