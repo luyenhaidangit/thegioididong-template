@@ -1,11 +1,11 @@
 import React from 'react'
+import BigBanner from './BigBanner'
 
 const Home = () => {
     return (
         <body>
-            <div className='big-banner'>big banner</div>
+            <BigBanner />
             <div className='main-content container'>
-                <div className='big-banner'>big banner</div>
                 <div className='big-campaign'>big-campaign</div>
                 <div className='option-promo'>option-promo</div>
                 <div className='flashsale'>flashsale</div>
