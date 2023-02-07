@@ -1,12 +1,16 @@
+// React
 import React from 'react'
+
+// Components
 import BigBanner from './BigBanner'
+import BigCampaign from './BigCampaign'
 
 const Home = () => {
     return (
         <div className='content'>
             <BigBanner />
-            <div className='main-content container'>
-                <div className='big-campaign'>big-campaign</div>
+            <div className='main-content container position-relative'>
+                <BigCampaign />
                 <div className='option-promo'>option-promo</div>
                 <div className='flashsale'>flashsale</div>
                 <div className='hotdeal'>hotdeal</div>

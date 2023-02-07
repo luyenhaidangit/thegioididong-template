@@ -1,0 +1,19 @@
+.big-campaign {
+    margin-top: -100px;
+}
+
+.swiper-slide__item-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.swiper-default__button.rounded-button.arrow-icon>svg {
+    background: #fff;
+    height: 44px;
+    width: 44px;
+    opacity: .7;
+    border-radius: 100%;
+    border: #e1e1e1;
+    filter: drop-shadow(0 4px 7px rgba(0, 0, 0, .15));
+}
