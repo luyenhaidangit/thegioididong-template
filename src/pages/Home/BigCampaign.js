@@ -34,7 +34,7 @@ const BigCampaign = () => {
     }
 
     return (
-        <div className='big-campaign'>
+        <div className='big-campaign position-relative'>
             <Swiper
                 modules={[Navigation]}
                 spaceBetween={12}
@@ -62,9 +62,10 @@ const BigCampaign = () => {
                     })
                 }
 
-                <div ref={navigationPrevRef} className="swiper-default__button rounded-button arrow-icon"><GrFormPrevious size={"0.5rem"} className='header-top-bar__swiper-icon swiper-button-prev' /></div>
-                <div ref={navigationNextRef} className="swiper-default__button rounded-button arrow-icon"><GrFormNext size={"0.5rem"} className='header-top-bar__swiper-icon swiper-button-next' /></div>
+
             </Swiper>
+            <div ref={navigationPrevRef} className="swiper-default__button rounded-button arrow-icon"><GrFormPrevious className='swiper-default__icon-button swiper-button-prev' /></div>
+            <div ref={navigationNextRef} className="swiper-default__button rounded-button arrow-icon"><GrFormNext className='swiper-default__icon-button swiper-button-next' /></div>
         </div>
     )
 }

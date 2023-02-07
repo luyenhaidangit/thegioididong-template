@@ -8,12 +8,22 @@
     border-radius: 12px;
 }
 
-.swiper-default__button.rounded-button.arrow-icon>svg {
+.swiper-default__icon-button {
     background: #fff;
     height: 44px;
     width: 44px;
+    padding: 10px 10px;
     opacity: .7;
     border-radius: 100%;
     border: #e1e1e1;
     filter: drop-shadow(0 4px 7px rgba(0, 0, 0, .15));
+
+}
+
+.swiper-default__icon-button.swiper-button-next {
+    right: var(--swiper-navigation-sides-offset, -22px);
+}
+
+.swiper-default__icon-button.swiper-button-prev {
+    left: var(--swiper-navigation-sides-offset, -22px);
 }
