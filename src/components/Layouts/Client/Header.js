@@ -8,7 +8,7 @@ import { AiOutlineCaretDown, AiOutlineSearch, AiOutlineShoppingCart, AiOutlineMe
 import ProductCategoryHeaderMainApi from '../../../data/HeaderMain'
 
 // Style
-import "../../../assets/Styles/Client/Layout/Header.css"
+import "../../../assets/Styles/Client/Layouts/Header.css"
 
 // Image
 import Logo from "../../../assets/Images/Logo/logo-dagstore.png"
