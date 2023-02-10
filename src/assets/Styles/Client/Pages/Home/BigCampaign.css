@@ -5,6 +5,7 @@
 .swiper-slide__item-image {
     width: 100%;
     height: auto;
+    min-height: 180px;
     border-radius: 12px;
 }
 
@@ -26,4 +27,44 @@
 
 .swiper-default__icon-button.swiper-button-prev {
     left: var(--swiper-navigation-sides-offset, -22px);
+}
+
+.swiper-pagination {
+    display: none;
+}
+
+.swiper-pagination-bullet {
+    border-radius: unset;
+    height: 2px;
+    width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 12px));
+}
+
+@media only screen and (max-width: 1400px) {
+    .big-campaign {
+        margin-top: -92px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .big-campaign {
+        margin-top: -80px;
+    }
+
+    .swiper-slide__item-image {
+        min-height: 160px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .big-campaign {
+        margin-top: -312px;
+    }
+
+    .swiper-default__button {
+        display: none;
+    }
+
+    .swiper-pagination {
+        display: block;
+    }
 }

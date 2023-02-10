@@ -3,9 +3,10 @@ import React, { useEffect, useRef, useState } from 'react'
 
 // Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import "swiper/css/navigation";
+import "swiper/css/pagination"
 
 // Style
 import "../../assets/Styles/Client/Pages/Home/BigCampaign.css"
@@ -36,9 +37,9 @@ const BigCampaign = () => {
     return (
         <div className='big-campaign position-relative'>
             <Swiper
-                modules={[Navigation]}
+                modules={[Navigation, Pagination]}
                 spaceBetween={12}
-                slidesPerView={2}
+                slidesPerView={1}
                 loop={true}
                 speed={400}
                 slidesPerGroup={2}
@@ -46,9 +47,24 @@ const BigCampaign = () => {
                     prevEl: navigationPrevRef.current,
                     nextEl: navigationNextRef.current,
                 }}
+                pagination={{ clickable: true }}
                 onBeforeInit={(swiper) => {
                     swiper.params.navigation.prevEl = navigationPrevRef.current;
                     swiper.params.navigation.nextEl = navigationNextRef.current;
+                }}
+                breakpoints={{
+                    768: {
+                        slidesPerView: 2,
+                    },
+                    // // when window width is >= 1024px
+                    // 1024: {
+                    //     spaceBetween: 10,
+                    //     slidesPerView: 3,
+                    // },
+                    // 1280: {
+                    //     slidesPerGroup: 2,
+                    //     slidesPerView: 4,
+                    // },
                 }}
             >
                 {
