@@ -31,7 +31,6 @@ const BigCampaign = () => {
     const fetchBigCampaignData = async () => {
         let res = await BigCampaignApi;
         setBigCampaignData(res);
-        console.log(res)
     }
 
     return (

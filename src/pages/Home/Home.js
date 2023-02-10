@@ -4,6 +4,7 @@ import React from 'react'
 // Components
 import BigBanner from './BigBanner'
 import BigCampaign from './BigCampaign'
+import OptionPromo from './OptionPromo'
 
 const Home = () => {
     return (
@@ -11,7 +12,7 @@ const Home = () => {
             <BigBanner />
             <div className='main-content container position-relative'>
                 <BigCampaign />
-                <div className='option-promo'>option-promo</div>
+                <OptionPromo />
                 <div className='flashsale'>flashsale</div>
                 <div className='hotdeal'>hotdeal</div>
                 <div className='promo-another'>promo-another</div>
