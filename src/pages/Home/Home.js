@@ -1,5 +1,6 @@
 // React
 import React from 'react'
+import BannerTopzone from './BannerTopzone'
 
 // Components
 import BigBanner from './BigBanner'
@@ -10,9 +11,10 @@ const Home = () => {
     return (
         <div className='content'>
             <BigBanner />
-            <div className='main-content container position-relative'>
+            <div className='main-content position-relative'>
                 <BigCampaign />
                 <OptionPromo />
+                <BannerTopzone />
                 <div className='flashsale'>flashsale</div>
                 <div className='hotdeal'>hotdeal</div>
                 <div className='promo-another'>promo-another</div>
