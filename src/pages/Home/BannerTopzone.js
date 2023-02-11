@@ -19,7 +19,6 @@ const BannerTopzone = () => {
     const fetchDataBannerTopzone = async () => {
         let res = await BannerTopzoneApi;
         setDataBannerTopzone(res);
-        console.log(res)
     }
 
     return (
@@ -27,7 +26,7 @@ const BannerTopzone = () => {
             <div className='container cursor-pointer'>
                 {
                     dataBannerTopzone &&
-                    <img className='banner-topzone__img img-fluid w-100 overflow-hidden overflow-hidden' src={dataBannerTopzone.image} alt="Banner Topzone" />
+                    <img className='banner-topzone__img img-fluid w-100 overflow-hidden' src={dataBannerTopzone.image} alt="Banner Topzone" />
                 }
             </div>
         </div>
