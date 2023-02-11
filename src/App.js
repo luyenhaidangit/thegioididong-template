@@ -10,6 +10,7 @@ import Product from './pages/Product/Product';
 // Style
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './assets/Styles/Client/Common/Common.css'
 
 function App() {
   return (
