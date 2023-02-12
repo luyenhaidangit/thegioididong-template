@@ -5,6 +5,7 @@ import BannerTopzone from './BannerTopzone'
 // Components
 import BigBanner from './BigBanner'
 import BigCampaign from './BigCampaign'
+import HotDeal from './HotDeal'
 import OptionPromo from './OptionPromo'
 
 const Home = () => {
@@ -15,8 +16,8 @@ const Home = () => {
                 <BigCampaign />
                 <OptionPromo />
                 <BannerTopzone />
-                <div className='flashsale'>flashsale</div>
-                <div className='hotdeal'>hotdeal</div>
+                {/* <div className='flashsale'>flashsale</div> */}
+                <HotDeal />
                 <div className='promo-another'>promo-another</div>
                 <div className='shopping-trends'>shopping-trends</div>
                 <div className='category-feature'>category-feature</div>
