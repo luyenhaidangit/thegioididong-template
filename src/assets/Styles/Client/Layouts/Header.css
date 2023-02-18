@@ -178,6 +178,7 @@
     color: #000;
     font: 14px/18px Arial, Helvetica, sans-serif;
     cursor: pointer;
+    z-index: 5;
 }
 
 .main-nav__item-icon {
@@ -247,12 +248,12 @@
 
 .main-nav__item:nth-child(4) .main-sub-nav__group.group-product-category {
     min-width: 800px;
-    max-height: 380px;
+    max-height: 420px;
 }
 
 #root>div>header>div>ul>div:nth-child(4)>ul {
     width: 800px;
-    max-height: 380px;
+    max-height: 420px;
 }
 
 @media only screen and (max-width: 1200px) {
