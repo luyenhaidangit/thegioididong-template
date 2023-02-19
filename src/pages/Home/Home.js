@@ -8,6 +8,7 @@ import BigCampaign from './BigCampaign'
 import HotDeal from './HotDeal'
 import OptionPromo from './OptionPromo'
 import PromoAnother from './PromoAnother'
+import ShoppingTrend from './ShoppingTrend'
 
 const Home = () => {
     return (
@@ -17,11 +18,9 @@ const Home = () => {
                 <BigCampaign />
                 <OptionPromo />
                 <BannerTopzone />
-                {/* <div className='flashsale'>flashsale</div> */}
                 <HotDeal />
-                {/* <div className='promo-another'>promo-another</div> */}
                 <PromoAnother />
-                <div className='shopping-trends'>shopping-trends</div>
+                <ShoppingTrend />
                 <div className='category-feature'>category-feature</div>
                 <div className='service-conversation'>service-conversation</div>
                 <div className='category-feature'>category-feature</div>
