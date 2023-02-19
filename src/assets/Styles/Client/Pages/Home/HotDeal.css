@@ -2,6 +2,16 @@
     margin-top: 1.5rem;
 }
 
+.hotdeal__header {
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+}
+
+.hotdeal__body {
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+}
+
 .hotdeal__header-image {
     max-height: 100px;
 }
@@ -98,7 +108,7 @@
     margin: 5px auto 15px;
     padding: 15px 20px;
     text-align: center;
-    width: 320px;
+    width: 280px;
     font: 14px/18px Arial, Helvetica, sans-serif;
     font-size: 15px;
 }
@@ -124,5 +134,15 @@
         max-width: unset;
         padding-left: 0;
         padding-right: 0;
+    }
+
+    .hotdeal__header {
+        border-top-left-radius: unset;
+        border-top-right-radius: unset;
+    }
+
+    .hotdeal__body {
+        border-bottom-left-radius: unset;
+        border-bottom-right-radius: unset;
     }
 }
