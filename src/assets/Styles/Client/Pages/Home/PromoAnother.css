@@ -33,3 +33,15 @@
         border-bottom-right-radius: unset;
     }
 }
+
+.promo-another__body-slide .swiper-default__icon-button {
+    top: var(--swiper-navigation-top-offset, 50%);
+}
+
+.promo-another__body-slide .swiper-button-prev {
+    left: var(--swiper-navigation-sides-offset, -22px);
+}
+
+.promo-another__body-slide .swiper-button-next {
+    right: var(--swiper-navigation-sides-offset, -22px);
+}

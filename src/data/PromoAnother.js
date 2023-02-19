@@ -21,6 +21,11 @@ const Product_Image_20 = require("../assets/Images/Product/product_image_20.jpg"
 const Product_Image_21 = require("../assets/Images/Product/product_image_21.jpg")
 const Product_Image_22 = require("../assets/Images/Product/product_image_22.jpg")
 const Product_Image_23 = require("../assets/Images/Product/product_image_23.jpg")
+const Slide_Promo_01 = require("../assets/Images/PromoAnother/slide-promo-01.jpg")
+const Slide_Promo_02 = require("../assets/Images/PromoAnother/slide-promo-02.jpg")
+const Slide_Promo_03 = require("../assets/Images/PromoAnother/slide-promo-03.jpg")
+const Slide_Promo_04 = require("../assets/Images/PromoAnother/slide-promo-04.jpg")
+
 
 const PromoAnother = [
     {
@@ -259,8 +264,30 @@ const PromoAnother = [
                 quantity_total: 20,
             },
         ],
+        slides: [
+            {
+                id: 1,
+                image: Slide_Promo_01,
+                url: null,
+            },
+            {
+                id: 2,
+                image: Slide_Promo_02,
+                url: null,
+            },
+            {
+                id: 3,
+                image: Slide_Promo_03,
+                url: null,
+            },
+            {
+                id: 4,
+                image: Slide_Promo_04,
+                url: null,
+            },
+        ],
         style: {
-            backgroundColor: "#092dc6",
+            backgroundColor: "#83B81A",
         },
     }
 ]
