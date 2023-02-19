@@ -113,3 +113,16 @@
 .hotdeal__body .swiper-default__icon-button {
     top: var(--swiper-navigation-top-offset, 36%);
 }
+
+@media only screen and (max-width: 768px) {
+    .hotdeal {
+        margin-top: 0;
+        border-radius: unset;
+    }
+
+    .hotdeal>.container {
+        max-width: unset;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
