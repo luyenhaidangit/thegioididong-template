@@ -41,7 +41,7 @@ const HotDeal = () => {
     return (
         <div className="hotdeal">
             <div className='container'>
-                <div className="hotdeal__header">
+                <div className="hotdeal__header cursor-pointer">
                     {
                         dataHotDeal.image && dataHotDeal.image.length > 0 &&
                         <img className='hotdeal__header-image img-fluid w-100 overflow-hidden' src={dataHotDeal.image} alt="Banner Hotdeal" />
@@ -107,7 +107,7 @@ const HotDeal = () => {
                                             <b className='product-card__item-number-star d-flex align-items-center me-2'>4.8 <AiFillStar /></b>
                                             (158)
                                         </p>
-                                        <p className='product-card__item-comment'>Giảm 3 triệu, Trả góp 0%, Thu cũ tài trợ 3 triệu, Ốp lưng BTS</p>
+                                        <p className='product-card__item-comment p-0'>Giảm 3 triệu, Trả góp 0%, Thu cũ tài trợ 3 triệu, Ốp lưng BTS</p>
                                     </SwiperSlide>
                                 )
                             })
@@ -115,36 +115,8 @@ const HotDeal = () => {
 
 
                     </Swiper>
-                    <div ref={navigationPrevRef} className="swiper-default__button rounded-button arrow-icon"><GrFormPrevious className='swiper-default__icon-button swiper-button-prev' /></div>
-                    <div ref={navigationNextRef} className="swiper-default__button rounded-button arrow-icon"><GrFormNext className='swiper-default__icon-button swiper-button-next' /></div>
-                    {/* <ul className="hotdeal__product-list">
-                        <li className="hotdeal__product-item">
-                            <img src="path/to/product-image-1.jpg" alt="Product Image 1" />
-                            <h3 className="hotdeal__product-name">Product Name 1</h3>
-                            <div className="hotdeal__product-price">
-                                <span className="hotdeal__product-discounted-price">200.000đ</span>
-                                <span className="hotdeal__product-original-price">300.000đ</span>
-                                <span className="hotdeal__product-discount-percentage">-30%</span>
-                            </div>
-                            <div className="hotdeal__product-quantity">
-                                <span className="hotdeal__product-quantity-discounted">10</span>
-                                <span className="hotdeal__product-quantity-remaining">20</span>
-                            </div>
-                        </li>
-                        <li className="hotdeal__product-item">
-                            <img src="path/to/product-image-2.jpg" alt="Product Image 2" />
-                            <h3 className="hotdeal__product-name">Product Name 2</h3>
-                            <div className="hotdeal__product-price">
-                                <span className="hotdeal__product-discounted-price">250.000đ</span>
-                                <span className="hotdeal__product-original-price">350.000đ</span>
-                                <span className="hotdeal__product-discount-percentage">-28.6%</span>
-                            </div>
-                            <div className="hotdeal__product-quantity">
-                                <span className="hotdeal__product-quantity-discounted">5</span>
-                                <span className="hotdeal__product-quantity-remaining">15</span>
-                            </div>
-                        </li>
-                    </ul> */}
+                    <div ref={navigationPrevRef} className="swiper-default__button button--rectangle arrow-icon"><GrFormPrevious className='swiper-default__icon-button swiper-button-prev' /></div>
+                    <div ref={navigationNextRef} className="swiper-default__button button--rectangle arrow-icon"><GrFormNext className='swiper-default__icon-button swiper-button-next' /></div>
                     <div className='readmore-btn d-flex justify-content-center mt-3 mb-0 cursor-pointer'>
                         Xem tất cả
                     </div>

@@ -91,7 +91,7 @@ const HotDeal =
         },
         {
             id: 7,
-            name: "Asus TUF Gaming F15 FX506LHB i5 10300H (HN188W)",
+            name: "Asus TUF Gaming F15 FX506LHB i5 10300H",
             image: Product_Image_07,
             original_price: 20990000,
             discounted_price: 16990000,

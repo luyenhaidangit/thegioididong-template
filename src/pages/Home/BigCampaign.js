@@ -71,7 +71,7 @@ const BigCampaign = () => {
                         bigCampaignData && bigCampaignData.length > 0 &&
                         bigCampaignData.map((item, index) => {
                             return (
-                                <SwiperSlide className='swiper-slide__item' key={`swiper-slide__item-${index}`}>
+                                <SwiperSlide className='swiper-slide__item cursor-pointer' key={`swiper-slide__item-${index}`}>
                                     <img className='swiper-slide__item-image' src={item.image} alt={""} />
                                 </SwiperSlide>
                             )

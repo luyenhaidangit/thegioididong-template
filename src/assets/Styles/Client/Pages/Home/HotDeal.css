@@ -2,12 +2,16 @@
     margin-top: 1.5rem;
 }
 
+.hotdeal__header-image {
+    max-height: 100px;
+}
+
 .product-card__item {
     background-color: #fff;
     border-radius: 4px;
     padding: 8px;
     height: 100%;
-    min-height: 480px;
+    min-height: 472px;
     overflow: hidden;
 }
 
@@ -23,7 +27,7 @@
 }
 
 .product-card__item-image>img {
-    height: 200px;
+    height: 172px;
 }
 
 .product-card__item:hover>.product-item__card-img>img {
@@ -63,7 +67,7 @@
 
 .product-card__item-price {
     color: #d0021c;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     line-height: 18px;
 }
@@ -97,4 +101,15 @@
     width: 320px;
     font: 14px/18px Arial, Helvetica, sans-serif;
     font-size: 15px;
+}
+
+.swiper-default__button.button--rectangle>.swiper-default__icon-button {
+    border-radius: 8px !important;
+    height: 72px;
+    width: 30px;
+    padding: 0;
+}
+
+.hotdeal__body .swiper-default__icon-button {
+    top: var(--swiper-navigation-top-offset, 36%);
 }
