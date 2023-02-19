@@ -45,7 +45,7 @@ const PromoAnother = () => {
                 dataPromoAnother && dataPromoAnother.length > 0 &&
                 dataPromoAnother.map((promo, index) => {
                     return (
-                        <div key={`promo-another-${index}`} className="hotdeal">
+                        <div key={`promo-another-${index}`} className="promo-another">
                             <div className='container'>
                                 <div className="promo-another__header cursor-pointer" style={promo.style}>
                                     {

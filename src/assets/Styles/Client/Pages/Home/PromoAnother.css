@@ -1,3 +1,7 @@
+.promo-another {
+    margin-top: 1.5rem;
+}
+
 .promo-another__header {
     border-top-left-radius: 14px;
     border-top-right-radius: 14px;
@@ -23,6 +27,17 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .promo-another {
+        margin-top: 0;
+        border-radius: unset;
+    }
+
+    .promo-another>.container {
+        max-width: unset;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     .promo-another__header {
         border-top-left-radius: unset;
         border-top-right-radius: unset;
