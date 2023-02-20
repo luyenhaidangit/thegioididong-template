@@ -22,14 +22,19 @@ const BannerTopzone = () => {
     }
 
     return (
-        <div className='banner-topzone'>
-            <div className='container cursor-pointer'>
-                {
-                    dataBannerTopzone &&
-                    <img className='banner-topzone__img img-fluid w-100 overflow-hidden' src={dataBannerTopzone.image} alt="Banner Topzone" />
-                }
-            </div>
-        </div>
+        <>
+            {
+                dataBannerTopzone &&
+                <div className='banner-topzone'>
+                    <div className='container cursor-pointer'>
+                        {
+                            dataBannerTopzone &&
+                            <img className='banner-topzone__img img-fluid w-100 overflow-hidden' src={dataBannerTopzone.image} alt="Banner Topzone" />
+                        }
+                    </div>
+                </div>
+            }
+        </>
     )
 }
 

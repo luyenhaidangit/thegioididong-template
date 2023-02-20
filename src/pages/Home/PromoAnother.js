@@ -36,7 +36,6 @@ const PromoAnother = () => {
     const fetchDataHotDeal = async () => {
         let res = await PromoAnotherApi;
         setDataPromoAnother(res);
-        console.log(res)
     }
 
     return (

@@ -35,7 +35,6 @@ const HotDeal = () => {
     const fetchDataHotDeal = async () => {
         let res = await HotDealApi;
         setDataHotDeal(res);
-        console.log(res)
     }
 
     return (

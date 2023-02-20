@@ -34,57 +34,62 @@ const BigCampaign = () => {
     }
 
     return (
-        <div className='big-campaign'>
-            <div className='container position-relative'>
-                <Swiper
-                    modules={[Navigation, Pagination]}
-                    spaceBetween={12}
-                    slidesPerView={1}
-                    loop={true}
-                    speed={400}
-                    slidesPerGroup={2}
-                    navigation={{
-                        prevEl: navigationPrevRef.current,
-                        nextEl: navigationNextRef.current,
-                    }}
-                    pagination={{ clickable: true }}
-                    onBeforeInit={(swiper) => {
-                        swiper.params.navigation.prevEl = navigationPrevRef.current;
-                        swiper.params.navigation.nextEl = navigationNextRef.current;
-                    }}
-                    breakpoints={{
-                        768: {
-                            slidesPerView: 2,
-                        },
-                        // // when window width is >= 1024px
-                        // 1024: {
-                        //     spaceBetween: 10,
-                        //     slidesPerView: 3,
-                        // },
-                        // 1280: {
-                        //     slidesPerGroup: 2,
-                        //     slidesPerView: 4,
-                        // },
-                    }}
-                >
-                    {
-                        bigCampaignData && bigCampaignData.length > 0 &&
-                        bigCampaignData.map((item, index) => {
-                            return (
-                                <SwiperSlide className='swiper-slide__item cursor-pointer' key={`swiper-slide__item-${index}`}>
-                                    <img className='swiper-slide__item-image' src={item.image} alt={""} />
-                                </SwiperSlide>
-                            )
-                        })
-                    }
+        <>
+            {
+                bigCampaignData && bigCampaignData.length > 0 &&
+                <div className='big-campaign'>
+                    <div className='container position-relative'>
+                        <Swiper
+                            modules={[Navigation, Pagination]}
+                            spaceBetween={12}
+                            slidesPerView={1}
+                            loop={true}
+                            speed={400}
+                            slidesPerGroup={2}
+                            navigation={{
+                                prevEl: navigationPrevRef.current,
+                                nextEl: navigationNextRef.current,
+                            }}
+                            pagination={{ clickable: true }}
+                            onBeforeInit={(swiper) => {
+                                swiper.params.navigation.prevEl = navigationPrevRef.current;
+                                swiper.params.navigation.nextEl = navigationNextRef.current;
+                            }}
+                            breakpoints={{
+                                768: {
+                                    slidesPerView: 2,
+                                },
+                                // // when window width is >= 1024px
+                                // 1024: {
+                                //     spaceBetween: 10,
+                                //     slidesPerView: 3,
+                                // },
+                                // 1280: {
+                                //     slidesPerGroup: 2,
+                                //     slidesPerView: 4,
+                                // },
+                            }}
+                        >
+                            {
+                                bigCampaignData && bigCampaignData.length > 0 &&
+                                bigCampaignData.map((item, index) => {
+                                    return (
+                                        <SwiperSlide className='swiper-slide__item cursor-pointer' key={`swiper-slide__item-${index}`}>
+                                            <img className='swiper-slide__item-image' src={item.image} alt={""} />
+                                        </SwiperSlide>
+                                    )
+                                })
+                            }
 
 
-                </Swiper>
-                <div ref={navigationPrevRef} className="swiper-default__button rounded-button arrow-icon"><GrFormPrevious className='swiper-default__icon-button swiper-button-prev' /></div>
-                <div ref={navigationNextRef} className="swiper-default__button rounded-button arrow-icon"><GrFormNext className='swiper-default__icon-button swiper-button-next' /></div>
-            </div>
+                        </Swiper>
+                        <div ref={navigationPrevRef} className="swiper-default__button rounded-button arrow-icon"><GrFormPrevious className='swiper-default__icon-button swiper-button-prev' /></div>
+                        <div ref={navigationNextRef} className="swiper-default__button rounded-button arrow-icon"><GrFormNext className='swiper-default__icon-button swiper-button-next' /></div>
+                    </div>
 
-        </div>
+                </div>
+            }
+        </>
     )
 }
 

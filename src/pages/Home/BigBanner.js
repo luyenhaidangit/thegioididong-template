@@ -22,16 +22,21 @@ const BigBanner = () => {
     }
 
     return (
-        <div className='big-banner'>
+        <>
             {
                 dataBigBanner && dataBigBanner.length > 0 &&
-                dataBigBanner.map((item, index) => {
-                    return (
-                        <img key={`"big-banner__img-${index}`} className={"big-banner__img big-banner__img-size-" + item.size} src={item.image} alt="BigBanner" />
-                    )
-                })
+                <div className='big-banner'>
+                    {
+                        dataBigBanner && dataBigBanner.length > 0 &&
+                        dataBigBanner.map((item, index) => {
+                            return (
+                                <img key={`"big-banner__img-${index}`} className={"big-banner__img big-banner__img-size-" + item.size} src={item.image} alt="BigBanner" />
+                            )
+                        })
+                    }
+                </div>
             }
-        </div>
+        </>
     )
 }
 
