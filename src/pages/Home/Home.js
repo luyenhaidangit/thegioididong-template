@@ -10,6 +10,7 @@ import DiscountPayOnline from './DiscountPayOnline'
 import HotDeal from './HotDeal'
 import OptionPromo from './OptionPromo'
 import PromoAnother from './PromoAnother'
+import ServiceConversation from './ServiceConversation'
 import ShoppingTrend from './ShoppingTrend'
 
 const Home = () => {
@@ -25,7 +26,7 @@ const Home = () => {
                 <ShoppingTrend />
                 <CategoryFeature />
                 <DiscountPayOnline />
-                <div className='service-conversation'>service-conversation</div>
+                <ServiceConversation />
                 <div className='category-feature'>category-feature</div>
                 <div className='daily-suggestion'>daily-suggest</div>
                 <div className='trademark '>trademark </div>
