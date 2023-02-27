@@ -62,7 +62,7 @@ const PromoAnother = () => {
                                             modules={[Navigation]}
                                             spaceBetween={12}
                                             slidesPerView={1}
-                                            loop={true}
+                                            // loop={true}
                                             speed={400}
                                             slidesPerGroup={2}
                                             navigation={{
