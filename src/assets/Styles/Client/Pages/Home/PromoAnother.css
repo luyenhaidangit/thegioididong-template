@@ -47,6 +47,11 @@
         border-bottom-left-radius: unset;
         border-bottom-right-radius: unset;
     }
+
+    .promo-another__body-slide .swiper-button-prev,
+    .promo-another__body-slide .swiper-button-next {
+        display: none;
+    }
 }
 
 .promo-another__body-slide .swiper-default__icon-button {

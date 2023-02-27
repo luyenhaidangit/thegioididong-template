@@ -60,7 +60,8 @@
         margin-top: -328px;
     }
 
-    .swiper-default__button {
+    .big-campaign__button-product-prev,
+    .big-campaign__button-product-next {
         display: none;
     }
 
