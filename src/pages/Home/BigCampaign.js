@@ -46,14 +46,10 @@ const BigCampaign = () => {
                             loop={true}
                             speed={400}
                             slidesPerGroup={2}
-                            navigation={{
-                                prevEl: navigationPrevRef.current,
-                                nextEl: navigationNextRef.current,
-                            }}
                             pagination={{ clickable: true }}
-                            onBeforeInit={(swiper) => {
-                                swiper.params.navigation.prevEl = navigationPrevRef.current;
-                                swiper.params.navigation.nextEl = navigationNextRef.current;
+                            navigation={{
+                                prevEl: ".big-campaign__button-product-prev",
+                                nextEl: ".big-campaign__button-product-next",
                             }}
                             breakpoints={{
                                 768: {
@@ -83,8 +79,8 @@ const BigCampaign = () => {
 
 
                         </Swiper>
-                        <div ref={navigationPrevRef} className="swiper-default__button rounded-button arrow-icon"><GrFormPrevious className='swiper-default__icon-button swiper-button-prev' /></div>
-                        <div ref={navigationNextRef} className="swiper-default__button rounded-button arrow-icon"><GrFormNext className='swiper-default__icon-button swiper-button-next' /></div>
+                        <div ref={navigationPrevRef} className="big-campaign__button-product-prev rounded-button arrow-icon"><GrFormPrevious className='swiper-default__icon-button swiper-button-prev' /></div>
+                        <div ref={navigationNextRef} className="big-campaign__button-product-next rounded-button arrow-icon"><GrFormNext className='swiper-default__icon-button swiper-button-next' /></div>
                     </div>
 
                 </div>
