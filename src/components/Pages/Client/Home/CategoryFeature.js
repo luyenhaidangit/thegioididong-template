@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import ScrollContainer from 'react-indiana-drag-scroll'
 
 // Style
-import "../../../../assets/Styles/Client/Pages/Home/CategoryFeature.css"
+import "../../../../assets/Styles/Client/Components/Home/CategoryFeature.css"
 
 //Api
 import CategoryFeatureApi from '../../../../data/CategoryFeature'

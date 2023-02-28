@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 // Style
-import "../../../../assets/Styles/Client/Pages/Home/ServiceConversation.css"
+import "../../../../assets/Styles/Client/Components/Home/ServiceConversation.css"
 
 //Api
 import ServiceConversationApi from '../../../../data/ServiceConversation'

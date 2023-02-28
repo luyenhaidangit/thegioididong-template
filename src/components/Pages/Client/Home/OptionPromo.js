@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 // Style
-import "../../../../assets/Styles/Client/Pages/Home/OptionPromo.css"
+import "../../../../assets/Styles/Client/Components/Home/OptionPromo.css"
 
 //Api
 import OptionPromoApi from '../../../../data/OptionPromo';

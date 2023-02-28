@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 // Style
-import "../../../../assets/Styles/Client/Pages/Home/BannerTopzone.css"
+import "../../../../assets/Styles/Client/Components/Home/BannerTopzone.css"
 
 //Api
 import BannerTopzoneApi from '../../../../data/BannerTopzone'

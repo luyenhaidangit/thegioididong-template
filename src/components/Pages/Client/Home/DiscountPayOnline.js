@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import ScrollContainer from 'react-indiana-drag-scroll'
 
 // Style
-import "../../../../assets/Styles/Client/Pages/Home/DiscountPayOnline.css"
+import "../../../../assets/Styles/Client/Components/Home/DiscountPayOnline.css"
 
 //Api
 import DiscountPayOnlineApi from '../../../../data/DiscountPayOnline';

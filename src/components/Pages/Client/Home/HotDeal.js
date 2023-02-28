@@ -11,7 +11,7 @@ import "swiper/css/navigation";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr"
 
 // Style
-import "../../../../assets/Styles/Client/Pages/Home/HotDeal.css"
+import "../../../../assets/Styles/Client/Components/Home/HotDeal.css"
 import IconGift from "../../../../assets/Images/Icon/icon-gift.png"
 import { AiFillStar } from 'react-icons/ai'
 
