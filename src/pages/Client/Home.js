@@ -6,6 +6,7 @@ import BannerTopzone from '../../components/Pages/Client/Home/BannerTopzone'
 import BigBanner from '../../components/Pages/Client/Home/BigBanner'
 import BigCampaign from '../../components/Pages/Client/Home/BigCampaign'
 import CategoryFeature from '../../components/Pages/Client/Home/CategoryFeature'
+import DailySuggest from '../../components/Pages/Client/Home/DailySuggest'
 import DiscountPayOnline from '../../components/Pages/Client/Home/DiscountPayOnline'
 import HotDeal from '../../components/Pages/Client/Home/HotDeal'
 import OptionPromo from '../../components/Pages/Client/Home/OptionPromo'
@@ -27,7 +28,7 @@ const Home = () => {
                 <CategoryFeature />
                 <DiscountPayOnline />
                 <ServiceConversation />
-                <div className='category-feature'>category-feature</div>
+                <DailySuggest />
                 <div className='daily-suggestion'>daily-suggest</div>
                 <div className='trademark '>trademark </div>
                 <div className='technology-box'>technology-box</div>
