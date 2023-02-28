@@ -9,13 +9,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination"
 
 // Style
-import "../../assets/Styles/Client/Pages/Home/BigCampaign.css"
+import "../../../../assets/Styles/Client/Pages/Home/BigCampaign.css"
 
 // Icon
 import { GrFormNext, GrFormPrevious } from "react-icons/gr"
 
 // Api
-import BigCampaignApi from '../../data/BigCampaign'
+import BigCampaignApi from '../../../../data/BigCampaign'
 
 const BigCampaign = () => {
     // Hook

@@ -1,17 +1,17 @@
 // React
 import React from 'react'
-import BannerTopzone from './BannerTopzone'
 
 // Components
-import BigBanner from './BigBanner'
-import BigCampaign from './BigCampaign'
-import CategoryFeature from './CategoryFeature'
-import DiscountPayOnline from './DiscountPayOnline'
-import HotDeal from './HotDeal'
-import OptionPromo from './OptionPromo'
-import PromoAnother from './PromoAnother'
-import ServiceConversation from './ServiceConversation'
-import ShoppingTrend from './ShoppingTrend'
+import BannerTopzone from '../../components/Pages/Client/Home/BannerTopzone'
+import BigBanner from '../../components/Pages/Client/Home/BigBanner'
+import BigCampaign from '../../components/Pages/Client/Home/BigCampaign'
+import CategoryFeature from '../../components/Pages/Client/Home/CategoryFeature'
+import DiscountPayOnline from '../../components/Pages/Client/Home/DiscountPayOnline'
+import HotDeal from '../../components/Pages/Client/Home/HotDeal'
+import OptionPromo from '../../components/Pages/Client/Home/OptionPromo'
+import PromoAnother from '../../components/Pages/Client/Home/PromoAnother'
+import ServiceConversation from '../../components/Pages/Client/Home/ServiceConversation'
+import ShoppingTrend from '../../components/Pages/Client/Home/ShoppingTrend'
 
 const Home = () => {
     return (

@@ -21,11 +21,11 @@
 
 }
 
-.swiper-default__icon-button.swiper-button-next {
+.big-campaign__button-product-next .swiper-default__icon-button.swiper-button-next {
     right: var(--swiper-navigation-sides-offset, -8px);
 }
 
-.swiper-default__icon-button.swiper-button-prev {
+.big-campaign__button-product-prev .swiper-default__icon-button.swiper-button-prev {
     left: var(--swiper-navigation-sides-offset, -8px);
 }
 

@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from 'react'
 
 // Style
-import "../../assets/Styles/Client/Pages/Home/ShoppingTrend.css"
+import "../../../../assets/Styles/Client/Pages/Home/ShoppingTrend.css"
 
 //Api
-import ShoppingTrendApi from '../../data/ShoppingTrend'
+import ShoppingTrendApi from '../../../../data/ShoppingTrend'
 
 const ShoppingTrend = () => {
     // Hook

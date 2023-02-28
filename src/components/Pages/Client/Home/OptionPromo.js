@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from 'react'
 
 // Style
-import "../../assets/Styles/Client/Pages/Home/OptionPromo.css"
+import "../../../../assets/Styles/Client/Pages/Home/OptionPromo.css"
 
 //Api
-import OptionPromoApi from '../../data/OptionPromo';
+import OptionPromoApi from '../../../../data/OptionPromo';
 
 const OptionPromo = () => {
     // Hook

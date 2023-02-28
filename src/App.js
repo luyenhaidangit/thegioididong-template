@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // Client
 import Layout from './components/Layouts/Client/Layout';
-import Home from './pages/Home/Home';
-import Product from './pages/Product/Product';
+import Home from "./pages/Client/Home"
+import Product from './pages/Client/Product';
 
 // Style
 import './App.css';

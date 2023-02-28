@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react'
 import ScrollContainer from 'react-indiana-drag-scroll'
 
 // Style
-import "../../assets/Styles/Client/Pages/Home/DiscountPayOnline.css"
+import "../../../../assets/Styles/Client/Pages/Home/DiscountPayOnline.css"
 
 //Api
-import DiscountPayOnlineApi from '../../data/DiscountPayOnline';
+import DiscountPayOnlineApi from '../../../../data/DiscountPayOnline';
 
 const DiscountPayOnline = () => {
     // Hook

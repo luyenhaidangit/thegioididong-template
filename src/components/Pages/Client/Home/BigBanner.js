@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from 'react'
 
 // Style
-import "../../assets/Styles/Client/Pages/Home/BigBanner.css"
+import "../../../../assets/Styles/Client/Pages/Home/BigBanner.css"
 
 //Api
-import BigBannerApi from '../../data/BigBanner';
+import BigBannerApi from '../../../../data/BigBanner';
 
 const BigBanner = () => {
     // Hook
