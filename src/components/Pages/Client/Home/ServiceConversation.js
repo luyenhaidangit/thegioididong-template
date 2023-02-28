@@ -21,8 +21,6 @@ const ServiceConversation = () => {
         setDataServiceConversation(res);
     }
 
-    console.log(dataServiceConversation)
-
     return (
         <>
             {
