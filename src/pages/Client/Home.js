@@ -13,6 +13,7 @@ import OptionPromo from '../../components/Pages/Client/Home/OptionPromo'
 import PromoAnother from '../../components/Pages/Client/Home/PromoAnother'
 import ServiceConversation from '../../components/Pages/Client/Home/ServiceConversation'
 import ShoppingTrend from '../../components/Pages/Client/Home/ShoppingTrend'
+import TechNew from '../../components/Pages/Client/Home/TechNew'
 
 const Home = () => {
     return (
@@ -29,7 +30,7 @@ const Home = () => {
                 <DiscountPayOnline />
                 <ServiceConversation />
                 <DailySuggest />
-                <div className='daily-suggestion'>daily-suggest</div>
+                <TechNew />
                 <div className='trademark '>trademark </div>
                 <div className='technology-box'>technology-box</div>
                 <div className='newchain'>newchain</div>
