@@ -9,6 +9,7 @@ import CategoryFeature from '../../components/Pages/Client/Home/CategoryFeature'
 import DailySuggest from '../../components/Pages/Client/Home/DailySuggest'
 import DiscountPayOnline from '../../components/Pages/Client/Home/DiscountPayOnline'
 import HotDeal from '../../components/Pages/Client/Home/HotDeal'
+import NewChain from '../../components/Pages/Client/Home/NewChain'
 import OptionPromo from '../../components/Pages/Client/Home/OptionPromo'
 import PromoAnother from '../../components/Pages/Client/Home/PromoAnother'
 import ServiceConversation from '../../components/Pages/Client/Home/ServiceConversation'
@@ -33,8 +34,7 @@ const Home = () => {
                 <DailySuggest />
                 <TechNew />
                 <TradeMark />
-                <div className='trademark '>trademark </div>
-                <div className='technology-box'>technology-box</div>
+                <NewChain />
                 <div className='newchain'>newchain</div>
                 <div className='promo-bhx'>promo-bhx</div>
             </div>
