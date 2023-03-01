@@ -35,8 +35,6 @@ const Home = () => {
                 <TechNew />
                 <TradeMark />
                 <NewChain />
-                <div className='newchain'>newchain</div>
-                <div className='promo-bhx'>promo-bhx</div>
             </div>
         </div>
     )
