@@ -14,6 +14,7 @@ import PromoAnother from '../../components/Pages/Client/Home/PromoAnother'
 import ServiceConversation from '../../components/Pages/Client/Home/ServiceConversation'
 import ShoppingTrend from '../../components/Pages/Client/Home/ShoppingTrend'
 import TechNew from '../../components/Pages/Client/Home/TechNew'
+import TradeMark from '../../components/Pages/Client/Home/TradeMark'
 
 const Home = () => {
     return (
@@ -31,6 +32,7 @@ const Home = () => {
                 <ServiceConversation />
                 <DailySuggest />
                 <TechNew />
+                <TradeMark />
                 <div className='trademark '>trademark </div>
                 <div className='technology-box'>technology-box</div>
                 <div className='newchain'>newchain</div>

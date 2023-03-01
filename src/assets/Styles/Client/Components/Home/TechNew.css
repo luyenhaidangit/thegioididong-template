@@ -100,6 +100,7 @@
         max-width: unset;
         padding-left: 0;
         padding-right: 0;
+        height: unset;
     }
 
     .tech-new__new-title {
@@ -110,6 +111,7 @@
     .tech-new__new-content {
         border-bottom-left-radius: unset;
         border-bottom-right-radius: unset;
+        padding-bottom: 15px;
     }
 
     .tech-new__new-content-list-new {
