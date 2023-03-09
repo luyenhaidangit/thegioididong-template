@@ -13,7 +13,8 @@ import "../../../assets/Styles/Client/Layouts/HeaderTopBar.css"
 import { GrFormNext, GrFormPrevious } from "react-icons/gr"
 
 // Api
-import HeaderTopBarApi from '../../../data/HeaderTopBar'
+import { GetSlideHeaderTopClient } from '../../../apis/Client/slideApi';
+import { baseManageURL } from '../../../helpers/Apis/baseURL';
 
 const HeaderTopBar = () => {
     // Hook
@@ -30,14 +31,15 @@ const HeaderTopBar = () => {
 
     // Func
     const fetchSlidesHeaderTopBar = async () => {
-        let res = await HeaderTopBarApi;
-        setSlideData(res);
+        let res = await GetSlideHeaderTopClient();
+        setSlideData(res.items[0].slideItems ?? []);
     }
 
     const changeBackGroundColorHeaderTopBar = (swiper) => {
         setBackgroundColorHeaderTopBar(slideData[swiper.realIndex].backgroundColor);
     }
 
+    console.log(slideData)
 
     return (
         <div className="header-top-bar" style={backgroundColorHeaderTopBar ? { backgroundColor: backgroundColorHeaderTopBar } : {}}>
@@ -63,7 +65,7 @@ const HeaderTopBar = () => {
                         slideData.map((item, index) => {
                             return (
                                 <SwiperSlide className='header-top-bar__item' key={`slide-header-top-bar-${index}`}>
-                                    <img className='header-top-bar__item-image' src={item.image} alt={""} />
+                                    <img className='header-top-bar__item-image' src={baseManageURL + item.image} alt={""} />
                                 </SwiperSlide>
                             )
                         })
