@@ -1,0 +1,7 @@
+.left-top-banner {
+    max-width: 720px;
+}
+
+.swiper-default__icon-button {
+    top: var(--swiper-navigation-top-offset, 45%);
+}
