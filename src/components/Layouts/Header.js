@@ -1,18 +1,17 @@
-// React
+// Libraries
 import React, { useEffect, useState } from 'react'
 
-// Font
 import { AiOutlineCaretDown, AiOutlineSearch, AiOutlineShoppingCart, AiOutlineMenu } from "react-icons/ai"
 
-// Api
-import ProductCategoryHeaderMainApi from '../../../data/HeaderMain'
+// Styles
+import "../../assets/Styles/Layouts/Header.css"
 
-// Style
-import "../../../assets/Styles/Client/Layouts/Header.css"
+// Resources
+import Logo from "../../assets/Images/Logo/logo-dagstore.png"
+import LogoSmall from "../../assets/Images/Logo/logo-dagstore-small.png"
 
-// Image
-import Logo from "../../../assets/Images/Logo/logo-dagstore.png"
-import LogoSmall from "../../../assets/Images/Logo/logo-dagstore-small.png"
+// Data
+import ProductCategoryHeaderMainApi from '../../data/HeaderMain'
 
 const Header = () => {
     // Hook
@@ -22,7 +21,6 @@ const Header = () => {
         fetchProductCategoryHeaderMain();
     }, []);
 
-    // Func
     const fetchProductCategoryHeaderMain = async () => {
         let res = await ProductCategoryHeaderMainApi;
         setDataProductCategory(res);

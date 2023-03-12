@@ -1,13 +1,13 @@
-// React
+// Libraries
 import React, { useEffect, useState } from 'react'
 
 import ScrollContainer from 'react-indiana-drag-scroll'
 
-// Style
-import "../../../../assets/Styles/Client/Components/Home/DiscountPayOnline.css"
+// Styles
+import "../../../assets/Styles/Components/Home/DiscountPayOnline.css"
 
-//Api
-import DiscountPayOnlineApi from '../../../../data/DiscountPayOnline';
+// Data
+import DiscountPayOnlineApi from '../../../data/DiscountPayOnline';
 
 const DiscountPayOnline = () => {
     // Hook
@@ -17,7 +17,6 @@ const DiscountPayOnline = () => {
         fetchDataDiscountPayOnline();
     }, []);
 
-    // Function
     const fetchDataDiscountPayOnline = async () => {
         let res = await DiscountPayOnlineApi;
         setDataDiscountPayOnline(res);

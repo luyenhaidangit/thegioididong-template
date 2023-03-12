@@ -1,11 +1,11 @@
-// React
+// Libraries
 import React, { useEffect, useState } from 'react'
 
-// Style
-import "../../../../assets/Styles/Client/Components/Home/ShoppingTrend.css"
+// Styles
+import "../../../assets/Styles/Components/Home/ShoppingTrend.css"
 
-//Api
-import ShoppingTrendApi from '../../../../data/ShoppingTrend'
+// Data
+import ShoppingTrendApi from '../../../data/ShoppingTrend'
 
 const ShoppingTrend = () => {
     // Hook
@@ -15,7 +15,6 @@ const ShoppingTrend = () => {
         fetchDataShoppingTrend();
     }, []);
 
-    // Function
     const fetchDataShoppingTrend = async () => {
         let res = await ShoppingTrendApi;
         setDataShoppingTrend(res);

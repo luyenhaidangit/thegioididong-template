@@ -1,25 +1,24 @@
-// React
+// Libraries
 import React, { useEffect, useState, useRef } from 'react'
 
-// Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
 import "swiper/css/navigation";
 
-// Icon
 import { GrFormNext, GrFormPrevious } from "react-icons/gr"
 
-// Style
-import "../../../../assets/Styles/Client/Components/Home/HotDeal.css"
-import IconGift from "../../../../assets/Images/Icon/icon-gift.png"
 import { AiFillStar } from 'react-icons/ai'
 
-//Api
-import HotDealApi from '../../../../data/HotDeal'
+// Style
+import "../../../assets/Styles/Components/Home/HotDeal.css"
+import IconGift from "../../../assets/Images/Icon/icon-gift.png"
+
+// Api
+import HotDealApi from '../../../data/HotDeal'
 
 // Helper
-import FormatCurrency from '../../../../helpers/Strings/FormatCurrency';
+import FormatCurrency from '../../../helpers/Strings/FormatCurrency';
 
 const HotDeal = () => {
     // Hook

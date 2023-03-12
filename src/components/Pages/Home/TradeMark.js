@@ -1,13 +1,12 @@
-// React
+// Libraries
 import React, { useEffect, useState } from 'react'
 import ScrollContainer from 'react-indiana-drag-scroll'
 
-// Style
-import "../../../../assets/Styles/Client/Components/Home/TradeMark.css"
+// Styles
+import "../../../assets/Styles/Components/Home/TradeMark.css"
 
-
-//Api
-import TradeMarkApi from '../../../../data/TradeMark';
+// Data
+import TradeMarkApi from '../../../data/TradeMark';
 
 const TradeMark = () => {
     // Hook
@@ -17,7 +16,6 @@ const TradeMark = () => {
         fetchDataTradeMark();
     }, []);
 
-    // Function
     const fetchDataTradeMark = async () => {
         let res = await TradeMarkApi;
         setDataTradeMark(res);

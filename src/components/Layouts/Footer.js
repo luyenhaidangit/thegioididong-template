@@ -1,7 +1,12 @@
+// Libraries
 import React from 'react'
-import "../../../assets/Styles/Client/Layouts/Footer.css"
-import LogoWide from "../../../assets/Images/Logo/logo-wide.png"
-import LogoFit from "../../../assets/Images/Logo/logo-fit.png"
+
+// Styles
+import '../../assets/Styles/Layouts/Footer.css'
+
+// Resources
+import LogoWide from "../../assets/Images/Logo/logo-wide.png"
+import LogoFit from "../../assets/Images/Logo/logo-fit.png"
 
 const Footer = () => {
     return (

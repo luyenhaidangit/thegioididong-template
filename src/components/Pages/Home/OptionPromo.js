@@ -1,11 +1,11 @@
-// React
+// Libraries
 import React, { useEffect, useState } from 'react'
 
-// Style
-import "../../../../assets/Styles/Client/Components/Home/OptionPromo.css"
+// Styles
+import "../../../assets/Styles/Components/Home/OptionPromo.css"
 
-//Api
-import OptionPromoApi from '../../../../data/OptionPromo';
+//Data
+import OptionPromoApi from '../../../data/OptionPromo';
 
 const OptionPromo = () => {
     // Hook
@@ -15,7 +15,6 @@ const OptionPromo = () => {
         fetchDataOptionPromo();
     }, []);
 
-    // Function
     const fetchDataOptionPromo = async () => {
         let res = await OptionPromoApi;
         setDataOptionPromo(res);

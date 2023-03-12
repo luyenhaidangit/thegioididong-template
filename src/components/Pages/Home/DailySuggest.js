@@ -1,26 +1,26 @@
 // React
 import React, { useEffect, useState } from 'react'
 
-// Bootstrap
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
-// Style
-import "../../../../assets/Styles/Client/Components/Home/DailySuggest.css"
-import IconGift from "../../../../assets/Images/Icon/icon-gift.png"
+import IconGift from "../../../assets/Images/Icon/icon-gift.png"
 import { AiFillStar } from 'react-icons/ai'
 
-//Api
-import DailySuggestApi from '../../../../data/DailySuggest';
+// Style
+import "../../../assets/Styles/Components/Home/DailySuggest.css"
 
-// Icon
-import LastestIcon from "../../../../assets/Images/Icon/lastest-icon.webp";
-import BestSellingIcon from "../../../../assets/Images/Icon/best-selling-icon.png";
-import TopRatedIcon from "../../../../assets/Images/Icon/top-rated-icon.webp";
-import PopularIcon from "../../../../assets/Images/Icon/popular-icon.webp";
+// Resources
+import LastestIcon from "../../../assets/Images/Icon/lastest-icon.webp";
+import BestSellingIcon from "../../../assets/Images/Icon/best-selling-icon.png";
+import TopRatedIcon from "../../../assets/Images/Icon/top-rated-icon.webp";
+import PopularIcon from "../../../assets/Images/Icon/popular-icon.webp";
+
+//Api
+import DailySuggestApi from '../../../data/DailySuggest';
 
 // Helper
-import FormatCurrency from '../../../../helpers/Strings/FormatCurrency';
+import FormatCurrency from '../../../helpers/Strings/FormatCurrency';
 
 const DailySuggest = () => {
 

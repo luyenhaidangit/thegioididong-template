@@ -1,20 +1,18 @@
+// Libraries
 import React, { useEffect, useRef, useState } from 'react'
 
-// Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
 import "swiper/css/navigation";
 
-// Style
-import "../../../assets/Styles/Client/Layouts/HeaderTopBar.css"
-
-// Icon
 import { GrFormNext, GrFormPrevious } from "react-icons/gr"
 
-// Api
-import HeaderTopBarApi from '../../../data/HeaderTopBar';
-import { baseManageURL } from '../../../helpers/Apis/baseURL';
+// Styles
+import "../../assets/Styles/Layouts/HeaderTopBar.css"
+
+// Data
+import HeaderTopBarApi from '../../data/HeaderTopBar';
 
 const HeaderTopBar = () => {
     // Hook

@@ -1,13 +1,13 @@
-// React
+// Libraries
 import React, { useEffect, useState } from 'react'
 
 import ScrollContainer from 'react-indiana-drag-scroll'
 
-// Style
-import "../../../../assets/Styles/Client/Components/Home/NewChain.css"
+// Styles
+import "../../../assets/Styles/Components/Home/NewChain.css"
 
-//Api
-import NewChainApi from '../../../../data/NewChain';
+// Data
+import NewChainApi from '../../../data/NewChain';
 
 const NewChain = () => {
     // Hook

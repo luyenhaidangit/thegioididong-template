@@ -1,13 +1,13 @@
-// React
+// Libraries
 import React, { useEffect, useState } from 'react'
 
 import ScrollContainer from 'react-indiana-drag-scroll'
 
-// Style
-import "../../../../assets/Styles/Client/Components/Home/CategoryFeature.css"
+// Styles
+import "../../../assets/Styles/Components/Home/CategoryFeature.css"
 
-//Api
-import CategoryFeatureApi from '../../../../data/CategoryFeature'
+// Data
+import CategoryFeatureApi from '../../../data/CategoryFeature'
 const CategoryFeature = () => {
     // Hook
     const [dataCategoryFeature, setDataCategoryFeature] = useState([]);
@@ -16,7 +16,6 @@ const CategoryFeature = () => {
         fetchDataCategoryFeature();
     }, []);
 
-    // Function
     const fetchDataCategoryFeature = async () => {
         let res = await CategoryFeatureApi;
         setDataCategoryFeature(res);

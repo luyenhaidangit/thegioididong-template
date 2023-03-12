@@ -1,26 +1,24 @@
-// React
+// Libraries
 import React, { useEffect, useState, useRef } from 'react'
 
-// Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
 import "swiper/css/navigation";
 
-// Icon
 import { GrFormNext, GrFormPrevious } from "react-icons/gr"
-
-// Style
-import "../../../../assets/Styles/Client/Components/Home/HotDeal.css"
-import "../../../../assets/Styles/Client/Components/Home/PromoAnother.css"
-import IconGift from "../../../../assets/Images/Icon/icon-gift.png"
 import { AiFillStar } from 'react-icons/ai'
 
-//Api
-import PromoAnotherApi from '../../../../data/PromoAnother';
+// Styles
+import "../../../assets/Styles/Components/Home/HotDeal.css"
+import "../../../assets/Styles/Components/Home/PromoAnother.css"
+import IconGift from "../../../assets/Images/Icon/icon-gift.png"
+
+// Data
+import PromoAnotherApi from '../../../data/PromoAnother';
 
 // Helper
-import FormatCurrency from '../../../../helpers/Strings/FormatCurrency';
+import FormatCurrency from '../../../helpers/Strings/FormatCurrency';
 
 const PromoAnother = () => {
     // Hook
@@ -32,7 +30,6 @@ const PromoAnother = () => {
         fetchDataHotDeal();
     }, []);
 
-    // Function
     const fetchDataHotDeal = async () => {
         let res = await PromoAnotherApi;
         setDataPromoAnother(res);

@@ -1,11 +1,11 @@
-// React
+// Libraries
 import React, { useEffect, useState } from 'react'
 
 // Style
-import "../../../../assets/Styles/Client/Components/Home/BannerTopzone.css"
+import "../../../assets/Styles/Components/Home/BannerTopzone.css"
 
-//Api
-import BannerTopzoneApi from '../../../../data/BannerTopzone'
+// Data
+import BannerTopzoneApi from '../../../data/BannerTopzone'
 
 const BannerTopzone = () => {
     // Hook
@@ -15,7 +15,6 @@ const BannerTopzone = () => {
         fetchDataBannerTopzone();
     }, []);
 
-    // Function
     const fetchDataBannerTopzone = async () => {
         let res = await BannerTopzoneApi;
         setDataBannerTopzone(res);

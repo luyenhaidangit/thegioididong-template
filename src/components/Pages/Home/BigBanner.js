@@ -1,11 +1,11 @@
-// React
+// Libraries
 import React, { useEffect, useState } from 'react'
 
-// Style
-import "../../../../assets/Styles/Client/Components/Home/BigBanner.css"
+// Styles
+import "../../../assets/Styles/Components/Home/BigBanner.css"
 
-//Api
-import BigBannerApi from '../../../../data/BigBanner';
+// Data
+import BigBannerApi from '../../../data/BigBanner';
 
 const BigBanner = () => {
     // Hook
@@ -15,7 +15,6 @@ const BigBanner = () => {
         fetchItemBigBanner();
     }, []);
 
-    // Function
     const fetchItemBigBanner = async () => {
         let res = await BigBannerApi;
         setDataBigBanner(res);

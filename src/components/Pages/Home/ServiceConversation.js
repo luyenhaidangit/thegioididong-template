@@ -1,11 +1,11 @@
-// React
+// Libraries
 import React, { useEffect, useState } from 'react'
 
-// Style
-import "../../../../assets/Styles/Client/Components/Home/ServiceConversation.css"
+// Styles
+import "../../../assets/Styles/Components/Home/ServiceConversation.css"
 
-//Api
-import ServiceConversationApi from '../../../../data/ServiceConversation'
+// Data
+import ServiceConversationApi from '../../../data/ServiceConversation'
 
 const ServiceConversation = () => {
     // Hook
@@ -15,7 +15,6 @@ const ServiceConversation = () => {
         fetchDataServiceConversation();
     }, []);
 
-    // Function
     const fetchDataServiceConversation = async () => {
         let res = await ServiceConversationApi;
         setDataServiceConversation(res);

@@ -1,21 +1,19 @@
-// React
+// Libraries
 import React, { useEffect, useRef, useState } from 'react'
 
-// Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import "swiper/css/navigation";
 import "swiper/css/pagination"
 
-// Style
-import "../../../../assets/Styles/Client/Components/Home/BigCampaign.css"
-
-// Icon
 import { GrFormNext, GrFormPrevious } from "react-icons/gr"
 
-// Api
-import BigCampaignApi from '../../../../data/BigCampaign'
+// Styles
+import "../../../assets/Styles/Components/Home/BigCampaign.css"
+
+// Data
+import BigCampaignApi from '../../../data/BigCampaign'
 
 const BigCampaign = () => {
     // Hook

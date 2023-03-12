@@ -1,15 +1,16 @@
-// React
+// Libraries
 import React, { useEffect, useState } from 'react'
+
 import ScrollContainer from 'react-indiana-drag-scroll'
 
-// Style
-import "../../../../assets/Styles/Client/Components/Home/TechNew.css"
+// Styles
+import "../../../assets/Styles/Components/Home/TechNew.css"
 
-//Api
-import TechNewApi from '../../../../data/TechNew';
+// Resources
+import BannerNew from "../../../assets/Images/TechNew/banner-new.webp"
 
-// Imgage
-import BannerNew from "../../../../assets/Images/TechNew/banner-new.webp"
+// Data
+import TechNewApi from '../../../data/TechNew';
 
 const TechNew = () => {
     // Hook
@@ -19,7 +20,6 @@ const TechNew = () => {
         fetchDataTechNew();
     }, []);
 
-    // Function
     const fetchDataTechNew = async () => {
         let res = await TechNewApi;
         setDataTechNew(res);
