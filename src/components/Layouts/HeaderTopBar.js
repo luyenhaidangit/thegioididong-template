@@ -37,8 +37,6 @@ const HeaderTopBar = () => {
         setBackgroundColorHeaderTopBar(slideData[swiper.realIndex].backgroundColor);
     }
 
-    console.log(slideData)
-
     return (
         <>
             {

@@ -11,6 +11,7 @@ import Product from './pages/Product'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/Styles/Common/Common.css'
+import ProductCategory from './pages/ProductCategory';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
             <Route path='product' element={<Product />} />
-            {/* <Route path='productcategory' element={<ProductCategory />} /> */}
+            <Route path='loai-san-pham' element={<ProductCategory />} />
           </Route>
         </Routes>
       </BrowserRouter>
