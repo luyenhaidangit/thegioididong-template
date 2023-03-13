@@ -15,6 +15,10 @@
     height: calc(90px - 0.25rem);
 }
 
+.top-slide__item {
+    height: 180px;
+}
+
 @media only screen and (max-width: 1200px) {
     .left-top-banner {
         max-width: 640px;
