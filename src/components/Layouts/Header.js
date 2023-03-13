@@ -1,6 +1,8 @@
 // Libraries
 import React, { useEffect, useState } from 'react'
 
+import { useNavigate } from 'react-router-dom';
+
 import { AiOutlineCaretDown, AiOutlineSearch, AiOutlineShoppingCart, AiOutlineMenu } from "react-icons/ai"
 
 // Styles
@@ -16,6 +18,8 @@ import ProductCategoryHeaderMainApi from '../../data/HeaderMain'
 const Header = () => {
     // Hook
     const [dataProductCategory, setDataProductCategory] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchProductCategoryHeaderMain();
@@ -78,7 +82,7 @@ const Header = () => {
                         dataProductCategory && dataProductCategory.length > 0 &&
                         dataProductCategory.map((categoryMain, index) => {
                             return (
-                                <div key={`categoryMain-${index}`} className='main-nav__item pb-3'>
+                                <div onClick={() => navigate('/loai-san-pham')} key={`categoryMain-${index}`} className='main-nav__item pb-3'>
                                     <span className="main-nav__item-link d-flex align-items-center">
                                         {
                                             categoryMain.icon && categoryMain.icon.length > 0 &&
