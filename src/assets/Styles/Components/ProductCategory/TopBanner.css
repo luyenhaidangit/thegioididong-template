@@ -1,7 +1,60 @@
 .left-top-banner {
     max-width: 720px;
+    height: 180px;
+}
+
+.right-top-banner {
+    max-height: 180px;
 }
 
 .swiper-default__icon-button {
     top: var(--swiper-navigation-top-offset, 45%);
+}
+
+.top-banner>img {
+    height: calc(90px - 0.25rem);
+}
+
+@media only screen and (max-width: 1200px) {
+    .left-top-banner {
+        max-width: 640px;
+    }
+
+    .top-slide__item {
+        width: 640px;
+        height: 180px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .left-top-banner {
+        max-width: 100%;
+    }
+
+    .top-slide__item {
+        width: 100%;
+        height: 180px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .top-banner {
+        margin-top: 0 !important;
+        border-radius: unset;
+    }
+
+    .top-banner>.container {
+        max-width: unset;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .swiper-pagination {
+        display: block;
+    }
+
+    .banner-top__button-product-prev-1,
+    .banner-top__button-product-next-1 {
+        display: none;
+    }
 }
