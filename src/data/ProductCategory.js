@@ -33,7 +33,20 @@ const Product_Image_21 = require("../assets/Images/Product/product_image_21.jpg"
 const Product_Image_22 = require("../assets/Images/Product/product_image_22.jpg")
 const Product_Image_23 = require("../assets/Images/Product/product_image_23.jpg")
 
+const BrandImage1 = require("../assets/Images/Brand/brand-1.png")
+const BrandImage2 = require("../assets/Images/Brand/brand-2.png")
+const BrandImage3 = require("../assets/Images/Brand/brand-3.jpg")
+const BrandImage4 = require("../assets/Images/Brand/brand-4.png")
+const BrandImage5 = require("../assets/Images/Brand/brand-5.png")
+const BrandImage6 = require("../assets/Images/Brand/brand-6.png")
+const BrandImage7 = require("../assets/Images/Brand/brand-7.jpg")
+const BrandImage8 = require("../assets/Images/Brand/brand-8.jpg")
+const BrandImage9 = require("../assets/Images/Brand/brand-9.jpg")
+const BrandImage10 = require("../assets/Images/Brand/brand-10.jpg")
+const BrandImage11 = require("../assets/Images/Brand/brand-11.png")
+
 const ProductCategory = {
+    name: 'Điện thoại',
     topBanner: {
         slide: {
             id: 1,
@@ -91,179 +104,272 @@ const ProductCategory = {
             url: null,
         },
     },
-    attributeFilters: [
-        {
-            id: 1,
-            Name: 'Loại điện thoại',
-            AttributeValues: [
+    boxFilter: {
+        attributeFilters: [
+            {
+                id: 1,
+                name: 'Loại điện thoại',
+                attributeValues: [
+                    {
+                        id: 1,
+                        value: 'Android',
+                        selected: false,
+                    },
+                    {
+                        id: 2,
+                        value: 'iPhone (iOS)',
+                        selected: false,
+                    },
+                    {
+                        id: 3,
+                        value: 'Điện thoại phổ thông',
+                        selected: false,
+                    }
+                ],
+                quickFilter: false,
+            },
+            {
+                id: 2,
+                name: 'Nhu cầu',
+                attributeValues: [
+                    {
+                        id: 1,
+                        value: 'Chơi game/Cấu hình cao',
+                        selected: false,
+                    },
+                    {
+                        id: 2,
+                        value: 'Chụp ảnh, quay phim',
+                        selected: false,
+                    },
+                    {
+                        id: 3,
+                        value: 'Mỏng nhẹ',
+                        selected: false,
+                    },
+                    {
+                        id: 4,
+                        value: 'Nhỏ gọn, dễ cầm',
+                        selected: false,
+                    }
+                ],
+                quickFilter: true,
+            },
+            {
+                id: 3,
+                name: 'RAM',
+                attributeValues: [
+                    {
+                        id: 1,
+                        value: '2GB',
+                        selected: false,
+                    },
+                    {
+                        id: 2,
+                        value: '3GB',
+                        selected: false,
+                    },
+                    {
+                        id: 3,
+                        value: '4GB',
+                        selected: false,
+                    },
+                    {
+                        id: 4,
+                        value: '6GB',
+                        selected: false,
+                    },
+                    {
+                        id: 5,
+                        value: '8GB',
+                        selected: false,
+                    },
+                    {
+                        id: 6,
+                        value: '12GB',
+                        selected: false,
+                    }
+                ],
+                quickFilter: false,
+            },
+            {
+                id: 4,
+                name: 'ROM',
+                attributeValues: [
+                    {
+                        id: 1,
+                        value: '32GB',
+                        selected: false,
+                    },
+                    {
+                        id: 2,
+                        value: '64GB',
+                        selected: false,
+                    },
+                    {
+                        id: 3,
+                        value: '128GB',
+                        selected: false,
+                    },
+                    {
+                        id: 4,
+                        value: '256GB',
+                        selected: false,
+                    },
+                    {
+                        id: 5,
+                        value: '512GB',
+                        selected: false,
+                    },
+                    {
+                        id: 6,
+                        value: '1TB',
+                        selected: false,
+                    }
+                ]
+            },
+            {
+                id: 5,
+                name: 'Pin & sạc',
+                attributeValues: [
+                    {
+                        id: 1,
+                        value: 'Pin khủng trên 5000W',
+                        selected: false,
+                    },
+                    {
+                        id: 2,
+                        value: 'Sạc nhanh (từ 18W)',
+                        selected: false,
+                    },
+                    {
+                        id: 3,
+                        value: 'Sạc siêu nhanh (từ 33W)',
+                        selected: false,
+                    },
+                    {
+                        id: 4,
+                        value: 'Sạc không dây',
+                        selected: false,
+                    }
+                ],
+                quickFilter: false,
+            },
+            {
+                id: 5,
+                name: 'Tính năng đặc biệt',
+                attributeValues: [
+                    {
+                        id: 1,
+                        value: 'Kháng bụi, nước',
+                        selected: false,
+                    },
+                    {
+                        id: 2,
+                        value: 'Hỗ trợ 5G',
+                        selected: false,
+                    },
+                    {
+                        id: 3,
+                        value: 'Bảo mật khuôn mặt',
+                        selected: false,
+                    },
+                    {
+                        id: 4,
+                        value: 'Chống rung quang học',
+                        selected: false,
+                    }
+                ]
+            },
+        ],
+        priceFilter: {
+            minPrice: 500000,
+            maxPrice: 43000000,
+            rangePrices: [
                 {
                     id: 1,
-                    value: 'Android',
-                    selected: false,
-                },
-                {
-                    id: 2,
-                    value: 'iPhone (iOS)',
-                    selected: false,
+                    startPrice: null,
+                    endPrice: 2000000,
                 },
                 {
                     id: 3,
-                    value: 'Điện thoại phổ thông',
-                    selected: false,
-                }
-            ]
-        },
-        {
-            id: 2,
-            Name: 'Nhu cầu',
-            AttributeValues: [
-                {
-                    id: 1,
-                    value: 'Chơi game/Cấu hình cao',
-                    selected: false,
-                },
-                {
-                    id: 2,
-                    value: 'Chụp ảnh, quauy phim',
-                    selected: false,
-                },
-                {
-                    id: 3,
-                    value: 'Mỏng nhẹ',
-                    selected: false,
+                    startPrice: 2000000,
+                    endPrice: 4000000,
                 },
                 {
                     id: 4,
-                    value: 'Nhỏ gọn, dễ cầm',
-                    selected: false,
-                }
-            ]
-        },
-        {
-            id: 3,
-            Name: 'RAM',
-            AttributeValues: [
-                {
-                    id: 1,
-                    value: '2GB',
-                    selected: false,
-                },
-                {
-                    id: 2,
-                    value: '3GB',
-                    selected: false,
-                },
-                {
-                    id: 3,
-                    value: '4GB',
-                    selected: false,
-                },
-                {
-                    id: 4,
-                    value: '6GB',
-                    selected: false,
+                    startPrice: 4000000,
+                    endPrice: 7000000,
                 },
                 {
                     id: 5,
-                    value: '8GB',
-                    selected: false,
+                    startPrice: 4000000,
+                    endPrice: 7000000,
                 },
                 {
                     id: 6,
-                    value: '12GB',
-                    selected: false,
-                }
+                    startPrice: 7000000,
+                    endPrice: 13000000,
+                },
+                {
+                    id: 7,
+                    startPrice: 13000000,
+                    endPrice: 20000000,
+                },
+                {
+                    id: 8,
+                    startPrice: 20000000,
+                    endPrice: null,
+                },
             ]
         },
-        {
-            id: 4,
-            Name: 'ROM',
-            AttributeValues: [
-                {
-                    id: 1,
-                    value: '32GB',
-                    selected: false,
-                },
-                {
-                    id: 2,
-                    value: '64GB',
-                    selected: false,
-                },
-                {
-                    id: 3,
-                    value: '128GB',
-                    selected: false,
-                },
-                {
-                    id: 4,
-                    value: '256GB',
-                    selected: false,
-                },
-                {
-                    id: 5,
-                    value: '512GB',
-                    selected: false,
-                },
-                {
-                    id: 6,
-                    value: '1TB',
-                    selected: false,
-                }
-            ]
-        },
-        {
-            id: 5,
-            Name: 'Pin & sạc',
-            AttributeValues: [
-                {
-                    id: 1,
-                    value: 'Pin khủng trên 5000W',
-                    selected: false,
-                },
-                {
-                    id: 2,
-                    value: 'Sạc nhanh (từ 18W)',
-                    selected: false,
-                },
-                {
-                    id: 3,
-                    value: 'Sạc siêu nhanh (từ 33W)',
-                    selected: false,
-                },
-                {
-                    id: 4,
-                    value: 'Sạc không dây',
-                    selected: false,
-                }
-            ]
-        },
-        {
-            id: 5,
-            Name: 'Tính năng đặc biệt',
-            AttributeValues: [
-                {
-                    id: 1,
-                    value: 'Kháng bụi, nước',
-                    selected: false,
-                },
-                {
-                    id: 2,
-                    value: 'Hỗ trợ 5G',
-                    selected: false,
-                },
-                {
-                    id: 3,
-                    value: 'Bảo mật khuôn mặt',
-                    selected: false,
-                },
-                {
-                    id: 4,
-                    value: 'Chống rung quang học',
-                    selected: false,
-                }
-            ]
-        },
-    ],
+        brandFilter: [
+            {
+                id: 1,
+                image: BrandImage1,
+            },
+            {
+                id: 2,
+                image: BrandImage2,
+            },
+            {
+                id: 3,
+                image: BrandImage3,
+            },
+            {
+                id: 4,
+                image: BrandImage4,
+            },
+            {
+                id: 5,
+                image: BrandImage5,
+            },
+            {
+                id: 6,
+                image: BrandImage6,
+            },
+            {
+                id: 7,
+                image: BrandImage7,
+            },
+            {
+                id: 8,
+                image: BrandImage8,
+            },
+            {
+                id: 9,
+                image: BrandImage9,
+            },
+            {
+                id: 10,
+                image: BrandImage10,
+            },
+            {
+                id: 11,
+                image: BrandImage11,
+            },
+        ]
+    },
     products: [
         {
             id: 1,

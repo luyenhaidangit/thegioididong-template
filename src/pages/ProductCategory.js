@@ -9,6 +9,9 @@ import TopBanner from '../components/Pages/ProductCategory/TopBanner'
 // Data
 import ProductCategoryApi from '../data/ProductCategory'
 
+// Styles
+import "../assets/Styles/Layouts/Body.css"
+
 const ProductCategory = () => {
     // Hook
     const [dataProductCategory, setDataProductCategory] = useState({});
@@ -24,11 +27,16 @@ const ProductCategory = () => {
     }
 
     return (
-        <div>
+        <>
             <TopBanner slide={dataProductCategory?.topBanner?.slide} bannerFirst={dataProductCategory?.topBanner?.bannerFirst} bannerSecond={dataProductCategory?.topBanner?.bannerSecond} />
-            <BoxFilter attributeFilters={dataProductCategory.attributeFilters} />
+            <BoxFilter
+                nameCategory={dataProductCategory?.name}
+                attributeFilters={dataProductCategory?.boxFilter?.attributeFilters}
+                priceFilter={dataProductCategory?.boxFilter?.priceFilter}
+                brandFilter={dataProductCategory?.boxFilter?.brandFilter}
+            />
             <ListProduct prouducts={dataProductCategory.prouducts} />
-        </div>
+        </>
     )
 }
 

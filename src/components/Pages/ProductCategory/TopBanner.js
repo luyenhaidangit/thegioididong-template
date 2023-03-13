@@ -19,8 +19,6 @@ const TopBanner = (props) => {
     const navigationPrevRef = useRef(null);
     const navigationNextRef = useRef(null);
 
-    console.log(bannerFirst);
-
     return (
         <div className='top-banner mt-3'>
             <div className='container d-flex align-items-center gap-3'>
