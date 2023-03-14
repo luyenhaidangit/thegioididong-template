@@ -14,9 +14,6 @@ const BoxFilter = (props) => {
     const { brandFilter } = props;
     const { nameCategory } = props;
 
-
-    console.log(nameCategory)
-
     return (
         <div className='box-filter'>
             <div className='container'>
@@ -83,7 +80,7 @@ const BoxFilter = (props) => {
                         attributeFilters && attributeFilters.length > 0 &&
                         attributeFilters.map((item, index) => {
                             return (
-                                <div className='quick-filter__attribute mt-2'>
+                                <div key={`quick-filter__attribute-${index}`} className='quick-filter__attribute mt-2'>
                                     {
                                         item?.quickFilter && item?.quickFilter === true &&
                                         <>
@@ -93,7 +90,7 @@ const BoxFilter = (props) => {
                                                     item?.attributeValues && item?.attributeValues?.length > 0 &&
                                                     item?.attributeValues?.map((itemValue, index) => {
                                                         return (
-                                                            <div key={`filter-item__attribute-${itemValue}`} className='filter-item__brand-title'>
+                                                            <div key={`filter-item__attribute-${index}`} className='filter-item__brand-title'>
                                                                 {
                                                                     itemValue.value
                                                                 }
