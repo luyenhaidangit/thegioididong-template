@@ -371,16 +371,19 @@ const ProductCategory = {
             badgeProduct: {
                 name: 'Giảm 1TR SS Wallet',
                 image: BadgeImage1,
+                backgroundColor: "linear-gradient(to right,#3bacf0,#1b6dc1)",
             },
             attributeValueProminents: ['6,71"', 'HD+'],
             optionVariantAttribute: [
                 {
                     id: 1,
-                    name: '8GB - 128GB'
+                    name: '8GB - 128GB',
+                    selected: true,
                 },
                 {
                     id: 2,
-                    name: '8GB - 256GB'
+                    name: '8GB - 256GB',
+                    selected: false,
                 },
             ],
             originalPrice: 23990000,
@@ -397,16 +400,19 @@ const ProductCategory = {
             badgeProduct: {
                 name: 'Giảm thêm 1 triệu',
                 image: BadgeImage2,
+                backgroundColor: 'linear-gradient(to right,#e91f63,#db2663)',
             },
             attributeValueProminents: ['6,71"', 'HD+'],
             optionVariantAttribute: [
                 {
                     id: 1,
-                    name: '8GB - 128GB'
+                    name: '8GB - 128GB',
+                    selected: true,
                 },
                 {
                     id: 2,
-                    name: '8GB - 256GB'
+                    name: '8GB - 256GB',
+                    selected: false,
                 },
             ],
             originalPrice: 790000,
@@ -425,16 +431,19 @@ const ProductCategory = {
             badgeProduct: {
                 name: 'Giảm 1TR SS Wallet',
                 image: BadgeImage1,
+                backgroundColor: "linear-gradient(to right,#3bacf0,#1b6dc1)",
             },
             attributeValueProminents: ['6,71"', 'HD+'],
             optionVariantAttribute: [
                 {
                     id: 1,
-                    name: '2GB - 128GB'
+                    name: '2GB - 128GB',
+                    selected: true,
                 },
                 {
                     id: 2,
-                    name: '8GB - 256GB'
+                    name: '8GB - 256GB',
+                    selected: false,
                 },
             ],
             originalPrice: 23990000,
@@ -451,16 +460,19 @@ const ProductCategory = {
             badgeProduct: {
                 name: 'Giảm 1TR SS Wallet',
                 image: BadgeImage1,
+                backgroundColor: "linear-gradient(to right,#3bacf0,#1b6dc1)",
             },
             attributeValueProminents: ['6,71"', 'HD+'],
             optionVariantAttribute: [
                 {
                     id: 1,
-                    name: '2GB - 128GB'
+                    name: '2GB - 128GB',
+                    selected: true,
                 },
                 {
                     id: 2,
-                    name: '8GB - 256GB'
+                    name: '8GB - 256GB',
+                    selected: false,
                 },
             ],
             originalPrice: 17490000,
@@ -477,16 +489,19 @@ const ProductCategory = {
             badgeProduct: {
                 name: 'Giảm 1TR SS Wallet',
                 image: BadgeImage3,
+                backgroundColor: 'linear-gradient(to right,#ef3006,#c60004)',
             },
             attributeValueProminents: ['6,71"', 'HD+'],
             optionVariantAttribute: [
                 {
                     id: 1,
-                    name: '2GB - 128GB'
+                    name: '2GB - 128GB',
+                    selected: true,
                 },
                 {
                     id: 2,
-                    name: '8GB - 256GB'
+                    name: '8GB - 256GB',
+                    selected: false,
                 },
             ],
             originalPrice: 17490000,
@@ -503,16 +518,19 @@ const ProductCategory = {
             badgeProduct: {
                 name: 'Giảm 1TR SS Wallet',
                 image: BadgeImage1,
+                backgroundColor: "linear-gradient(to right,#3bacf0,#1b6dc1)",
             },
             attributeValueProminents: ['6,71"', 'HD+'],
             optionVariantAttribute: [
                 {
                     id: 1,
-                    name: '2GB - 128GB'
+                    name: '2GB - 128GB',
+                    selected: true,
                 },
                 {
                     id: 2,
-                    name: '8GB - 256GB'
+                    name: '8GB - 256GB',
+                    selected: false,
                 },
             ],
             originalPrice: 23990000,
@@ -529,16 +547,19 @@ const ProductCategory = {
             badgeProduct: {
                 name: 'Giảm 1TR SS Wallet',
                 image: BadgeImage1,
+                backgroundColor: "linear-gradient(to right,#3bacf0,#1b6dc1)",
             },
             attributeValueProminents: ['6,71"', 'HD+'],
             optionVariantAttribute: [
                 {
                     id: 1,
-                    name: '2GB - 128GB'
+                    name: '2GB - 128GB',
+                    selected: true,
                 },
                 {
                     id: 2,
-                    name: '8GB - 256GB'
+                    name: '8GB - 256GB',
+                    selected: false,
                 },
             ],
             originalPrice: 17490000,
@@ -555,16 +576,19 @@ const ProductCategory = {
             badgeProduct: {
                 name: 'Giảm 1TR SS Wallet',
                 image: BadgeImage3,
+                backgroundColor: 'linear-gradient(to right,#ef3006,#c60004)'
             },
             attributeValueProminents: ['6,71"', 'HD+'],
             optionVariantAttribute: [
                 {
                     id: 1,
-                    name: '2GB - 128GB'
+                    name: '2GB - 128GB',
+                    selected: true,
                 },
                 {
                     id: 2,
-                    name: '8GB - 256GB'
+                    name: '8GB - 256GB',
+                    selected: false,
                 },
             ],
             originalPrice: 17490000,
@@ -581,16 +605,19 @@ const ProductCategory = {
             badgeProduct: {
                 name: 'Giảm 1TR SS Wallet',
                 image: BadgeImage3,
+                backgroundColor: 'linear-gradient(to right,#ef3006,#c60004)'
             },
             attributeValueProminents: ['6,71"', 'HD+'],
             optionVariantAttribute: [
                 {
                     id: 1,
-                    name: '2GB - 128GB'
+                    name: '2GB - 128GB',
+                    selected: true,
                 },
                 {
                     id: 2,
-                    name: '8GB - 256GB'
+                    name: '8GB - 256GB',
+                    selected: false,
                 },
             ],
             originalPrice: 17490000,
@@ -607,16 +634,19 @@ const ProductCategory = {
             badgeProduct: {
                 name: 'Giảm 1TR SS Wallet',
                 image: BadgeImage1,
+                backgroundColor: "linear-gradient(to right,#3bacf0,#1b6dc1)",
             },
             attributeValueProminents: ['6,71"', 'HD+'],
             optionVariantAttribute: [
                 {
                     id: 1,
-                    name: '2GB - 128GB'
+                    name: '2GB - 128GB',
+                    selected: true,
                 },
                 {
                     id: 2,
-                    name: '8GB - 256GB'
+                    name: '8GB - 256GB',
+                    selected: false,
                 },
             ],
             originalPrice: 23990000,
@@ -633,16 +663,19 @@ const ProductCategory = {
             badgeProduct: {
                 name: 'Giảm 1TR SS Wallet',
                 image: BadgeImage1,
+                backgroundColor: "linear-gradient(to right,#3bacf0,#1b6dc1)",
             },
             attributeValueProminents: ['6,71"', 'HD+'],
             optionVariantAttribute: [
                 {
                     id: 1,
-                    name: '2GB - 128GB'
+                    name: '2GB - 128GB',
+                    selected: true,
                 },
                 {
                     id: 2,
-                    name: '8GB - 256GB'
+                    name: '8GB - 256GB',
+                    selected: false,
                 },
             ],
             originalPrice: 17490000,

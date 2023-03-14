@@ -34,7 +34,7 @@ const Header = () => {
         <header className='header pt-2'>
             <div className='container'>
                 <div className='header__top d-flex justify-content-between align-items-center'>
-                    <div className='header__logo me-3'>
+                    <div onClick={() => navigate('/')} className='header__logo me-3'>
                         <img className='img-fluid' src={Logo} alt='logo' />
                         <img className='img-fluid' src={LogoSmall} alt='logo' />
                     </div>

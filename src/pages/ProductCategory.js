@@ -35,7 +35,7 @@ const ProductCategory = () => {
                 priceFilter={dataProductCategory?.boxFilter?.priceFilter}
                 brandFilter={dataProductCategory?.boxFilter?.brandFilter}
             />
-            <ListProduct prouducts={dataProductCategory.prouducts} />
+            <ListProduct listProduct={dataProductCategory?.listProduct} />
         </>
     )
 }

@@ -49,3 +49,20 @@
         white-space: nowrap;
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .sort-box {
+        display: inline-flex !important;
+        flex-direction: column !important;
+        gap: 8px;
+    }
+
+    .sort-box__left {
+        flex-direction: column !important;
+        gap: 6px;
+    }
+
+    .sort-box__right {
+        max-width: 200px;
+    }
+}

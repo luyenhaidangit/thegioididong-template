@@ -50,7 +50,7 @@
 
 .product-card__item-note__item {
     font-size: 10px;
-    padding: 0 6px;
+    padding: 0 8px;
     line-height: 22px;
 }
 
@@ -122,6 +122,11 @@
 
 .hotdeal__body .swiper-default__icon-button {
     top: var(--swiper-navigation-top-offset, 36%);
+}
+
+.product-card__item:hover .product-card__item-image>img {
+    transform: translateY(-6px);
+    transition: all 300ms ease-in-out
 }
 
 @media only screen and (max-width: 768px) {

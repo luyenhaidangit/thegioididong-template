@@ -1,0 +1,91 @@
+.sort-box__total {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.form-check-label {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.form-check .form-check-input {
+    margin-left: -1.3em;
+}
+
+.flash-ship__checkbox {
+    background: #e1f2e8;
+    padding: 2px 8px 4px 0px;
+    border-radius: 4px;
+}
+
+.flash-ship__checkbox .form-check-input {
+    margin-left: 0.4em;
+}
+
+.flash-ship__checkbox .form-check-label {
+    color: #219653;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.form-select {
+    font-size: 12px;
+    padding: 0.3rem 1.3rem 0.5rem 0.6rem;
+    background-size: 8px;
+    background-position: right 0.5rem top 0.7rem;
+}
+
+.product-box>.row>* {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.product-card__item {
+    border-left: 1px solid #f1f1f1 !important;
+    border-top: 1px solid #f1f1f1 !important;
+    border-bottom: 1px solid #f3f3f3 !important;
+    border-right: 1px solid #f3f3f3 !important;
+}
+
+.product-card__item.product-category__product-item:hover {
+    box-shadow: 0 2px 12px rgb(0 0 0 / 12%);
+}
+
+.product-card__item-label-attribute__item {
+    border-radius: 2px;
+    font-size: 10px;
+    line-height: 24px;
+    padding: 11px 8px !important;
+    display: inline-flex !important;
+    align-items: center;
+    font-size: 11px;
+    background-color: #fff !important;
+    border: 1px solid #e0e0e0 !important;
+    color: #333
+}
+
+.product-card__item-label-attribute__item.active {
+    border: 1px solid #2f80ed !important;
+    color: #2f80ed !important;
+}
+
+.product-card__item-original-price {
+    color: #000;
+    font: 14px/18px Arial, Helvetica, sans-serif;
+}
+
+.product-card__item-discount-percent {
+    color: #000;
+    font: 14px/18px Arial, Helvetica, sans-serif;
+}
+
+.product-box .product-card__item-price {
+    color: #000;
+}
+
+.product-card__item-rating {
+    font-size: 14px;
+}
