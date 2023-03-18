@@ -8,7 +8,12 @@ const GetSlideBigCampaign = () => {
     return axios.get('api/Slide/GetSlideBigCampaign');
 }
 
+const GetSlideOptionPromo = () => {
+    return axios.get('api/Slide/GetSlideOptionPromo');
+}
+
 export {
     GetSlideHeaderTopClient,
-    GetSlideBigCampaign
+    GetSlideBigCampaign,
+    GetSlideOptionPromo
 };

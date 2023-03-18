@@ -18,13 +18,15 @@ import TechNew from '../components/Pages/Home/TechNew'
 import TradeMark from '../components/Pages/Home/TradeMark'
 
 // Data
-import { GetSlideBigCampaign } from "../apis/slideApiService";
+import { GetSlideBigCampaign, GetSlideOptionPromo } from "../apis/slideApiService";
 
 const Home = () => {
     const [dataSlideBigCampaign, setDataSlideBigCampaign] = useState({});
+    const [dataSlideOptionPromo, setDataSlideOptionPromo] = useState({});
 
     useEffect(() => {
         fetchSlidesBigCampaign();
+        fetchSlideOptionPromo();
     }, []);
 
     // Func
@@ -33,12 +35,17 @@ const Home = () => {
         setDataSlideBigCampaign(res);
     }
 
+    const fetchSlideOptionPromo = async () => {
+        let res = await GetSlideOptionPromo();
+        setDataSlideOptionPromo(res);
+    }
+
     return (
         <div className='content bg-gray'>
             <BigBanner />
             <div className='main-content position-relative'>
                 <BigCampaign slide={dataSlideBigCampaign} />
-                <OptionPromo />
+                <OptionPromo slide={dataSlideOptionPromo} />
                 <BannerTopzone />
                 <HotDeal />
                 <PromoAnother />
