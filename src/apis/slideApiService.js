@@ -1,10 +1,14 @@
 import axios from '../helpers/Apis/axiosCustomize';
 
 const GetSlideHeaderTopClient = () => {
-    //Data
     return axios.get('api/Slide/GetSlideHeaderTop');
 }
 
+const GetSlideBigCampaign = () => {
+    return axios.get('api/Slide/GetSlideBigCampaign');
+}
+
 export {
-    GetSlideHeaderTopClient
+    GetSlideHeaderTopClient,
+    GetSlideBigCampaign
 };

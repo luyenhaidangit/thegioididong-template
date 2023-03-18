@@ -1,5 +1,5 @@
 // React
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 // Components
 import BannerTopzone from '../components/Pages/Home/BannerTopzone'
@@ -17,12 +17,27 @@ import ShoppingTrend from '../components/Pages/Home/ShoppingTrend'
 import TechNew from '../components/Pages/Home/TechNew'
 import TradeMark from '../components/Pages/Home/TradeMark'
 
+// Data
+import { GetSlideBigCampaign } from "../apis/slideApiService";
+
 const Home = () => {
+    const [dataSlideBigCampaign, setDataSlideBigCampaign] = useState({});
+
+    useEffect(() => {
+        fetchSlidesBigCampaign();
+    }, []);
+
+    // Func
+    const fetchSlidesBigCampaign = async () => {
+        let res = await GetSlideBigCampaign();
+        setDataSlideBigCampaign(res);
+    }
+
     return (
-        <div className='content'>
+        <div className='content bg-gray'>
             <BigBanner />
             <div className='main-content position-relative'>
-                <BigCampaign />
+                <BigCampaign slide={dataSlideBigCampaign} />
                 <OptionPromo />
                 <BannerTopzone />
                 <HotDeal />

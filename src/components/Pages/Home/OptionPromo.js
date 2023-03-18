@@ -30,7 +30,7 @@ const OptionPromo = () => {
                             dataOptionPromo && dataOptionPromo.length > 0 &&
                             dataOptionPromo.map((item, index) => {
                                 return (
-                                    <div key={`option-promo__item-${index}`} className='option-promo__item d-flex justify-content-center align-items-center gap-2 w-100'>
+                                    <div key={`option-promo__item-${index}`} className='option-promo__item d-flex justify-content-center align-items-center gap-2 w-100' style={{ backgroundColor: '#fff' }}>
                                         <img className='option-promo__item-img img-fluid' src={item.image} alt="option promo item" />
                                         <span className='option-promo__item-title'>{item.title}</span>
                                     </div>

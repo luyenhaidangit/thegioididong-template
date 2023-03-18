@@ -1,5 +1,5 @@
 // Libraries
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
@@ -12,29 +12,16 @@ import { GrFormNext, GrFormPrevious } from "react-icons/gr"
 // Styles
 import "../../../assets/Styles/Components/Home/BigCampaign.css"
 
-// Data
-import BigCampaignApi from '../../../data/BigCampaign'
-
-const BigCampaign = () => {
+const BigCampaign = (props) => {
+    const { slide } = props;
     // Hook
-    const [bigCampaignData, setBigCampaignData] = useState([]);
     const navigationPrevRef = useRef(null);
     const navigationNextRef = useRef(null);
-
-    useEffect(() => {
-        fetchBigCampaignData();
-    }, []);
-
-    // Func
-    const fetchBigCampaignData = async () => {
-        let res = await BigCampaignApi;
-        setBigCampaignData(res);
-    }
 
     return (
         <>
             {
-                bigCampaignData && bigCampaignData.length > 0 &&
+                slide &&
                 <div className='big-campaign'>
                     <div className='container position-relative'>
                         <Swiper
@@ -65,8 +52,8 @@ const BigCampaign = () => {
                             }}
                         >
                             {
-                                bigCampaignData && bigCampaignData.length > 0 &&
-                                bigCampaignData.map((item, index) => {
+                                slide.slideItems && slide.slideItems.length > 0 &&
+                                slide.slideItems.map((item, index) => {
                                     return (
                                         <SwiperSlide className='swiper-slide__item cursor-pointer' key={`swiper-slide__item-${index}`}>
                                             <img className='swiper-slide__item-image' src={item.image} alt={""} />

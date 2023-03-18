@@ -39,7 +39,7 @@ const ListProduct = (props) => {
     };
 
     return (
-        <div className='product-list mt-3'>
+        <div className='product-list mt-3 pb-4'>
             <div className='container'>
                 <div className='sort-box d-flex justify-content-between'>
                     <div className='sort-box__left d-flex gap-3'>

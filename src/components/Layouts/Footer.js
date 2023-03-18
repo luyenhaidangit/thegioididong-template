@@ -11,7 +11,7 @@ import LogoFit from "../../assets/Images/Logo/logo-fit.png"
 const Footer = () => {
     return (
         <>
-            <footer className="footer mt-4">
+            <footer className="footer pt-4">
                 <div className="container">
                     <div className="row row-cols-2 row-cols-lg-4 gy-4">
                         <div className="col">

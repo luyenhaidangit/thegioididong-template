@@ -20,7 +20,7 @@ const TopBanner = (props) => {
     const navigationNextRef = useRef(null);
 
     return (
-        <div className='top-banner mt-3'>
+        <div className='top-banner pt-3'>
             <div className='container d-flex align-items-center gap-3'>
                 <div className='left-top-banner position-relative'>
                     {

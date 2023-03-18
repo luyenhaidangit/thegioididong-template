@@ -27,7 +27,7 @@ const ProductCategory = () => {
     }
 
     return (
-        <>
+        <div className='bg-white'>
             <TopBanner slide={dataProductCategory?.topBanner?.slide} bannerFirst={dataProductCategory?.topBanner?.bannerFirst} bannerSecond={dataProductCategory?.topBanner?.bannerSecond} />
             <BoxFilter
                 nameCategory={dataProductCategory?.name}
@@ -36,7 +36,7 @@ const ProductCategory = () => {
                 brandFilter={dataProductCategory?.boxFilter?.brandFilter}
             />
             <ListProduct listProduct={dataProductCategory?.listProduct} />
-        </>
+        </div>
     )
 }
 
