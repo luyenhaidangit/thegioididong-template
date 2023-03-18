@@ -19,14 +19,17 @@ import TradeMark from '../components/Pages/Home/TradeMark'
 
 // Data
 import { GetSlideBigCampaign, GetSlideOptionPromo } from "../apis/slideApiService";
+import { GetBannerMain } from '../apis/bannerApiService';
 
 const Home = () => {
     const [dataSlideBigCampaign, setDataSlideBigCampaign] = useState({});
     const [dataSlideOptionPromo, setDataSlideOptionPromo] = useState({});
+    const [dataBannerMain, setDataBannerMain] = useState({});
 
     useEffect(() => {
         fetchSlidesBigCampaign();
         fetchSlideOptionPromo();
+        fetchBannerMain();
     }, []);
 
     // Func
@@ -40,9 +43,14 @@ const Home = () => {
         setDataSlideOptionPromo(res);
     }
 
+    const fetchBannerMain = async () => {
+        let res = await GetBannerMain();
+        setDataBannerMain(res);
+    }
+
     return (
         <div className='content bg-gray'>
-            <BigBanner />
+            <BigBanner banner={dataBannerMain} />
             <div className='main-content position-relative'>
                 <BigCampaign slide={dataSlideBigCampaign} />
                 <OptionPromo slide={dataSlideOptionPromo} />

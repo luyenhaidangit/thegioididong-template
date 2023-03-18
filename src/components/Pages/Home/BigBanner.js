@@ -7,7 +7,8 @@ import "../../../assets/Styles/Components/Home/BigBanner.css"
 // Data
 import BigBannerApi from '../../../data/BigBanner';
 
-const BigBanner = () => {
+const BigBanner = (props) => {
+    const { banner } = props;
     // Hook
     const [dataBigBanner, setDataBigBanner] = useState([]);
 
@@ -20,18 +21,15 @@ const BigBanner = () => {
         setDataBigBanner(res);
     }
 
+    console.log(banner)
+
     return (
         <>
             {
-                dataBigBanner && dataBigBanner.length > 0 &&
+                banner &&
                 <div className='big-banner'>
                     {
-                        dataBigBanner && dataBigBanner.length > 0 &&
-                        dataBigBanner.map((item, index) => {
-                            return (
-                                <img key={`"big-banner__img-${index}`} className={"big-banner__img big-banner__img-size-" + item.size} src={item.image} alt="BigBanner" />
-                            )
-                        })
+                        <img className={"big-banner__img big-banner__img-size-"} src={banner.image} alt="BigBanner" />
                     }
                 </div>
             }
