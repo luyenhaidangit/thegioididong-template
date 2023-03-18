@@ -27,7 +27,7 @@ const NewChain = () => {
         <>
             {
                 dataNewChain && dataNewChain.length > 0 &&
-                <div className='newchain'>
+                <div className='newchain pb-4'>
                     <div className='container'>
                         <div className='newchain__title'>
                             <h3 className='mb-0'>Chuỗi mới deal khủng</h3>
