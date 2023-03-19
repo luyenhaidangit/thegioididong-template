@@ -20,7 +20,8 @@ import PromoAnotherApi from '../../../data/PromoAnother';
 // Helper
 import FormatCurrency from '../../../helpers/Strings/FormatCurrency';
 
-const PromoAnother = () => {
+const PromoAnother = (props) => {
+    const { productFeatures } = props;
     // Hook
     const [dataPromoAnother, setDataPromoAnother] = useState([]);
     const navigationPrevRef = useRef(null);
@@ -35,25 +36,27 @@ const PromoAnother = () => {
         setDataPromoAnother(res);
     }
 
+    console.log(productFeatures)
+
     return (
         <>
             {
-                dataPromoAnother && dataPromoAnother.length > 0 &&
-                dataPromoAnother.map((promo, index) => {
+                productFeatures && productFeatures.length > 0 &&
+                productFeatures.map((promo, index) => {
                     return (
                         <div key={`promo-another-${index}`} className="promo-another">
                             <div className='container'>
-                                <div className="promo-another__header cursor-pointer" style={promo.style}>
-                                    {
+                                <div className="promo-another__header cursor-pointer" style={{ background: promo.backgroundColor }}>
+                                    {/* {
                                         promo.image && promo.image.length > 0 &&
                                         <img className='hotdeal__header-image img-fluid w-100 overflow-hidden' src={promo.image} alt="Banner Hotdeal" />
-                                    }
+                                    } */}
                                     {
-                                        promo.name &&
-                                        <h1 className='promo-another__header-title m-0 pt-4 pb-2'>{promo.name}</h1>
+                                        promo.title &&
+                                        <h1 className='promo-another__header-title m-0 pt-4 pb-2'>{promo.title}</h1>
                                     }
                                 </div>
-                                <div className="promo-another__body p-3" style={promo.style}>
+                                <div className="promo-another__body p-3" style={{ background: promo.backgroundColor }}>
                                     <div className='promo-another__body-slide position-relative mb-3'>
                                         <Swiper
                                             modules={[Navigation]}
@@ -82,8 +85,8 @@ const PromoAnother = () => {
                                             }}
                                         >
                                             {
-                                                promo.slides && promo.slides.length > 0 &&
-                                                promo.slides.map((item, index) => {
+                                                promo?.slide?.slideItems && promo?.slide?.slideItems.length > 0 &&
+                                                promo?.slide?.slideItems.map((item, index) => {
                                                     return (
                                                         <SwiperSlide className='swiper-slide__item cursor-pointer' key={`swiper-slide__item-${index}`}>
                                                             <img className='swiper-slide__item-image' src={item.image} alt={""} />
@@ -129,31 +132,49 @@ const PromoAnother = () => {
                                                 promo.products && promo.products.length > 0 &&
                                                 promo.products.map((item, index) => {
                                                     return (
-                                                        <SwiperSlide className='product-card__item px-3 cursor-pointer' key={`hotdeal__item-${index}`}>
-                                                            <div className='product-card__item-label d-flex gap-3 mb-3'>
-                                                                <span className='product-card__item-label__item' style={{ backgroundColor: "#f1f1f1", color: "#333" }}>Trả góp 0%</span>
-                                                            </div>
+                                                        <SwiperSlide className='product-card__item cursor-pointer' key={`hotdeal__item-${index}`}>
+                                                            {
+                                                                item.isInterest && item.isInterest === true &&
+                                                                <div className='product-card__item-label d-flex gap-3 mb-3'>
+                                                                    <span className='product-card__item-label__item' style={{ backgroundColor: "#f1f1f1", color: "#333" }}>Trả góp 0%</span>
+                                                                </div>
+                                                            }
                                                             <div className='product-card__item-image d-flex justify-content-center mb-3'>
                                                                 <img className='img-fluid' src={item.image} alt={"Product Card Imgae"} />
                                                             </div>
-                                                            <div className='product-card__item-note d-flex gap-3 mb-2'>
-                                                                <span className='product-card__item-note__item d-inline-flex align-items-center gap-1 cursor-pointer' style={{ backgroundColor: "#e91e63", borderRadius: "20px", color: "#fff", padding: "0 6px 0 0", }}>
-                                                                    <img className='product-card__item-note__item-img' src={IconGift} alt="product-card__item-note__item" />
-                                                                    Đặt trước đến 17/02
-                                                                </span>
-                                                            </div>
+                                                            {
+                                                                item.badgeProduct &&
+                                                                <div className='product-card__item-note d-flex gap-3 mb-2'>
+                                                                    <span className='product-card__item-note__item d-inline-flex align-items-center gap-1 cursor-pointer' style={{ background: item?.badgeProduct?.backgroundColor, borderRadius: "20px", color: "#fff", padding: "0 6px 0 0", }}>
+                                                                        <img className='product-card__item-note__item-img' src={item?.badgeProduct?.image} alt="product-card__item-note__item" />
+                                                                        {
+                                                                            item?.badgeProduct?.name
+                                                                        }
+                                                                    </span>
+                                                                </div>
+                                                            }
+
                                                             <h3 className='product-card__item-name mb-1'>
                                                                 {item.name}
                                                             </h3>
-                                                            <p className='product-card__item-availability mb-1'>
-                                                                Hàng sắp về
-                                                            </p>
-                                                            <strong className='product-card__item-price mb-1'>{FormatCurrency(item.discounted_price)} <small className='product-card__item-discount-percentage ms-2'>-{item.discount_percent}%</small></strong>
-                                                            <p className='product-card__item-rating d-flex align-items-center mb-1'>
-                                                                <b className='product-card__item-number-star d-flex align-items-center me-2'>4.8 <AiFillStar /></b>
-                                                                (158)
-                                                            </p>
-                                                            <p className='product-card__item-comment p-0'>Giảm 3 triệu, Trả góp 0%, Thu cũ tài trợ 3 triệu, Ốp lưng BTS</p>
+                                                            {/* <p className='product-card__item-availability mb-1'>
+                                                    Hàng sắp về
+                                                </p> */}
+                                                            <strong className='product-card__item-price mb-1'>{FormatCurrency(item.discountedPrice)} <small className='product-card__item-discount-percentage ms-2'>-{item.discountPercent}%</small></strong>
+                                                            {
+                                                                item.starRating > 0 &&
+                                                                <>
+                                                                    <p className='product-card__item-rating d-flex align-items-center mb-1'>
+                                                                        <b className='product-card__item-number-star d-inline-flex align-items-center me-2'>{item.starRating} <AiFillStar /></b>
+                                                                        ({item.reviewCount})
+                                                                    </p>
+                                                                </>
+
+                                                            }
+
+                                                            {
+                                                                <p className='product-card__item-comment p-0 mt-1'>{item.shortDescription}</p>
+                                                            }
                                                         </SwiperSlide>
                                                     )
                                                 })
