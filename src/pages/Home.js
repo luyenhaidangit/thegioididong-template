@@ -21,7 +21,7 @@ import TradeMark from '../components/Pages/Home/TradeMark'
 import { GetSlideBigCampaign, GetSlideOptionPromo } from "../apis/slideApiService";
 import { GetBannerMain, GetBannerTopzone } from '../apis/bannerApiService';
 import { GetProductsHotDeal } from '../apis/productApiService'
-import { GetProductFeaturesHome } from '../apis/productFeatureApiService'
+import { GetProductFeaturesHome } from '../apis/productApiService'
 
 const Home = () => {
     const [dataSlideBigCampaign, setDataSlideBigCampaign] = useState({});
