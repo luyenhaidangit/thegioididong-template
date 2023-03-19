@@ -1,27 +1,11 @@
 // Libraries
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 // Styles
 import "../../../assets/Styles/Components/Home/BigBanner.css"
 
-// Data
-import BigBannerApi from '../../../data/BigBanner';
-
 const BigBanner = (props) => {
     const { banner } = props;
-    // Hook
-    const [dataBigBanner, setDataBigBanner] = useState([]);
-
-    useEffect(() => {
-        fetchItemBigBanner();
-    }, []);
-
-    const fetchItemBigBanner = async () => {
-        let res = await BigBannerApi;
-        setDataBigBanner(res);
-    }
-
-    console.log(banner)
 
     return (
         <>

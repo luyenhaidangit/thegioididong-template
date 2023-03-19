@@ -20,16 +20,19 @@ import TradeMark from '../components/Pages/Home/TradeMark'
 // Data
 import { GetSlideBigCampaign, GetSlideOptionPromo } from "../apis/slideApiService";
 import { GetBannerMain } from '../apis/bannerApiService';
+import { GetProductsHotDeal } from '../apis/productApiService'
 
 const Home = () => {
     const [dataSlideBigCampaign, setDataSlideBigCampaign] = useState({});
     const [dataSlideOptionPromo, setDataSlideOptionPromo] = useState({});
     const [dataBannerMain, setDataBannerMain] = useState({});
+    const [dataProductsHotDeal, setDataProductsHotDeal] = useState([]);
 
     useEffect(() => {
         fetchSlidesBigCampaign();
         fetchSlideOptionPromo();
         fetchBannerMain();
+        fetchDataProductsHotDeal();
     }, []);
 
     // Func
@@ -48,6 +51,11 @@ const Home = () => {
         setDataBannerMain(res);
     }
 
+    const fetchDataProductsHotDeal = async () => {
+        let res = await GetProductsHotDeal();
+        setDataProductsHotDeal(res);
+    }
+
     return (
         <div className='content bg-gray'>
             <BigBanner banner={dataBannerMain} />
@@ -55,7 +63,7 @@ const Home = () => {
                 <BigCampaign slide={dataSlideBigCampaign} />
                 <OptionPromo slide={dataSlideOptionPromo} />
                 <BannerTopzone />
-                <HotDeal />
+                <HotDeal products={dataProductsHotDeal} />
                 <PromoAnother />
                 <ShoppingTrend />
                 <CategoryFeature />

@@ -44,6 +44,7 @@
 }
 
 .product-card__item {
+    padding: 12px;
     border-left: 1px solid #f1f1f1 !important;
     border-top: 1px solid #f1f1f1 !important;
     border-bottom: 1px solid #f3f3f3 !important;
