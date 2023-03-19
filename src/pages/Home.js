@@ -19,12 +19,13 @@ import TradeMark from '../components/Pages/Home/TradeMark'
 
 // Data
 import { GetSlideBigCampaign, GetSlideOptionPromo } from "../apis/slideApiService";
-import { GetBannerMain } from '../apis/bannerApiService';
+import { GetBannerMain, GetBannerTopzone } from '../apis/bannerApiService';
 import { GetProductsHotDeal } from '../apis/productApiService'
 
 const Home = () => {
     const [dataSlideBigCampaign, setDataSlideBigCampaign] = useState({});
     const [dataSlideOptionPromo, setDataSlideOptionPromo] = useState({});
+    const [dataBannerTopzone, setDataBannerTopzone] = useState({});
     const [dataBannerMain, setDataBannerMain] = useState({});
     const [dataProductsHotDeal, setDataProductsHotDeal] = useState([]);
 
@@ -33,6 +34,7 @@ const Home = () => {
         fetchSlideOptionPromo();
         fetchBannerMain();
         fetchDataProductsHotDeal();
+        fetchDataBannerTopzone();
     }, []);
 
     // Func
@@ -56,13 +58,18 @@ const Home = () => {
         setDataProductsHotDeal(res);
     }
 
+    const fetchDataBannerTopzone = async () => {
+        let res = await GetBannerTopzone();
+        setDataBannerTopzone(res);
+    }
+
     return (
         <div className='content bg-gray'>
             <BigBanner banner={dataBannerMain} />
             <div className='main-content position-relative'>
                 <BigCampaign slide={dataSlideBigCampaign} />
                 <OptionPromo slide={dataSlideOptionPromo} />
-                <BannerTopzone />
+                <BannerTopzone banner={dataBannerTopzone} />
                 <HotDeal products={dataProductsHotDeal} />
                 <PromoAnother />
                 <ShoppingTrend />
