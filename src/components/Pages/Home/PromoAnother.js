@@ -1,5 +1,5 @@
 // Libraries
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useRef } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
@@ -12,10 +12,6 @@ import { AiFillStar } from 'react-icons/ai'
 // Styles
 import "../../../assets/Styles/Components/Home/HotDeal.css"
 import "../../../assets/Styles/Components/Home/PromoAnother.css"
-import IconGift from "../../../assets/Images/Icon/icon-gift.png"
-
-// Data
-import PromoAnotherApi from '../../../data/PromoAnother';
 
 // Helper
 import FormatCurrency from '../../../helpers/Strings/FormatCurrency';
@@ -23,20 +19,8 @@ import FormatCurrency from '../../../helpers/Strings/FormatCurrency';
 const PromoAnother = (props) => {
     const { productFeatures } = props;
     // Hook
-    const [dataPromoAnother, setDataPromoAnother] = useState([]);
     const navigationPrevRef = useRef(null);
     const navigationNextRef = useRef(null);
-
-    useEffect(() => {
-        fetchDataHotDeal();
-    }, []);
-
-    const fetchDataHotDeal = async () => {
-        let res = await PromoAnotherApi;
-        setDataPromoAnother(res);
-    }
-
-    console.log(productFeatures)
 
     return (
         <>

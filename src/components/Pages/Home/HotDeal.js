@@ -1,5 +1,7 @@
 // Libraries
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useRef } from 'react'
+
+import { useNavigate } from 'react-router-dom';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
@@ -12,18 +14,16 @@ import { AiFillStar } from 'react-icons/ai'
 
 // Style
 import "../../../assets/Styles/Components/Home/HotDeal.css"
-import IconGift from "../../../assets/Images/Icon/icon-gift.png"
 
 import HotDealBanner from "../../../assets/Images/HotDeal/hotdeal.png"
-
-// Api
-import HotDealApi from '../../../data/HotDeal'
 
 // Helper
 import FormatCurrency from '../../../helpers/Strings/FormatCurrency';
 
 const HotDeal = (props) => {
     const { products } = props;
+
+    const navigate = useNavigate();
     // Hook
     const navigationPrevRef = useRef(null);
     const navigationNextRef = useRef(null);
@@ -71,7 +71,7 @@ const HotDeal = (props) => {
                                     products && products.length > 0 &&
                                     products.map((item, index) => {
                                         return (
-                                            <SwiperSlide className='product-card__item cursor-pointer' key={`hotdeal__item-${index}`}>
+                                            <SwiperSlide onClick={() => navigate('/san-pham')} className='product-card__item cursor-pointer' key={`hotdeal__item-${index}`}>
                                                 {
                                                     item.isInterest && item.isInterest === true &&
                                                     <div className='product-card__item-label d-flex gap-3 mb-3'>
