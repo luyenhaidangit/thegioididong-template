@@ -22,6 +22,7 @@ import { GetSlideBigCampaign, GetSlideOptionPromo } from "../apis/slideApiServic
 import { GetBannerMain, GetBannerTopzone } from '../apis/bannerApiService';
 import { GetProductsHotDeal } from '../apis/productApiService'
 import { GetProductFeaturesHome } from '../apis/productApiService'
+import { GetProductCategoriesFeaturesHome } from '../apis/productCategoryApiService'
 
 const Home = () => {
     const [dataSlideBigCampaign, setDataSlideBigCampaign] = useState({});
@@ -30,6 +31,7 @@ const Home = () => {
     const [dataBannerMain, setDataBannerMain] = useState({});
     const [dataProductsHotDeal, setDataProductsHotDeal] = useState([]);
     const [dataProductFeaturesHome, setDataProductFeaturesHome] = useState([]);
+    const [dataProductCategoryFeatureHome, setDataProductCategoryFeature] = useState([]);
 
     useEffect(() => {
         fetchSlidesBigCampaign();
@@ -38,6 +40,7 @@ const Home = () => {
         fetchDataProductsHotDeal();
         fetchDataBannerTopzone();
         fetchDataProductFeaturesHome();
+        fetchDataProductCategoriesFeature();
     }, []);
 
     // Func
@@ -71,6 +74,11 @@ const Home = () => {
         setDataProductFeaturesHome(res);
     }
 
+    const fetchDataProductCategoriesFeature = async () => {
+        let res = await GetProductCategoriesFeaturesHome();
+        setDataProductCategoryFeature(res);
+    }
+
     return (
         <div className='content bg-gray'>
             <BigBanner banner={dataBannerMain} />
@@ -81,7 +89,7 @@ const Home = () => {
                 <HotDeal products={dataProductsHotDeal} />
                 <PromoAnother productFeatures={dataProductFeaturesHome} />
                 <ShoppingTrend />
-                <CategoryFeature />
+                <CategoryFeature productCategories={dataProductCategoryFeatureHome} />
                 <DiscountPayOnline />
                 <ServiceConversation />
                 <DailySuggest />

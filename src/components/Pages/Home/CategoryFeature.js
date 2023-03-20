@@ -1,31 +1,18 @@
 // Libraries
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import ScrollContainer from 'react-indiana-drag-scroll'
 
 // Styles
 import "../../../assets/Styles/Components/Home/CategoryFeature.css"
 
-// Data
-import CategoryFeatureApi from '../../../data/CategoryFeature'
-const CategoryFeature = () => {
-    // Hook
-    const [dataCategoryFeature, setDataCategoryFeature] = useState([]);
-
-    useEffect(() => {
-        fetchDataCategoryFeature();
-    }, []);
-
-    const fetchDataCategoryFeature = async () => {
-        let res = await CategoryFeatureApi;
-        setDataCategoryFeature(res);
-    }
-
+const CategoryFeature = (props) => {
+    const { productCategories } = props;
 
     return (
         <>
             {
-                dataCategoryFeature && dataCategoryFeature.length > 0 &&
+                productCategories && productCategories.length > 0 &&
                 <div className='category-feature'>
                     <div className='container'>
                         <div className='category-feature__title'>
@@ -34,8 +21,8 @@ const CategoryFeature = () => {
                         <ScrollContainer className='category-feature__content d-flex flex-column'>
                             <aside className='category-feature__row d-flex justify-content-between gap-2'>
                                 {
-                                    dataCategoryFeature && dataCategoryFeature.length > 0 &&
-                                    dataCategoryFeature.map((item, index) => {
+                                    productCategories && productCategories.length > 0 &&
+                                    productCategories.map((item, index) => {
                                         if (index < 10) {
                                             return (
                                                 <div key={`category-feature__item-${index}`} className='category-feature__item d-flex flex-column justify-content-start align-items-center cursor-pointer gap-2'>
@@ -50,8 +37,8 @@ const CategoryFeature = () => {
                             </aside>
                             <aside className='category-feature__row d-flex justify-content-between gap-2'>
                                 {
-                                    dataCategoryFeature && dataCategoryFeature.length > 0 &&
-                                    dataCategoryFeature.map((item, index) => {
+                                    productCategories && productCategories.length > 0 &&
+                                    productCategories.map((item, index) => {
                                         if (index >= 10) {
                                             return (
                                                 <div key={`category-feature__item-${index}`} className='category-feature__item d-flex flex-column justify-content-start align-items-center cursor-pointer gap-2'>
