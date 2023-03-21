@@ -22,7 +22,7 @@ function App() {
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
             <Route path='san-pham' element={<Product />} />
-            <Route path='loai-san-pham' element={<ProductCategory />} />
+            <Route path='loai-san-pham/:id' element={<ProductCategory />} />
           </Route>
         </Routes>
       </BrowserRouter>

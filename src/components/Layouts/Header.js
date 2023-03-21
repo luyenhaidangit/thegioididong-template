@@ -82,7 +82,7 @@ const Header = () => {
                         dataProductCategory && dataProductCategory.length > 0 &&
                         dataProductCategory.map((categoryMain, index) => {
                             return (
-                                <div onClick={() => navigate('/loai-san-pham')} key={`categoryMain-${index}`} className='main-nav__item pb-3'>
+                                <div onClick={() => navigate(`/loai-san-pham/${categoryMain.id}`)} key={`categoryMain-${index}`} className='main-nav__item pb-3'>
                                     <span className="main-nav__item-link d-flex align-items-center">
                                         {
                                             categoryMain.icon && categoryMain.icon.length > 0 &&
