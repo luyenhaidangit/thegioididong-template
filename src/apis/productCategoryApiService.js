@@ -4,6 +4,11 @@ const GetProductCategoriesFeaturesHome = () => {
     return axios.get('api/ProductCategory/GetProductCategoriesFeaturesHome');
 }
 
+const GetProductCategoryNavigation = () => {
+    return axios.get('api/ProductCategory/GetProductCategoryNavigation');
+}
+
 export {
-    GetProductCategoriesFeaturesHome
+    GetProductCategoriesFeaturesHome,
+    GetProductCategoryNavigation
 };

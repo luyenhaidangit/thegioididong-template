@@ -9,12 +9,15 @@ import HeaderTopBar from './HeaderTopBar'
 
 // Data
 import { GetSlideHeaderTopClient } from '../../apis/slideApiService';
+import { GetProductCategoryNavigation } from '../../apis/productCategoryApiService'
 
 const Layout = () => {
     const [dataSlideHeaderTopBar, setDataSlideHeaderTopBar] = useState({});
+    const [dataProductCategoriesNavigation, setDataProductCategoriesNavigation] = useState([]);
 
     useEffect(() => {
         fetchSlidesHeaderTopBar();
+        fetchDataProductCategoriesNavigation();
     }, []);
 
     // Func
@@ -22,10 +25,15 @@ const Layout = () => {
         let res = await GetSlideHeaderTopClient();
         setDataSlideHeaderTopBar(res);
     }
+
+    const fetchDataProductCategoriesNavigation = async () => {
+        let res = await GetProductCategoryNavigation();
+        setDataProductCategoriesNavigation(res);
+    }
     return (
         <>
             <HeaderTopBar slide={dataSlideHeaderTopBar} />
-            <Header />
+            <Header productCategories={dataProductCategoriesNavigation} />
             <Outlet />
             <Footer />
         </>
