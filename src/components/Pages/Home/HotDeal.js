@@ -71,7 +71,7 @@ const HotDeal = (props) => {
                                     products && products.length > 0 &&
                                     products.map((item, index) => {
                                         return (
-                                            <SwiperSlide onClick={() => navigate('/san-pham')} className='product-card__item cursor-pointer' key={`hotdeal__item-${index}`}>
+                                            <SwiperSlide onClick={() => navigate(`/san-pham/${item.id}`)} className='product-card__item cursor-pointer' key={`hotdeal__item-${index}`}>
                                                 {
                                                     item.isInterest && item.isInterest === true &&
                                                     <div className='product-card__item-label d-flex gap-3 mb-3'>
