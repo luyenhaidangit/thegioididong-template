@@ -20,7 +20,7 @@ import TradeMark from '../components/Pages/Home/TradeMark'
 // Data
 import { GetSlideBigCampaign, GetSlideOptionPromo } from "../apis/slideApiService";
 import { GetBannerMain, GetBannerTopzone } from '../apis/bannerApiService';
-import { GetProductsHotDeal } from '../apis/productApiService'
+import { GetProductsHotDeal, GetProductDailySuggest } from '../apis/productApiService'
 import { GetProductFeaturesHome } from '../apis/productApiService'
 import { GetProductCategoriesFeaturesHome } from '../apis/productCategoryApiService'
 
@@ -32,6 +32,7 @@ const Home = () => {
     const [dataProductsHotDeal, setDataProductsHotDeal] = useState([]);
     const [dataProductFeaturesHome, setDataProductFeaturesHome] = useState([]);
     const [dataProductCategoryFeatureHome, setDataProductCategoryFeature] = useState([]);
+    const [dataProductDailySuggest, setDataProductDailySuggest] = useState([]);
 
     useEffect(() => {
         fetchSlidesBigCampaign();
@@ -41,6 +42,7 @@ const Home = () => {
         fetchDataBannerTopzone();
         fetchDataProductFeaturesHome();
         fetchDataProductCategoriesFeature();
+        fetchDataProductDailySuggest();
     }, []);
 
     // Func
@@ -74,6 +76,11 @@ const Home = () => {
         setDataProductFeaturesHome(res);
     }
 
+    const fetchDataProductDailySuggest = async () => {
+        let res = await GetProductDailySuggest();
+        setDataProductDailySuggest(res);
+    }
+
     const fetchDataProductCategoriesFeature = async () => {
         let res = await GetProductCategoriesFeaturesHome();
         setDataProductCategoryFeature(res);
@@ -92,7 +99,12 @@ const Home = () => {
                 <CategoryFeature productCategories={dataProductCategoryFeatureHome} />
                 <DiscountPayOnline />
                 <ServiceConversation />
-                <DailySuggest />
+                <DailySuggest
+                    latestProducts={dataProductDailySuggest?.latestProducts}
+                    popularProducts={dataProductDailySuggest?.popularProducts}
+                    sellingProducts={dataProductDailySuggest?.sellingProducts}
+                    topRatedProducts={dataProductDailySuggest?.topRatedProducts}
+                />
                 <TechNew />
                 <TradeMark />
                 <NewChain />
