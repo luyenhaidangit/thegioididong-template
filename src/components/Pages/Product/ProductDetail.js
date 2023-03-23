@@ -5,13 +5,8 @@ import { GetProductDetailPage } from '../../../apis/productApiService';
 import { Button } from 'react-bootstrap';
 
 const ProductDetail = () => {
-    // const { id } = useParams();
 
-    // console.log(useParams())
-
-    const [id, setId] = useState(useParams().id);
-
-
+    const [idVariantCurrent, setProductCurrent] = useState(useParams().id);
     const [dataProductDetailPage, setDataProductDetailPage] = useState({});
     const [product, setProduct] = useState({});
     const [productVariants, setProductVariants] = useState(null);
@@ -21,13 +16,36 @@ const ProductDetail = () => {
 
     useEffect(() => {
         fetchProductDetailPage();
-    }, [id]);
+    }, [idVariantCurrent]);
+
+    useEffect(() => {
+        const selectedAttributes = {};
+        productAttributes.forEach(attribute => {
+            const selectedValue = attribute.attributeValues.find(value => value.isSelected);
+            if (selectedValue) {
+                selectedAttributes[attribute.name] = selectedValue.value;
+            }
+        });
+
+        // Find the product variant with options that match the selected attribute values
+        const matchingVariant = dataProductDetailPage?.productVariants?.find(variant => {
+            return variant.options.every(option => option.value === selectedAttributes[option.name]);
+        });
+
+        if (matchingVariant) {
+            console.log(`The matching product variant has an id of ${matchingVariant.id}.`);
+        } else {
+            console.log('No matching product variant was found.');
+        }
+
+        alert("ok")
+    }, [productAttributes]);
 
     const fetchProductDetailPage = async () => {
-        let res = await GetProductDetailPage(id);
+        let res = await GetProductDetailPage(idVariantCurrent);
         setDataProductDetailPage(res);
 
-        const variant = res?.productVariants.find(v => v.id === +id);
+        const variant = res?.productVariants.find(v => v.id === +idVariantCurrent);
         setProduct(variant);
         const productCurrentOption = variant.options;
 
@@ -77,50 +95,7 @@ const ProductDetail = () => {
             }
         });
         setProductAttributes(updatedAttributes);
-
-        console.log(dataProductDetailPage?.productVariants)
-        console.log(productAttributes)
-
-        // const selectedAttributes = productAttributes.map(attr => {
-        //     const selectedValue = attr.attributeValues.find(val => val.isSelected);
-        //     return selectedValue ? selectedValue.value : null;
-        // });
-
-        // const filteredVariants = dataProductDetailPage.productVariants.filter(variant => {
-        //     return variant.options.every(option => {
-        //         return selectedAttributes.includes(option.value);
-        //     });
-        // });
-
-        // const selectedVariantId = filteredVariants[0].id;
-
-        // console.log(filteredVariants)
-
-
-        // const selectedOptions = dataProductDetailPage?.productVariants.filter(product => {
-        //     // console.log(product)
-        //     return product.options.some(option => {
-        //         const attribute = productAttributes.find(attr => {
-        //             return attr.name === option.name;
-        //         });
-
-
-        //         return attribute.isSelected && attribute.value === option.value;
-        //     });
-        // });
-
-        // const variantIds = selectedOptions.map(option => {
-        //     return option.id;
-        // });
-
-        // console.log(selectedOptions)
-
-        // console.log(variantIds); // [16]
-
-
         // console.log(productAttributes)
-
-        // console.log(product)
     };
 
 
@@ -143,16 +118,16 @@ const ProductDetail = () => {
                                     return (
                                         <>
                                             {
-                                                value.value && value.isSelected == true &&
+                                                value.value && value.isSelected === true &&
                                                 <>
                                                     {
-                                                        <btn onClick={() => handleClickAttributeValue(attributeIndex, valueIndex)} className='btn btn-primary me-3'>{value.value}</btn>
+                                                        <Button onClick={() => handleClickAttributeValue(attributeIndex, valueIndex)} className='btn btn-primary me-3'>{value.value}</Button>
                                                     }
                                                 </>
                                             }
 
                                             {
-                                                value.value && value.isSelected == false &&
+                                                value.value && value.isSelected === false &&
                                                 <>
                                                     {
                                                         <Button onClick={() => handleClickAttributeValue(attributeIndex, valueIndex)} className='btn btn-secondary me-3'>{value.value}</Button>
