@@ -12,8 +12,13 @@ const GetProductDailySuggest = () => {
     return axios.get('api/Product/GetProductDailySuggest');
 }
 
+const GetProductDetailPage = (id) => {
+    return axios.get('api/Product/GetProductDetailPage?id=' + id);
+}
+
 export {
     GetProductsHotDeal,
     GetProductFeaturesHome,
-    GetProductDailySuggest
+    GetProductDailySuggest,
+    GetProductDetailPage
 };
