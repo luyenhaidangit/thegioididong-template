@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import _ from 'lodash';
 import { GetProductDetailPage } from '../../../apis/productApiService';
 import { Button } from 'react-bootstrap';
 
 const ProductDetail = () => {
-
-    const [idVariantCurrent, setProductCurrent] = useState(useParams().id);
+    const navigate = useNavigate();
+    const [idVariantCurrent, setVariantCurrent] = useState(useParams().id);
     const [dataProductDetailPage, setDataProductDetailPage] = useState({});
     const [product, setProduct] = useState({});
     const [productVariants, setProductVariants] = useState(null);
@@ -15,7 +16,7 @@ const ProductDetail = () => {
 
 
     useEffect(() => {
-        fetchProductDetailPage();
+        fetchProductDetailPage(idVariantCurrent);
     }, [idVariantCurrent]);
 
     useEffect(() => {
@@ -34,18 +35,19 @@ const ProductDetail = () => {
 
         if (matchingVariant) {
             console.log(`The matching product variant has an id of ${matchingVariant.id}.`);
+            setVariantCurrent(matchingVariant.id);
+            // fetchProductDetailPage(matchingVariant.id);
+            navigate(`/san-pham/${matchingVariant.id}`);
         } else {
             console.log('No matching product variant was found.');
         }
-
-        alert("ok")
     }, [productAttributes]);
 
-    const fetchProductDetailPage = async () => {
-        let res = await GetProductDetailPage(idVariantCurrent);
+    const fetchProductDetailPage = async (id) => {
+        let res = await GetProductDetailPage(id);
         setDataProductDetailPage(res);
 
-        const variant = res?.productVariants.find(v => v.id === +idVariantCurrent);
+        const variant = res?.productVariants.find(v => v.id === +id);
         setProduct(variant);
         const productCurrentOption = variant.options;
 
@@ -98,6 +100,25 @@ const ProductDetail = () => {
         // console.log(productAttributes)
     };
 
+    const handleButtonClick = () => {
+        const quantity = window.prompt('Số lượng cần mua?');
+        if (quantity && !isNaN(quantity)) {
+            // User entered a valid quantity, implement logic to update cart data in localStorage
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const existingItem = cart.find(item => item.id === product.id);
+            if (existingItem) {
+                // Product already exists in cart, increment quantity
+                existingItem.quantity += Number(quantity);
+            } else {
+                // Product does not exist in cart, add new item with specified quantity
+                cart.push({
+                    ...product,
+                    quantity: Number(quantity)
+                });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    };
 
 
     console.log(productAttributes)
@@ -138,10 +159,14 @@ const ProductDetail = () => {
                                     )
                                 })
                             }
+
+
                         </>
                     )
                 })
             }
+
+            <Button className='btn btm-primary d-flex mt-4' onClick={handleButtonClick}>Mua ngay</Button>
         </div>
     )
 }
