@@ -103,14 +103,14 @@ const ProductDetail = () => {
     const handleButtonClick = () => {
         const quantity = window.prompt('Số lượng cần mua?');
         if (quantity && !isNaN(quantity)) {
-            // User entered a valid quantity, implement logic to update cart data in localStorage
+
             const cart = JSON.parse(localStorage.getItem('cart') || '[]');
             const existingItem = cart.find(item => item.id === product.id);
             if (existingItem) {
-                // Product already exists in cart, increment quantity
+
                 existingItem.quantity += Number(quantity);
             } else {
-                // Product does not exist in cart, add new item with specified quantity
+
                 cart.push({
                     ...product,
                     quantity: Number(quantity)
