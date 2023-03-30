@@ -35,6 +35,126 @@
     height: 20px;
 }
 
+ul.szh-menu.szh-menu--state-open.szh-menu--dir-bottom{
+    box-shadow: 0 2px 20px rgba(0, 0, 0, .5);
+    border-radius: 4px;
+    max-width: 620px;
+    min-width: 382px;
+    padding: 10px 10px 0 10px;
+    top: 46px !important;
+    width: max-content;
+    white-space: normal;
+    z-index: 3;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.select-filter-range{
+    min-width: 100%;
+}
+        
+.box-filter__item-filter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e0e0e0;
+    margin: 0 4px 10px;
+    padding: 0 8px;
+    border-radius: 4px;
+    color: #333;
+    font-size: 13px;
+    line-height: 17px;
+    height: 36px;
+    max-width: 92px;
+    cursor: pointer;
+}
+
+.box-filter__item-filter__text{
+    max-width: unset !important;
+}
+
+.box-filter__item-filter:hover{
+    border: 1px solid #2f80ed;
+    color: #2f80ed;
+}
+
+.range-toggle{
+    color: #288ad6;
+    font-size: 14px !important;
+    cursor: pointer;
+    padding:  0 8px;
+    min-width: 100%;
+}
+
+.box-filter__item-filter > img{
+    display: flex;
+    justify-content: center;
+    width: auto;
+    max-height: 24px;
+    max-width: 100%;
+    object-fit: contain;    
+}
+
+.rc-slider{
+    position: unset !important;
+    max-width: 400px;
+}
+
+.range-price::before{
+        content: "";
+            position: absolute;
+            border-top: 0.5px solid #ddd;
+            display: block;
+            width: 100%;
+            top: 50%;
+            z-index: 0;
+}
+
+.range-price span{
+        padding: 7px;
+            border: 1px solid #bdbdbd;
+            border-radius: 4px;
+            z-index: 1;
+            position: relative;
+            background: #fff;
+}
+
+span.range-left {
+    float: left;
+}
+
+span.range-right {
+    float: right;
+}
+
+.range-price input,
+.prop-minmax input {
+    border: 0;
+    max-width: 64px;
+    text-align: right;
+    font-size: 14px;
+    float: left;
+    background-color: #fff;
+    border: none;
+}
+
+.range-price input:focus,
+.prop-minmax input:focus {
+    outline: none;
+}
+
+.range-left{
+    margin-right: 120px;
+}
+
+.btn-filter-readmore{
+    max-width: 120px;
+}
+
+.btn-filter-price{
+    display: flex !important;
+}
+
 @media only screen and (max-width: 992px) {
     .box-filter-main {
         flex-wrap: nowrap !important;
