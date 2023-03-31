@@ -1,0 +1,29 @@
+.body{
+    background-color: #fff !important;
+}
+
+.breadcrumb {
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    background: #fff;
+    line-height: 32px;
+    margin-bottom: 10px;
+}
+
+.breadcrumb li{
+    display: inline-block;
+        vertical-align: middle;
+        overflow: hidden;
+        padding-right: 0;
+        line-height: unset;
+}
+
+.breadcrumb li a{
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #288ad6;
+    padding: 0 10px 0 0;
+    text-decoration: none;
+}

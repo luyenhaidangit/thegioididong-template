@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import _ from 'lodash';
 import { GetProductDetailPage } from '../../../apis/productApiService';
 import { Button } from 'react-bootstrap';
+import "../../../assets/Styles/Components/Product/ProductDetail.css"
 
 const ProductDetail = () => {
     const navigate = useNavigate();
@@ -12,8 +13,6 @@ const ProductDetail = () => {
     const [product, setProduct] = useState({});
     const [productVariants, setProductVariants] = useState(null);
     const [productAttributes, setProductAttributes] = useState([]);
-
-
 
     useEffect(() => {
         fetchProductDetailPage(idVariantCurrent);
@@ -126,7 +125,16 @@ const ProductDetail = () => {
     console.log(dataProductDetailPage)
 
     return (
-        <div className="product-detai container my-4">
+        <div className="product-detail container">
+            {/* <ul class="breadcrumb">
+                <li>
+                    <span>Điện thoại</span>
+                </li>
+                <li>
+                    <span>›</span>
+                    <span>Điện thoại Samsung</span>
+                </li>
+            </ul> */}
             <h3>{product.name}</h3>
             <h4 className='text-danger'>{product.originalPrice}</h4>
             {
