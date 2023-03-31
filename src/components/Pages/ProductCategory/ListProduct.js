@@ -38,6 +38,83 @@ const ListProduct = (props) => {
         setSortOption(event.target.value);
     };
 
+    const isMatrixValid = (matrix) => {
+        const rows = matrix.length;
+
+        for (let i = 1; i < rows; i++) {
+            if (matrix[i].length !== rows) {
+                return false; // Không phải ma trận vuông
+            }
+        }
+
+        for (let i = 0; i < rows; i++) {
+            if (matrix[i][i] !== 0) {
+                return false; // Không phải ma trận kề ( đường chéo bằng 0 )
+            }
+        }
+        return true;
+    }
+
+    const calculateInAndOutDegreeMatrix = (matrix) => {
+        let matrixType = 1;
+        for (let i = 0; i < matrix.length; i++) {
+            for (let j = 0; j < matrix.length; j++) {
+                if (matrix[i][j] !== matrix[j][i]) {
+                    matrixType = 2;
+                    break;
+                }
+            }
+        }
+
+        if (isMatrixValid(matrix) && matrixType === 1) {
+            const numVertices = matrix.length;
+            const degrees = new Array(numVertices).fill(0);
+
+            for (let i = 0; i < numVertices; i++) {
+                for (let j = 0; j < numVertices; j++) {
+                    if (matrix[i][j] !== 0) {
+                        degrees[i]++;
+                    }
+                }
+            }
+
+            for (let i = 0; i < numVertices; i++) {
+                console.log(`Đỉnh ${i}: có bậc ${degrees[i]}`);
+            }
+        }
+
+        if (isMatrixValid(matrix) && matrixType === 2) {
+            const numVertices = matrix.length;
+            const inDegrees = new Array(numVertices).fill(0);
+            const outDegrees = new Array(numVertices).fill(0);
+
+            for (let i = 0; i < numVertices; i++) {
+                for (let j = 0; j < numVertices; j++) {
+                    if (matrix[i][j] !== 0) {
+                        outDegrees[i]++;
+                        inDegrees[j]++;
+                    }
+                }
+            }
+
+            for (let i = 0; i < numVertices; i++) {
+                console.log(`Đỉnh ${i}: có bán bậc vào là ${inDegrees[i]} và bán bậc ra là ${outDegrees[i]}`);
+            }
+        }
+    }
+
+    const matrix = [
+        [0, 3, 0, 0, 7],
+        [1, 0, 2, 0, 0],
+        [2, 7, 0, 6, 0],
+        [0, 2, 0, 0, 1],
+        [0, 0, 9, 1, 0],
+    ];
+    calculateInAndOutDegreeMatrix(matrix);
+
+
+
+
     return (
         <div className='product-list mt-3 pb-4'>
             <div className='container'>
@@ -180,8 +257,8 @@ const ListProduct = (props) => {
 
 
                                             {/* 
-                                           
-                                            
+
+
                                             <p className='product-card__item-comment p-0'>Giảm 3 triệu, Trả góp 0%, Thu cũ tài trợ 3 triệu, Ốp lưng BTS</p> */}
                                         </div>
                                     </div>
