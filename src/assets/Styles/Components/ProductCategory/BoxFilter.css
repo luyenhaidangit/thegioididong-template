@@ -47,6 +47,7 @@ ul.szh-menu.szh-menu--state-open.szh-menu--dir-bottom{
     z-index: 3;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .select-filter-range{
@@ -153,6 +154,39 @@ span.range-right {
 
 .btn-filter-price{
     display: flex !important;
+}
+
+.filter-item__submit{
+    background-color: #fff;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, .05);
+    font-size: 0;
+    margin: 8px -10px 0;
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.filter-item__submit-close,
+.filter-item__submit-readmore
+{
+        border-radius: 4px;
+        display: inline-block;
+        font-size: 14px;
+        line-height: 16px;
+        padding: 8px 0;
+        text-align: center;
+        width: 120px;
+}
+
+.filter-item__submit-close{
+    border: 1px solid #dd1c1a;
+    color: #dd1c1a;
+    background-color: #fff;
+}
+
+.filter-item__submit-readmore {
+    border: 1px solid #288ad6;
+    background-color: #288ad6;
+    color: #fff;
 }
 
 @media only screen and (max-width: 992px) {
