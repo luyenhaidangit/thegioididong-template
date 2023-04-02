@@ -8,7 +8,12 @@ const GetProductCategoryNavigation = () => {
     return axios.get('api/ProductCategory/GetProductCategoryNavigation');
 }
 
+const GetProductCategoryTopBanner = (id) => {
+    return axios.get('api/ProductCategory/GetProductCategoryTopBanner?id=' + id);
+}
+
 export {
     GetProductCategoriesFeaturesHome,
-    GetProductCategoryNavigation
+    GetProductCategoryNavigation,
+    GetProductCategoryTopBanner
 };
