@@ -24,7 +24,7 @@ const ProductCategory = () => {
     useEffect(() => {
         fetchTopBanner(id);
         fetchDataProductCategory();
-    }, []);
+    }, [id]);
 
     // Function
     const fetchDataProductCategory = async () => {
