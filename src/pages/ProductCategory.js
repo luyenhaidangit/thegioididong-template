@@ -9,7 +9,7 @@ import TopBanner from '../components/Pages/ProductCategory/TopBanner'
 
 // Data
 import ProductCategoryApi from '../data/ProductCategory'
-import { GetProductCategoryTopBanner } from '../apis/productCategoryApiService';
+import { GetProductCategoryTopBanner, GetProductCategoryBoxFilter } from '../apis/productCategoryApiService';
 
 // Styles
 import "../assets/Styles/Layouts/Body.css"
@@ -18,11 +18,12 @@ const ProductCategory = () => {
     // Hook
     const { id } = useParams();
     const [topBanner, setTopBanner] = useState({});
-
+    const [boxFilter, setBoxFilter] = useState({});
     const [dataProductCategory, setDataProductCategory] = useState({});
 
     useEffect(() => {
         fetchTopBanner(id);
+        fetchBoxFilter(id);
         fetchDataProductCategory();
     }, [id]);
 
@@ -37,7 +38,12 @@ const ProductCategory = () => {
         setTopBanner(res.data);
     }
 
-    console.log(topBanner)
+    const fetchBoxFilter = async (id) => {
+        let res = await GetProductCategoryBoxFilter(id);
+        setBoxFilter(res);
+    }
+
+    console.log(boxFilter)
 
     return (
         <div className='bg-white'>
@@ -46,7 +52,7 @@ const ProductCategory = () => {
                 nameCategory={dataProductCategory?.name}
                 attributeFilters={dataProductCategory?.boxFilter?.attributeFilters}
                 priceFilter={dataProductCategory?.boxFilter?.priceFilter}
-                brandFilter={dataProductCategory?.boxFilter?.brandFilter}
+                brandsFilter={boxFilter?.brandsFilter}
             />
             <ListProduct listProduct={dataProductCategory?.listProduct} />
         </div>

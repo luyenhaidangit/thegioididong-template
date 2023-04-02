@@ -18,8 +18,8 @@ import "../../../assets/Styles/Components/ProductCategory/BoxFilter.css"
 
 
 const BoxFilter = (props) => {
+    const { brandsFilter } = props;
     const { attributeFilters } = props;
-    const { brandFilter } = props;
     const { nameCategory } = props;
 
     const [values, setValues] = useState([0, 100]);
@@ -40,42 +40,39 @@ const BoxFilter = (props) => {
                         </div>
                     </div>
 
-                    <Menu
-                        menuButton={<MenuButton className='filter-item__title'>
-                            {<>
-                                Hãng
-                                <IoMdArrowDropdown />
-                            </>}</MenuButton>}
-                        arrow
-                    >
-                        <div className='filter-item__content d-flex align-items-center flex-wrap'>
-                            <div className='box-filter__item-filter'>
-                                <img src="https://cdn.tgdd.vn/Brand/1/logo-iphone-220x48.png" />
+                    {
+                        brandsFilter && brandsFilter.length > 0 &&
+                        <Menu
+                            menuButton={<MenuButton className='filter-item__title'>
+                                {<>
+                                    Hãng
+                                    <IoMdArrowDropdown />
+                                </>}</MenuButton>}
+                            arrow
+                        >
+                            <div className='filter-item__content d-flex align-items-center flex-wrap'>
+                                <div className='filter-item__content d-flex align-items-center flex-wrap'>
+                                    {
+                                        brandsFilter && brandsFilter.length > 0 &&
+                                        brandsFilter.map((item, index) => {
+                                            return (
+                                                <div key={`box-filter__item-filter-brand-${index}`} className='box-filter__item-filter'>
+                                                    <img src={item.image} />
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                                <div className='filter-item__submit d-flex w-100 justify-content-center align-items-center gap-3'>
+                                    <button class="filter-item__submit-close">Bỏ chọn</button>
+                                    <button class="filter-item__submit-readmore">Xác nhận</button>
+                                </div>
                             </div>
-                            <div className='box-filter__item-filter'>
-                                <img src="https://cdn.tgdd.vn/Brand/1/logo-iphone-220x48.png" />
-                            </div>
-                            <div className='box-filter__item-filter'>
-                                <img src="https://cdn.tgdd.vn/Brand/1/logo-iphone-220x48.png" />
-                            </div>
-                            <div className='box-filter__item-filter'>
-                                <img src="https://cdn.tgdd.vn/Brand/1/logo-iphone-220x48.png" />
-                            </div>
-                            <div className='box-filter__item-filter'>
-                                <img src="https://cdn.tgdd.vn/Brand/1/logo-iphone-220x48.png" />
-                            </div>
-                            <div className='box-filter__item-filter'>
-                                <img src="https://cdn.tgdd.vn/Brand/1/logo-iphone-220x48.png" />
-                            </div>
-                            <div className='box-filter__item-filter'>
-                                <img src="https://cdn.tgdd.vn/Brand/1/logo-iphone-220x48.png" />
-                            </div>
-                        </div>
-                        <div className='filter-item__submit d-flex w-100 justify-content-center align-items-center gap-3'>
-                            <button class="filter-item__submit-close">Bỏ chọn</button>
-                            <button class="filter-item__submit-readmore">Xác nhận</button>
-                        </div>
-                    </Menu>
+
+                        </Menu>
+                    }
+
+
 
                     <Menu
                         menuButton={<MenuButton className='filter-item__title d-flex align-items-center gap-1'>
@@ -228,18 +225,22 @@ const BoxFilter = (props) => {
                     }
                 </ScrollContainer>
                 <div className='quick-filter mt-2'>
-                    <ScrollContainer className='quick-filter__brand d-flex flex-wrap gap-2'>
-                        {
-                            brandFilter && brandFilter.length > 0 &&
-                            brandFilter.map((item, index) => {
-                                return (
-                                    <div key={`filter-item__brand-${index}`} className='filter-item__brand-title'>
-                                        <img className='quick-filter__img' src={item.image} alt='filter-item' />
-                                    </div>
-                                )
-                            })
-                        }
-                    </ScrollContainer>
+                    {
+                        brandsFilter && brandsFilter.length > 0 &&
+                        <ScrollContainer className='quick-filter__brand d-flex flex-wrap gap-2'>
+                            {
+                                brandsFilter && brandsFilter.length > 0 &&
+                                brandsFilter.map((item, index) => {
+                                    return (
+                                        <div key={`filter-item__brand-${index}`} className='filter-item__brand-title'>
+                                            <img className='quick-filter__img' src={item.image} alt='filter-item' />
+                                        </div>
+                                    )
+                                })
+                            }
+                        </ScrollContainer>
+                    }
+
                     {
                         attributeFilters && attributeFilters.length > 0 &&
                         attributeFilters.map((item, index) => {
