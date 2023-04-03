@@ -25,6 +25,7 @@ const BoxFilter = (props) => {
     const { setStartPrice } = props;
     const { endPrice } = props;
     const { setEndPrice } = props;
+    const { productAttributesFilter } = props;
 
     const { attributeFilters } = props;
     const { nameCategory } = props;
@@ -41,6 +42,8 @@ const BoxFilter = (props) => {
         console.log(values)
         setValues(values)
     }
+
+    console.log(productAttributesFilter)
 
     const formatInputPrice = (price) => {
         const formattedNumber = (price / 1000).toLocaleString('vi-VN');
@@ -187,8 +190,8 @@ const BoxFilter = (props) => {
                     </Menu>
 
                     {
-                        attributeFilters && attributeFilters.length > 0 &&
-                        attributeFilters.map((item, index) => {
+                        productAttributesFilter && productAttributesFilter.length > 0 &&
+                        productAttributesFilter.map((item, index) => {
                             return (
                                 <>
                                     <Menu
@@ -202,8 +205,8 @@ const BoxFilter = (props) => {
                                         <div className='quick-filter-price d-flex flex-wrap'>
                                             <div className='filter-item__content d-flex align-items-center flex-wrap'>
                                                 {
-                                                    item?.attributeValues && item?.attributeValues?.length > 0 &&
-                                                    item?.attributeValues.map((value) => {
+                                                    item?.attributeValueProducts && item?.attributeValueProducts?.length > 0 &&
+                                                    item?.attributeValueProducts.map((value) => {
                                                         return (
                                                             <div className='box-filter__item-filter box-filter__item-filter__text'>
                                                                 {value?.value}
