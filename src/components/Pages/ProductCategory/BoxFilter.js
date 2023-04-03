@@ -19,10 +19,21 @@ import "../../../assets/Styles/Components/ProductCategory/BoxFilter.css"
 
 const BoxFilter = (props) => {
     const { brandsFilter } = props;
+    const { rangePrices } = props;
+    const { startPrice } = props;
+    const { endPrice } = props;
+
     const { attributeFilters } = props;
     const { nameCategory } = props;
 
     const [values, setValues] = useState([0, 100]);
+
+    console.log(startPrice)
+
+    const formatInputPrice = (price) => {
+        const formattedNumber = (price / 1000).toLocaleString('vi-VN');
+        return formattedNumber;
+    }
 
     return (
         <div className='box-filter'>
@@ -72,8 +83,6 @@ const BoxFilter = (props) => {
                         </Menu>
                     }
 
-
-
                     <Menu
                         menuButton={<MenuButton className='filter-item__title d-flex align-items-center gap-1'>
                             {<>
@@ -84,30 +93,16 @@ const BoxFilter = (props) => {
                     >
                         <div className='quick-filter-price d-flex flex-wrap'>
                             <div className='filter-item__content d-flex align-items-center flex-wrap'>
-                                <div className='box-filter__item-filter box-filter__item-filter__text'>
-                                    Dưới 2 triệu
-                                </div>
-                                <div className='box-filter__item-filter box-filter__item-filter__text'>
-                                    Từ 2 - 4 triệu
-                                </div>
-                                <div className='box-filter__item-filter box-filter__item-filter__text'>
-                                    Dưới 2 triệu
-                                </div>
-                                <div className='box-filter__item-filter box-filter__item-filter__text'>
-                                    Từ 2 - 4 triệu
-                                </div>
-                                <div className='box-filter__item-filter box-filter__item-filter__text'>
-                                    Dưới 2 triệu
-                                </div>
-                                <div className='box-filter__item-filter box-filter__item-filter__text'>
-                                    Từ 2 - 4 triệu
-                                </div>
-                                <div className='box-filter__item-filter box-filter__item-filter__text'>
-                                    Dưới 2 triệu
-                                </div>
-                                <div className='box-filter__item-filter box-filter__item-filter__text'>
-                                    Từ 2 - 4 triệu
-                                </div>
+                                {
+                                    rangePrices && rangePrices.length > 0 &&
+                                    rangePrices.map((item, index) => {
+                                        return (
+                                            <div className='box-filter__item-filter box-filter__item-filter__text'>
+                                                {item.name}
+                                            </div>
+                                        )
+                                    })
+                                }
                             </div>
                             <div className='select-filter-range d-flex'>
                                 <p class="range-toggle d-flex flex-column">
@@ -118,11 +113,11 @@ const BoxFilter = (props) => {
                                         <div class="row-input d-flex justify-content-center">
                                             <form class="range-price position-relative overflow-hidden">
                                                 <span class="range-left">
-                                                    <input type="tel" maxlength="8" name="price-min-value" data-minvalue="500000" value="3.400" />
+                                                    <input value={formatInputPrice(startPrice)} type="tel" />
                                                     <label class="place-holder">.000đ</label>
                                                 </span>
                                                 <span class="range-right">
-                                                    <input type="tel" maxlength="8" name="price-max-value" data-maxvalue="42000000" value="42.000" />
+                                                    <input value={formatInputPrice(endPrice)} type="tel" />
                                                     <label class="place-holder">.000đ</label>
                                                 </span>
                                             </form>

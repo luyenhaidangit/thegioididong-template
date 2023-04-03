@@ -43,7 +43,7 @@ const ProductCategory = () => {
         setBoxFilter(res);
     }
 
-    console.log(boxFilter)
+    console.log(boxFilter?.rangePricesFilter)
 
     return (
         <div className='bg-white'>
@@ -51,7 +51,9 @@ const ProductCategory = () => {
             <BoxFilter
                 nameCategory={dataProductCategory?.name}
                 attributeFilters={dataProductCategory?.boxFilter?.attributeFilters}
-                priceFilter={dataProductCategory?.boxFilter?.priceFilter}
+                rangePrices={boxFilter?.rangePricesFilter?.rangePrices}
+                startPrice={boxFilter?.rangePricesFilter?.startPrice}
+                endPrice={boxFilter?.rangePricesFilter?.endPrice}
                 brandsFilter={boxFilter?.brandsFilter}
             />
             <ListProduct listProduct={dataProductCategory?.listProduct} />
