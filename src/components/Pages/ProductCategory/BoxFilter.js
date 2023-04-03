@@ -1,5 +1,5 @@
 // Libraries
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { GrFilter } from "react-icons/gr"
 import { IoMdArrowDropdown } from "react-icons/io"
@@ -20,15 +20,27 @@ import "../../../assets/Styles/Components/ProductCategory/BoxFilter.css"
 const BoxFilter = (props) => {
     const { brandsFilter } = props;
     const { rangePrices } = props;
+
     const { startPrice } = props;
+    const { setStartPrice } = props;
     const { endPrice } = props;
+    const { setEndPrice } = props;
 
     const { attributeFilters } = props;
     const { nameCategory } = props;
 
-    const [values, setValues] = useState([0, 100]);
+    const [values, setValues] = useState([0, 0]);
+
+    useEffect(() => {
+        setValues([startPrice, endPrice]);
+    }, [startPrice, endPrice]);
 
     console.log(startPrice)
+
+    const changeRangePrice = (values) => {
+        console.log(values)
+        setValues(values)
+    }
 
     const formatInputPrice = (price) => {
         const formattedNumber = (price / 1000).toLocaleString('vi-VN');
@@ -113,11 +125,11 @@ const BoxFilter = (props) => {
                                         <div class="row-input d-flex justify-content-center">
                                             <form class="range-price position-relative overflow-hidden">
                                                 <span class="range-left">
-                                                    <input value={formatInputPrice(startPrice)} type="tel" />
+                                                    <input value={formatInputPrice(values[0])} type="tel" />
                                                     <label class="place-holder">.000đ</label>
                                                 </span>
                                                 <span class="range-right">
-                                                    <input value={formatInputPrice(endPrice)} type="tel" />
+                                                    <input value={formatInputPrice(values[1])} type="tel" />
                                                     <label class="place-holder">.000đ</label>
                                                 </span>
                                             </form>
@@ -125,11 +137,12 @@ const BoxFilter = (props) => {
                                     </div>
                                     <div className='select-filter-range__input px-4 d-flex justify-content-center'>
                                         <Range
-                                            step={1}
-                                            min={0}
-                                            max={100}
+                                            step={10000}
+                                            min={startPrice}
+                                            max={endPrice}
                                             values={values}
-                                            onChange={values => setValues(values)}
+                                            // onChange={values => setValues(values)}
+                                            onChange={(values) => changeRangePrice(values)}
                                             renderTrack={({ props, children }) => (
                                                 <div
                                                     {...props}
@@ -140,8 +153,8 @@ const BoxFilter = (props) => {
                                                         background: getTrackBackground({
                                                             values: values,
                                                             colors: ['#ccc', '#4a90e2', '#ccc'],
-                                                            min: 1,
-                                                            max: 100,
+                                                            min: startPrice,
+                                                            max: endPrice,
                                                         }),
                                                     }}
                                                 >

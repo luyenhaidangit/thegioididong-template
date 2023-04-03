@@ -21,6 +21,9 @@ const ProductCategory = () => {
     const [boxFilter, setBoxFilter] = useState({});
     const [dataProductCategory, setDataProductCategory] = useState({});
 
+    const [startPrice, setStartPrice] = useState(0);
+    const [endPrice, setEndPrice] = useState(0);
+
     useEffect(() => {
         fetchTopBanner(id);
         fetchBoxFilter(id);
@@ -41,6 +44,8 @@ const ProductCategory = () => {
     const fetchBoxFilter = async (id) => {
         let res = await GetProductCategoryBoxFilter(id);
         setBoxFilter(res);
+        setStartPrice(res?.rangePricesFilter?.startPrice);
+        setEndPrice(res?.rangePricesFilter?.endPrice);
     }
 
     console.log(boxFilter?.rangePricesFilter)
@@ -50,11 +55,15 @@ const ProductCategory = () => {
             <TopBanner slide={topBanner?.slide} bannerFirst={topBanner?.bannerFirst} bannerSecond={topBanner?.bannerSecond} />
             <BoxFilter
                 nameCategory={dataProductCategory?.name}
+                brandsFilter={boxFilter?.brandsFilter}
+                startPrice={startPrice}
+                setStartPrice={setStartPrice}
+                setEndPrice={setEndPrice}
+                endPrice={endPrice}
                 attributeFilters={dataProductCategory?.boxFilter?.attributeFilters}
                 rangePrices={boxFilter?.rangePricesFilter?.rangePrices}
-                startPrice={boxFilter?.rangePricesFilter?.startPrice}
-                endPrice={boxFilter?.rangePricesFilter?.endPrice}
-                brandsFilter={boxFilter?.brandsFilter}
+
+
             />
             <ListProduct listProduct={dataProductCategory?.listProduct} />
         </div>
