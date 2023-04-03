@@ -16,9 +16,14 @@ const GetProductDetailPage = (id) => {
     return axios.get('api/Product/GetProductDetailPage?id=' + id);
 }
 
+const GetProductsProductCategoryDetailPage = (request) => {
+    return axios.post('api/Product/GetProductsProductCategoryDetailPage', request);
+}
+
 export {
     GetProductsHotDeal,
     GetProductFeaturesHome,
     GetProductDailySuggest,
-    GetProductDetailPage
+    GetProductDetailPage,
+    GetProductsProductCategoryDetailPage
 };

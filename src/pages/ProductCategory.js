@@ -10,6 +10,7 @@ import TopBanner from '../components/Pages/ProductCategory/TopBanner'
 // Data
 import ProductCategoryApi from '../data/ProductCategory'
 import { GetProductCategoryTopBanner, GetProductCategoryBoxFilter } from '../apis/productCategoryApiService';
+import { GetProductsProductCategoryDetailPage } from '../apis/productApiService';
 
 // Styles
 import "../assets/Styles/Layouts/Body.css"
@@ -25,10 +26,17 @@ const ProductCategory = () => {
     const [endPrice, setEndPrice] = useState(0);
     const [productAttributesFilter, setProductAttributesFilter] = useState([]);
 
+    const [listProduct, setListProduct] = useState([]);
+
     useEffect(() => {
         fetchTopBanner(id);
         fetchBoxFilter(id);
         fetchDataProductCategory();
+
+        const request = {
+            productCategoryId: id,
+        }
+        fetchListProduct(request);
     }, [id]);
 
     // Function
@@ -50,7 +58,12 @@ const ProductCategory = () => {
         setProductAttributesFilter(res?.productAttributesFilter);
     }
 
-    console.log(boxFilter?.rangePricesFilter)
+    const fetchListProduct = async (request) => {
+        let res = await GetProductsProductCategoryDetailPage(request);
+        setListProduct(res);
+    }
+
+    console.log(listProduct)
 
     return (
         <div className='bg-white'>
@@ -64,7 +77,7 @@ const ProductCategory = () => {
                 endPrice={endPrice}
                 productAttributesFilter={productAttributesFilter}
             />
-            <ListProduct listProduct={dataProductCategory?.listProduct} />
+            <ListProduct listProduct={listProduct} />
         </div>
     )
 }

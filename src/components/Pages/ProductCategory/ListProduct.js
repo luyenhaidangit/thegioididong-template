@@ -123,27 +123,27 @@ const ListProduct = (props) => {
                                                 {item.name}
                                             </h3>
                                             {
-                                                item?.attributeValueProminents && item?.attributeValueProminents.length > 0 &&
+                                                item?.specialAttribute && item?.specialAttribute.length > 0 &&
                                                 <div className='product-card__item-label d-flex gap-1 mb-2'>
                                                     {
-                                                        item?.attributeValueProminents && item?.attributeValueProminents.length > 0 &&
-                                                        item?.attributeValueProminents?.map((value, index) => {
+                                                        item?.specialAttribute && item?.specialAttribute.length > 0 &&
+                                                        item?.specialAttribute?.map((value, index) => {
                                                             return (
-                                                                <span key={`product-card__item-label__item-${index}`} className='product-card__item-label__item' style={{ backgroundColor: "#f1f1f1", color: "#333" }}>{value}</span>
+                                                                <span key={`product-card__item-label__item-${index}`} className='product-card__item-label__item' style={{ backgroundColor: "#f1f1f1", color: "#333" }}>{value.value}</span>
                                                             )
                                                         })
                                                     }
                                                 </div>
                                             }
                                             {
-                                                item?.optionVariantAttribute && item?.optionVariantAttribute.length > 0 &&
+                                                item?.productAttributesOption && item?.productAttributesOption.length > 0 &&
                                                 <div className='product-card__item-label d-flex gap-1 mb-1'>
                                                     {
-                                                        item?.optionVariantAttribute && item?.optionVariantAttribute.length > 0 &&
-                                                        item?.optionVariantAttribute?.map((value, index) => {
+                                                        item?.productAttributesOption && item?.productAttributesOption.length > 0 &&
+                                                        item?.productAttributesOption?.map((attribute, index) => {
                                                             return (
                                                                 <div key={`product-card__item-label-attribute__item-${index}`} className='d-flex gap-1'>
-                                                                    {
+                                                                    {/* {
                                                                         value.selected && value.selected === true &&
                                                                         <span className='product-card__item-label-attribute__item active' style={{ backgroundColor: "#f1f1f1", color: "#333" }}>{value.name}</span>
                                                                     }
@@ -151,8 +151,26 @@ const ListProduct = (props) => {
                                                                     {
                                                                         value.selected &&
                                                                         <span className='product-card__item-label-attribute__item' style={{ backgroundColor: "#f1f1f1", color: "#333" }}>{value.name}</span>
-                                                                    }
+                                                                    } */}
+                                                                    {
+                                                                        attribute.attributeValueProducts && attribute.attributeValueProducts.length > 0 &&
+                                                                        attribute.attributeValueProducts.map((value) => {
+                                                                            return (
+                                                                                <>
+                                                                                    {
+                                                                                        // value?.selected && value?.selected === true &&
+                                                                                        <span className='product-card__item-label-attribute__item active' style={{ backgroundColor: "#f1f1f1", color: "#333" }}>{value.value}</span>
+                                                                                    }
 
+                                                                                    {
+                                                                                        value?.selected &&
+                                                                                        <span className='product-card__item-label-attribute__item active' style={{ backgroundColor: "#f1f1f1", color: "#333" }}>{value.value}</span>
+                                                                                    }
+                                                                                </>
+
+                                                                            )
+                                                                        })
+                                                                    }
                                                                 </div>
                                                             )
                                                         })
@@ -161,19 +179,25 @@ const ListProduct = (props) => {
                                             }
 
                                             {
+                                                item.discountedPrice && item.discountedPrice !== item.originalPrice &&
                                                 <span className="text-decoration-line-through product-card__item-original-price mb-3">{FormatCurrency(item.originalPrice)}</span>
                                             }
                                             {
+                                                item.discountPercent &&
                                                 <span className='product-card__item-discount-percent ms-2'>-{item.discountPercent}%</span>
                                             }
                                             {
                                                 <p className='product-card__item-price mb-1'>{FormatCurrency(item.discountedPrice)}</p>
                                             }
                                             {
-                                                <p className='product-card__item-rating d-flex align-items-center mb-1'>
-                                                    <b className='product-card__item-number-star d-flex align-items-center me-2'>4.8 <AiFillStar /></b>
-                                                    (158)
-                                                </p>
+                                                item.starRating > 0 &&
+                                                <>
+                                                    <p className='product-card__item-rating d-flex align-items-center mb-1'>
+                                                        <b className='product-card__item-number-star d-inline-flex align-items-center me-2'>{item.starRating} <AiFillStar /></b>
+                                                        ({item.reviewCount})
+                                                    </p>
+                                                </>
+
                                             }
 
 
@@ -195,7 +219,7 @@ const ListProduct = (props) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
