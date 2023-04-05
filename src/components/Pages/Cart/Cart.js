@@ -82,6 +82,112 @@ const Cart = () => {
                             </div>
                         </div>
                     </div>
+                    <div className='cart__info-customer'>
+                        <div className='info-customer'>
+                            <div className='info-customer__title'>THÔNG TIN KHÁCH HÀNG</div>
+                            <div className='info-customer__sex d-flex gap-3'>
+                                <div className='info-customer__sex-item'>
+                                    <input
+                                        type="radio"
+                                        value="option1"
+                                        className='me-2'
+                                    />
+                                    Nam
+                                </div>
+                                <div className='info-customer__sex-item'>
+                                    <input
+                                        type="radio"
+                                        value="option1"
+                                        className='me-2'
+                                    />
+                                    Nữ
+                                </div>
+                            </div>
+                            <div className='info-customer__basic d-flex gap-3'>
+                                <div className='info-customer__basic-item w-100'>
+                                    <input
+                                        type="text"
+                                        placeholder='Họ và tên'
+                                        className='info-customer__basic-input w-100'
+                                    />
+                                </div>
+
+                                <div className='info-customer__basic-item w-100'>
+                                    <input
+                                        type="text"
+                                        placeholder='Số điện thoại'
+                                        className='info-customer__basic-input w-100'
+                                    />
+                                </div>
+                            </div>
+                            <div className='info-customer__title mt-3'>CHỌN CÁCH THỨC GIAO HÀNG</div>
+                            <div className='info-customer__sex d-flex gap-3'>
+                                <div className='info-customer__sex-item'>
+                                    <input
+                                        type="radio"
+                                        value="option1"
+                                        className='me-2'
+                                    />
+                                    Giao hàng tận nơi
+                                </div>
+                                <div className='info-customer__sex-item'>
+                                    <input
+                                        type="radio"
+                                        value="option1"
+                                        className='me-2'
+                                    />
+                                    Nhận hàng tại siêu thị
+                                </div>
+                            </div>
+                            <div className='info-customer__basic d-flex gap-3'>
+                                <div className='info-customer__basic-item w-100'>
+                                    <input
+                                        type="text"
+                                        placeholder='Địa chỉ nhận hàng'
+                                        className='info-customer__basic-input w-100'
+                                    />
+                                </div>
+
+                                {/* <div className='info-customer__basic-item w-100'>
+                                    <input
+                                        type="text"
+                                        placeholder='Số điện thoại'
+                                        className='info-customer__basic-input w-100'
+                                    />
+                                </div> */}
+                            </div>
+                            <div className='info-customer__basic d-flex gap-3'>
+                                <div className='info-customer__basic-item w-100'>
+                                    <input
+                                        type="text"
+                                        placeholder='Sử dụng mã giảm giá ( Nếu có )'
+                                        className='info-customer__basic-input w-100'
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='cart__submit pt-2'>
+                        {/* <div className='total-cart-price d-flex justify-content-between'>
+                            <strong className='total-cart-price__title'>Tạm tính</strong>
+                            <strong className='total-cart-price__price'>4.340.000₫</strong>
+                        </div> */}
+                        <div className='total-cart-price d-flex justify-content-between'>
+                            <strong className='total-cart-price__title'>Tạm tính</strong>
+                            <strong className='total-cart-price__price'>4.340.000₫</strong>
+                        </div>
+                        <div className='total-cart-price d-flex justify-content-between'>
+                            <strong className='total-cart-price__title'>Giảm giá</strong>
+                            <strong className='total-cart-price__price'>4.340.000₫</strong>
+                        </div>
+                        <div className='total-cart-price d-flex justify-content-between'>
+                            <strong className='total-cart-price__title'>Tổng tiền</strong>
+                            <strong className='total-cart-price__price'>4.340.000₫</strong>
+                        </div>
+                        <div className='cart__submit-button'>
+                            <buttom className='btn btn-primary w-100'>Đặt hàng</buttom>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
