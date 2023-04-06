@@ -6,6 +6,8 @@ import { Navigation } from 'swiper';
 import 'swiper/css';
 import "swiper/css/navigation";
 
+import { useNavigate } from 'react-router-dom';
+
 import { GrFormNext, GrFormPrevious } from "react-icons/gr"
 import { AiFillStar } from 'react-icons/ai'
 
@@ -18,11 +20,13 @@ import FormatCurrency from '../../../helpers/Strings/FormatCurrency';
 
 const PromoAnother = (props) => {
     const { productFeatures } = props;
+    const navigate = useNavigate();
     // Hook
     const navigationPrevRef = useRef(null);
     const navigationNextRef = useRef(null);
 
     return (
+
         <>
             {
                 productFeatures && productFeatures.length > 0 &&
@@ -116,7 +120,7 @@ const PromoAnother = (props) => {
                                                 promo.products && promo.products.length > 0 &&
                                                 promo.products.map((item, index) => {
                                                     return (
-                                                        <SwiperSlide className='product-card__item cursor-pointer' key={`hotdeal__item-${index}`}>
+                                                        <SwiperSlide onClick={() => navigate(`/san-pham/${item.id}`)} className='product-card__item cursor-pointer' key={`hotdeal__item-${index}`}>
                                                             {
                                                                 item.isInterest && item.isInterest === true &&
                                                                 <div className='product-card__item-label d-flex gap-3 mb-3'>
