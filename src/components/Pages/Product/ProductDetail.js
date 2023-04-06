@@ -5,6 +5,7 @@ import _ from 'lodash';
 import { GetProductDetailPage } from '../../../apis/productApiService';
 import { Button } from 'react-bootstrap';
 import "../../../assets/Styles/Components/Product/ProductDetail.css"
+import FormatCurrency from '../../../helpers/Strings/FormatCurrency';
 
 const ProductDetail = () => {
     const navigate = useNavigate();
@@ -116,6 +117,7 @@ const ProductDetail = () => {
                 });
             }
             localStorage.setItem('cart', JSON.stringify(cart));
+            navigate("/gio-hang")
         }
     };
 
