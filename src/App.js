@@ -13,6 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/Styles/Common/Common.css'
 import ProductCategory from './pages/ProductCategory';
 import Cart from './components/Pages/Cart/Cart';
+import Login from './pages/Login';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path='san-pham/:id' element={<Product />} />
             <Route path='loai-san-pham/:id' element={<ProductCategory />} />
             <Route path='gio-hang' element={<Cart />} />
+            <Route path='dang-nhap' element={<Login />} />
           </Route>
         </Routes>
       </BrowserRouter>
