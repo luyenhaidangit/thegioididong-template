@@ -9,7 +9,7 @@ const GetProductFeaturesHome = () => {
 }
 
 const GetProductDailySuggest = () => {
-    return axios.get('api/Product/GetProductDailySuggest');
+    return axios.get('api/product/daily-suggest');
 }
 
 const GetProductDetailPage = (id) => {
