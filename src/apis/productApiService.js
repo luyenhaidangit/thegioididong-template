@@ -5,7 +5,7 @@ const GetProductsHotDeal = () => {
 }
 
 const GetProductFeaturesHome = () => {
-    return axios.get('api/Product/GetProductFeaturesHome');
+    return axios.get('api/product/features');
 }
 
 const GetProductDailySuggest = () => {

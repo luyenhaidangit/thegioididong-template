@@ -4,7 +4,7 @@ import React from 'react'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
-import IconGift from "../../../assets/Images/Icon/icon-gift.png"
+// import IconGift from "../../../assets/Images/Icon/icon-gift.png"
 import { AiFillStar } from 'react-icons/ai'
 
 // Style
