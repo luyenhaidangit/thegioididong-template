@@ -168,7 +168,7 @@ const DailySuggest = (props) => {
 
                             {
                                 popularProducts &&
-                                <Tab tabClassName='daily-suggest__tab' eventKey="bestSellingProducts" title={<span><img className='daily-suggest__tab-img' src={PopularIcon} alt="Đánh giá cao" /> Đánh giá cao</span>}>
+                                <Tab tabClassName='daily-suggest__tab' eventKey="bestSellingProducts" title={<span><img className='daily-suggest__tab-img' src={PopularIcon} alt="Quan tâm nhiều" /> Đánh giá cao</span>}>
                                     <div className="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2 g-3">
                                         {
                                             popularProducts && popularProducts.length > 0 &&
@@ -233,7 +233,7 @@ const DailySuggest = (props) => {
 
                             {
                                 topRatedProducts &&
-                                <Tab tabClassName='daily-suggest__tab' eventKey="topRatedProducts" title={<span><img className='daily-suggest__tab-img' src={TopRatedIcon} alt="Quan tâm nhiều" /> Quan tâm nhiều</span>}>
+                                <Tab tabClassName='daily-suggest__tab' eventKey="topRatedProducts" title={<span><img className='daily-suggest__tab-img' src={TopRatedIcon} alt="Đánh giá cao" /> Quan tâm nhiều</span>}>
                                     <div className="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2 g-3">
                                         {
                                             topRatedProducts && topRatedProducts.length > 0 &&
