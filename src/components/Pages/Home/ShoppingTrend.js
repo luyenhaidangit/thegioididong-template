@@ -1,29 +1,16 @@
 // Libraries
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 // Styles
 import "../../../assets/Styles/Components/Home/ShoppingTrend.css"
 
-// Data
-import ShoppingTrendApi from '../../../data/ShoppingTrend'
-
-const ShoppingTrend = () => {
-    // Hook
-    const [dataShoppingTrend, setDataShoppingTrend] = useState([]);
-
-    useEffect(() => {
-        fetchDataShoppingTrend();
-    }, []);
-
-    const fetchDataShoppingTrend = async () => {
-        let res = await ShoppingTrendApi;
-        setDataShoppingTrend(res);
-    }
+const ShoppingTrend = (props) => {
+    const { slide } = props;
 
     return (
         <>
             {
-                dataShoppingTrend && dataShoppingTrend.length > 0 &&
+                slide.slideItems && slide.slideItems.length > 0 &&
                 <div className='shopping-trend'>
                     <div className='container'>
                         <div className='shopping-trend__title'>
@@ -31,8 +18,8 @@ const ShoppingTrend = () => {
                         </div>
                         <div className='shopping-trend__content d-flex justify-content-center gap-2'>
                             {
-                                dataShoppingTrend && dataShoppingTrend.length > 0 &&
-                                dataShoppingTrend.map((item, index) => {
+                                slide.slideItems && slide.slideItems.length > 0 &&
+                                slide.slideItems.map((item, index) => {
                                     return (
                                         <div key={`shopping-trend__item-${index}`} className='shopping-trend__item cursor-pointer position-relative'>
                                             <img className="shopping-trend__item-img img-fluid" src={item.image} alt="Shopping Trend" />

@@ -1,7 +1,7 @@
 import axios from '../helpers/Apis/axiosCustomize';
 
 const GetProductsHotDeal = () => {
-    return axios.get('api/Product/GetProductsHotDeal');
+    return axios.get('api/product/hot-deal');
 }
 
 const GetProductFeaturesHome = () => {

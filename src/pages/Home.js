@@ -18,7 +18,7 @@ import TechNew from '../components/Pages/Home/TechNew'
 import TradeMark from '../components/Pages/Home/TradeMark'
 
 // Data
-import { GetSlideBigCampaign, GetSlideOptionPromo } from "../apis/slideApiService";
+import { GetSlideBigCampaign, GetSlideOptionPromo, GetSlideShoppingTrends } from "../apis/slideApiService";
 import { GetBannerMain, GetBannerTopzone } from '../apis/bannerApiService';
 import { GetProductsHotDeal, GetProductDailySuggest } from '../apis/productApiService'
 import { GetProductFeaturesHome } from '../apis/productApiService'
@@ -33,6 +33,7 @@ const Home = () => {
     const [dataProductFeaturesHome, setDataProductFeaturesHome] = useState([]);
     const [dataProductCategoryFeatureHome, setDataProductCategoryFeature] = useState([]);
     const [dataProductDailySuggest, setDataProductDailySuggest] = useState([]);
+    const [dataSlideShoppingTrends, setDataSlideShoppingTrends] = useState({});
 
     useEffect(() => {
         fetchSlidesBigCampaign();
@@ -43,6 +44,7 @@ const Home = () => {
         fetchDataProductFeaturesHome();
         fetchDataProductCategoriesFeature();
         fetchDataProductDailySuggest();
+        featchDataSlideShoppingTrends();
     }, []);
 
     // Func
@@ -86,6 +88,11 @@ const Home = () => {
         setDataProductCategoryFeature(res);
     }
 
+    const featchDataSlideShoppingTrends = async () => {
+        let res = await GetSlideShoppingTrends();
+        setDataSlideShoppingTrends(res);
+    }
+
     return (
         <div className='content bg-gray'>
             <BigBanner banner={dataBannerMain} />
@@ -95,7 +102,7 @@ const Home = () => {
                 <BannerTopzone banner={dataBannerTopzone} />
                 <HotDeal products={dataProductsHotDeal} />
                 <PromoAnother productFeatures={dataProductFeaturesHome} />
-                <ShoppingTrend />
+                <ShoppingTrend slide={dataSlideShoppingTrends} />
                 <CategoryFeature productCategories={dataProductCategoryFeatureHome} />
                 <DiscountPayOnline />
                 <ServiceConversation />

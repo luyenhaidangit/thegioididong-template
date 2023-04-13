@@ -9,11 +9,16 @@ const GetSlideBigCampaign = () => {
 }
 
 const GetSlideOptionPromo = () => {
-    return axios.get('api/Slide/option-promo');
+    return axios.get('api/slide/option-promo');
+}
+
+const GetSlideShoppingTrends = () => {
+    return axios.get('api/Slide/shopping-trends');
 }
 
 export {
     GetSlideHeaderTopClient,
     GetSlideBigCampaign,
-    GetSlideOptionPromo
+    GetSlideOptionPromo,
+    GetSlideShoppingTrends
 };
