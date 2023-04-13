@@ -105,7 +105,7 @@ const Home = () => {
                 <ShoppingTrend slide={dataSlideShoppingTrends} />
                 <CategoryFeature productCategories={dataProductCategoryFeatureHome} />
                 <DiscountPayOnline />
-                <ServiceConversation />
+                <ServiceConversation slide={dataSlideShoppingTrends} />
                 <DailySuggest
                     latestProducts={dataProductDailySuggest?.latestProducts}
                     popularProducts={dataProductDailySuggest?.popularProducts}

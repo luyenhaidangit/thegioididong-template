@@ -7,7 +7,8 @@ import "../../../assets/Styles/Components/Home/ServiceConversation.css"
 // Data
 import ServiceConversationApi from '../../../data/ServiceConversation'
 
-const ServiceConversation = () => {
+const ServiceConversation = (props) => {
+    const { slide } = props;
     // Hook
     const [dataServiceConversation, setDataServiceConversation] = useState([]);
 
@@ -24,6 +25,7 @@ const ServiceConversation = () => {
         <>
             {
                 dataServiceConversation && dataServiceConversation.length > 0 &&
+                slide.slideItems && slide.slideItems.length > 0 &&
                 <div className='service-conversation'>
                     <div className='container'>
                         <div className='service-conversation__title d-flex justify-content-between align-items-center'>
