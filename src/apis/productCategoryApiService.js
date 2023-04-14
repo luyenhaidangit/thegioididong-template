@@ -9,7 +9,7 @@ const GetProductCategoryNavigation = () => {
 }
 
 const GetProductCategoryTopBanner = (id) => {
-    return axios.get('api/product-category/GetProductCategoryTopBanner?id=' + id);
+    return axios.get('api/product-category/top-banner?id=' + id);
 }
 
 const GetProductCategoryBoxFilter = (id) => {
