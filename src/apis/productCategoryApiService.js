@@ -13,7 +13,7 @@ const GetProductCategoryTopBanner = (id) => {
 }
 
 const GetProductCategoryBoxFilter = (id) => {
-    return axios.get('api/product-category/GetProductCategoryBoxFilter?id=' + id);
+    return axios.get('api/product-category/box-filter?id=' + id);
 }
 
 export {
