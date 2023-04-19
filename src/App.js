@@ -14,6 +14,7 @@ import './assets/Styles/Common/Common.css'
 import ProductCategory from './pages/ProductCategory';
 import Cart from './components/Pages/Cart/Cart';
 import Login from './pages/Login';
+import ProductInfo from './components/Pages/Product/ProductInfo';
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Layout />}>
-            <Route index element={<Home />} />
+            <Route index element={<ProductInfo />} />
             <Route path='san-pham/:id' element={<Product />} />
             <Route path='loai-san-pham/:id' element={<ProductCategory />} />
             <Route path='gio-hang' element={<Cart />} />
