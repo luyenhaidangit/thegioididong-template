@@ -23,7 +23,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Layout />}>
-            <Route index element={<ProductInfo />} />
+            <Route index element={<Home />} />
             <Route path='san-pham/:id' element={<Product />} />
             <Route path='loai-san-pham/:id' element={<ProductCategory />} />
             <Route path='gio-hang' element={<Cart />} />

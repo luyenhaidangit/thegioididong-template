@@ -6,6 +6,28 @@ import { GetProductDetailPage } from '../../../apis/productApiService';
 import { Button } from 'react-bootstrap';
 import "../../../assets/Styles/Components/Product/ProductDetail.css"
 import FormatCurrency from '../../../helpers/Strings/FormatCurrency';
+import Fuse from 'fuse.js';
+
+const findMatchingProductVariant = (productVariants, selectedAttributes) => {
+    const options = {
+        keys: Object.keys(selectedAttributes),
+        includeScore: true,
+        threshold: 0.4,
+    };
+
+    const fuse = new Fuse(productVariants, options);
+
+    const results = fuse.search(selectedAttributes);
+
+    if (results.length > 0) {
+        const matchingVariant = results[0].item;
+        console.log(`The matching product variant has an id of ${matchingVariant.id}.`);
+        return matchingVariant;
+    } else {
+        console.log('No matching product variant was found.');
+        return null;
+    }
+};
 
 const ProductDetail = () => {
     const navigate = useNavigate();
@@ -29,6 +51,7 @@ const ProductDetail = () => {
         });
 
         // Find the product variant with options that match the selected attribute values
+        console.log(selectedAttributes)
         const matchingVariant = dataProductDetailPage?.productVariants?.find(variant => {
             return variant.options.every(option => option.value === selectedAttributes[option.name]);
         });
@@ -40,6 +63,50 @@ const ProductDetail = () => {
             navigate(`/san-pham/${matchingVariant.id}`);
         } else {
             console.log('No matching product variant was found.');
+            const matchingVariants = dataProductDetailPage?.productVariants?.filter(variant => {
+                return variant.options.some(option => {
+                    const selectedValue = productAttributes.find(attribute => attribute.name === option.name)?.attributeValues.find(value => value.isSelected);
+                    return selectedValue && selectedValue.value === option.value;
+                });
+            }).sort((a, b) => {
+                let aSimilarity = 0;
+                let bSimilarity = 0;
+                a.options.forEach(option => {
+                    const selectedValue = productAttributes.find(attribute => attribute.name === option.name)?.attributeValues.find(value => value.isSelected);
+                    if (selectedValue && selectedValue.value === option.value) {
+                        aSimilarity++;
+                    }
+                });
+                b.options.forEach(option => {
+                    const selectedValue = productAttributes.find(attribute => attribute.name === option.name)?.attributeValues.find(value => value.isSelected);
+                    if (selectedValue && selectedValue.value === option.value) {
+                        bSimilarity++;
+                    }
+                });
+                return bSimilarity - aSimilarity;
+            });
+            console.log(matchingVariants)
+            if (matchingVariants) {
+                setVariantCurrent(matchingVariants[0].id);
+                navigate(`/san-pham/${matchingVariants[0].id}`);
+            }
+
+
+            // const matchingVariant = findMatchingProductVariant(productVariants, selectedAttributes);
+
+            // if (matchingVariant) {
+            //     setVariantCurrent(matchingVariant.id);
+            //     navigate(`/san-pham/${matchingVariant.id}`);
+            // }
+
+            // if (results.length > 0) {
+            //     const matchingVariant = results[0].item;
+            //     console.log(`The matching product variant has an id of ${matchingVariant.id}.`);
+            //     return matchingVariant;
+            // } else {
+            //     console.log('No matching product variant was found.');
+            //     return null;
+            // }
         }
     }, [productAttributes]);
 
