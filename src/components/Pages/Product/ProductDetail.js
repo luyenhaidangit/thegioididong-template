@@ -5,29 +5,6 @@ import _ from 'lodash';
 import { GetProductDetailPage } from '../../../apis/productApiService';
 import { Button } from 'react-bootstrap';
 import "../../../assets/Styles/Components/Product/ProductDetail.css"
-import FormatCurrency from '../../../helpers/Strings/FormatCurrency';
-import Fuse from 'fuse.js';
-
-const findMatchingProductVariant = (productVariants, selectedAttributes) => {
-    const options = {
-        keys: Object.keys(selectedAttributes),
-        includeScore: true,
-        threshold: 0.4,
-    };
-
-    const fuse = new Fuse(productVariants, options);
-
-    const results = fuse.search(selectedAttributes);
-
-    if (results.length > 0) {
-        const matchingVariant = results[0].item;
-        console.log(`The matching product variant has an id of ${matchingVariant.id}.`);
-        return matchingVariant;
-    } else {
-        console.log('No matching product variant was found.');
-        return null;
-    }
-};
 
 const ProductDetail = () => {
     const navigate = useNavigate();
@@ -36,6 +13,7 @@ const ProductDetail = () => {
     const [product, setProduct] = useState({});
     const [productVariants, setProductVariants] = useState(null);
     const [productAttributes, setProductAttributes] = useState([]);
+    const [valueAttributeClick, setValueAttributeClick] = useState({})
 
     useEffect(() => {
         fetchProductDetailPage(idVariantCurrent);
@@ -51,63 +29,99 @@ const ProductDetail = () => {
         });
 
         // Find the product variant with options that match the selected attribute values
+        console.log(productVariants)
         console.log(selectedAttributes)
-        const matchingVariant = dataProductDetailPage?.productVariants?.find(variant => {
-            return variant.options.every(option => option.value === selectedAttributes[option.name]);
-        });
-
-        if (matchingVariant) {
-            console.log(`The matching product variant has an id of ${matchingVariant.id}.`);
-            setVariantCurrent(matchingVariant.id);
-            // fetchProductDetailPage(matchingVariant.id);
-            navigate(`/san-pham/${matchingVariant.id}`);
-        } else {
-            console.log('No matching product variant was found.');
-            const matchingVariants = dataProductDetailPage?.productVariants?.filter(variant => {
-                return variant.options.some(option => {
-                    const selectedValue = productAttributes.find(attribute => attribute.name === option.name)?.attributeValues.find(value => value.isSelected);
-                    return selectedValue && selectedValue.value === option.value;
-                });
-            }).sort((a, b) => {
-                let aSimilarity = 0;
-                let bSimilarity = 0;
-                a.options.forEach(option => {
-                    const selectedValue = productAttributes.find(attribute => attribute.name === option.name)?.attributeValues.find(value => value.isSelected);
-                    if (selectedValue && selectedValue.value === option.value) {
-                        aSimilarity++;
-                    }
-                });
-                b.options.forEach(option => {
-                    const selectedValue = productAttributes.find(attribute => attribute.name === option.name)?.attributeValues.find(value => value.isSelected);
-                    if (selectedValue && selectedValue.value === option.value) {
-                        bSimilarity++;
-                    }
-                });
-                return bSimilarity - aSimilarity;
+        const matchingVariants = dataProductDetailPage?.productVariants?.filter(variant => {
+            return variant.options.some(option => {
+                const selectedValue = productAttributes.find(attribute => attribute.name === option.name)?.attributeValues.find(value => value.isSelected);
+                return selectedValue && selectedValue.value === option.value;
             });
-            console.log(matchingVariants)
-            if (matchingVariants) {
-                setVariantCurrent(matchingVariants[0].id);
-                navigate(`/san-pham/${matchingVariants[0].id}`);
+        }).sort((a, b) => {
+            let aSimilarity = 0;
+            let bSimilarity = 0;
+            a.options.forEach(option => {
+                const selectedValue = productAttributes.find(attribute => attribute.name === option.name)?.attributeValues.find(value => value.isSelected);
+                if (selectedValue && selectedValue.value === option.value) {
+                    aSimilarity++;
+                }
+            });
+            b.options.forEach(option => {
+                const selectedValue = productAttributes.find(attribute => attribute.name === option.name)?.attributeValues.find(value => value.isSelected);
+                if (selectedValue && selectedValue.value === option.value) {
+                    bSimilarity++;
+                }
+            });
+            return bSimilarity - aSimilarity;
+        });
+        if (matchingVariants) {
+            const matchingVariant = matchingVariants[0];
+
+            if (matchingVariant) {
+                console.log(`The matching product variant has an id of ${matchingVariant.id}.`);
+                setVariantCurrent(matchingVariant.id);
+                // fetchProductDetailPage(matchingVariant.id);
+                navigate(`/san-pham/${matchingVariant.id}`);
+            } else {
+                console.log('No matching product variant was found.');
+                const matchingVariants = dataProductDetailPage?.productVariants?.filter(variant => {
+                    return variant.options.some(option => {
+                        const selectedValue = productAttributes.find(attribute => attribute.name === option.name)?.attributeValues.find(value => value.isSelected);
+                        return selectedValue && selectedValue.value === option.value;
+                    });
+                }).sort((a, b) => {
+                    let aSimilarity = 0;
+                    let bSimilarity = 0;
+                    a.options.forEach(option => {
+                        const selectedValue = productAttributes.find(attribute => attribute.name === option.name)?.attributeValues.find(value => value.isSelected);
+                        if (selectedValue && selectedValue.value === option.value) {
+                            aSimilarity++;
+                        }
+                    });
+                    b.options.forEach(option => {
+                        const selectedValue = productAttributes.find(attribute => attribute.name === option.name)?.attributeValues.find(value => value.isSelected);
+                        if (selectedValue && selectedValue.value === option.value) {
+                            bSimilarity++;
+                        }
+                    });
+                    return bSimilarity - aSimilarity;
+                });
+                if (matchingVariants) {
+                    setVariantCurrent(matchingVariants[0].id);
+                    navigate(`/san-pham/${matchingVariants[0].id}`);
+                }
             }
-
-
-            // const matchingVariant = findMatchingProductVariant(productVariants, selectedAttributes);
-
-            // if (matchingVariant) {
-            //     setVariantCurrent(matchingVariant.id);
-            //     navigate(`/san-pham/${matchingVariant.id}`);
-            // }
-
-            // if (results.length > 0) {
-            //     const matchingVariant = results[0].item;
-            //     console.log(`The matching product variant has an id of ${matchingVariant.id}.`);
-            //     return matchingVariant;
-            // } else {
-            //     console.log('No matching product variant was found.');
-            //     return null;
-            // }
         }
+
+        function isEmptyObject(obj) {
+            return Object.keys(obj).length === 0;
+        }
+
+        console.log(valueAttributeClick)
+        if (!isEmptyObject(valueAttributeClick)) {
+            productAttributes.forEach(attribute => {
+                if (attribute.name !== valueAttributeClick.name) {
+                    attribute.attributeValues.forEach(attributeValue => {
+                        const matchingVariant = productVariants.find(variant => {
+                            return variant.options.some(option => {
+                                return option.name === attribute.name && option.value === attributeValue.value;
+                            }) && variant.options.some(option => {
+                                return option.name === valueAttributeClick.name && option.value === valueAttributeClick.value;
+                            });
+                        });
+                        if (!matchingVariant) {
+                            attributeValue.disable = true;
+                        }
+                    });
+                }
+            });
+        }
+
+
+
+
+        console.log(productAttributes)
+        // console.log(valueAttributeClick)
+
     }, [productAttributes]);
 
     const fetchProductDetailPage = async (id) => {
@@ -149,10 +163,16 @@ const ProductDetail = () => {
 
     const handleClickAttributeValue = async (attributeIndex, valueIndex) => {
         const updatedAttributes = productAttributes.map((attribute, i) => {
+
             if (i !== attributeIndex) {
                 // keep other attributes unchanged
                 return attribute;
             } else {
+                attribute.attributeValues.map((value, j) => {
+                    if (j === valueIndex) {
+                        setValueAttributeClick({ name: attribute.name, value: value.value })
+                    }
+                })
                 // update the clicked attribute value and set others to false
                 return {
                     ...attribute,
@@ -163,8 +183,9 @@ const ProductDetail = () => {
                 };
             }
         });
+
         setProductAttributes(updatedAttributes);
-        // console.log(productAttributes)
+        // setValueAttributeClick
     };
 
     const handleButtonClick = () => {
@@ -188,22 +209,14 @@ const ProductDetail = () => {
         }
     };
 
+    const handleClickValue = () => {
+
+    }
 
     console.log(productAttributes)
 
-    console.log(dataProductDetailPage)
-
     return (
         <div className="product-detail container">
-            {/* <ul class="breadcrumb">
-                <li>
-                    <span>Điện thoại</span>
-                </li>
-                <li>
-                    <span>›</span>
-                    <span>Điện thoại Samsung</span>
-                </li>
-            </ul> */}
             <h3>{product.name}</h3>
             <h4 className='text-danger'>{product.originalPrice}</h4>
             {
@@ -219,7 +232,7 @@ const ProductDetail = () => {
                                                 value.value && value.isSelected === true &&
                                                 <>
                                                     {
-                                                        <Button onClick={() => handleClickAttributeValue(attributeIndex, valueIndex)} className='btn btn-primary me-3'>{value.value}</Button>
+                                                        <Button onClick={() => { handleClickAttributeValue(attributeIndex, valueIndex); handleClickValue() }} className='btn btn-primary me-3'>{value.value}</Button>
                                                     }
                                                 </>
                                             }
@@ -228,7 +241,12 @@ const ProductDetail = () => {
                                                 value.value && value.isSelected === false &&
                                                 <>
                                                     {
-                                                        <Button onClick={() => handleClickAttributeValue(attributeIndex, valueIndex)} className='btn btn-secondary me-3'>{value.value}</Button>
+                                                        valueAttributeClick && value.disable &&
+                                                        <Button className={"btn btn-danger me-3"}>{value.value}</Button>
+                                                    }
+                                                    {
+                                                        value.disable !== true &&
+                                                        <Button onClick={() => { handleClickAttributeValue(attributeIndex, valueIndex); handleClickValue() }} className={"btn btn-secondary me-3"}>{value.value}</Button>
                                                     }
                                                 </>
                                             }
