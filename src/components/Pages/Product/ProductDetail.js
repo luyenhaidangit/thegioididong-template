@@ -433,13 +433,114 @@ const ProductDetail = () => {
                                     onHide={handleClose}
                                     backdrop="static"
                                     keyboard={false}
+                                    className='product-detail__modal'
+                                    size="lg" aria-labelledby="example-modal-long-title"
                                 >
-                                    <Modal.Header closeButton>
-                                        <Modal.Title>Modal title</Modal.Title>
-                                    </Modal.Header>
                                     <Modal.Body>
-                                        I will not close if you click outside me. Don't even try to press
-                                        escape key.
+                                        <Tabs
+                                            activeKey={activeTab}
+                                            id="uncontrolled-tab-example"
+                                            className="product-slide__navs mb-3"
+                                            onSelect={handleSelect}
+                                        >
+                                            <Tab eventKey="home" title={<>
+                                                <div className='btn-tab-modal'>Điểm nổi bật</div>
+
+                                            </>}>
+                                                ok
+                                            </Tab>
+                                            <Tab eventKey="profile" title={
+                                                <>
+                                                    <div className='btn-tab-modal'>Tím</div>
+                                                </>
+                                            }>
+                                                <Swiper
+                                                    spaceBetween={50}
+                                                    slidesPerView={1}
+                                                    loop={true}
+                                                    speed={0}
+                                                    navigation={{
+                                                        prevEl: navigationPrevRef.current,
+                                                        nextEl: navigationNextRef.current,
+                                                    }}
+                                                    onBeforeInit={(swiper) => {
+                                                        swiper.params.navigation.prevEl = navigationPrevRef.current;
+                                                        swiper.params.navigation.nextEl = navigationNextRef.current;
+                                                    }}
+                                                >
+                                                    <SwiperSlide className='product-slide__item d-flex align-items-center justify-content-center' key={`slide-header-top-bar`}>
+                                                        <img className='product-slide__item-img' src={slide1} alt={""} />
+                                                    </SwiperSlide>
+                                                    <SwiperSlide className='product-slide__item d-flex align-items-center justify-content-center' key={`slide-header-top-bar`}>
+                                                        <img className='product-slide__item-img' src={slide2} alt={""} />
+                                                    </SwiperSlide>
+                                                    <SwiperSlide className='product-slide__item d-flex align-items-center justify-content-center' key={`slide-header-top-bar`}>
+                                                        <img className='product-slide__item-img' src={slide3} alt={""} />
+                                                    </SwiperSlide>
+
+                                                    <div ref={navigationPrevRef} className="header-top-bar__swiper-button"><GrFormPrevious className='header-top-bar__swiper-icon swiper-button-prev' /></div>
+                                                    <div ref={navigationNextRef} className="header-top-bar__swiper-button"><GrFormNext className='header-top-bar__swiper-icon swiper-button-next' /></div>
+                                                </Swiper>
+                                            </Tab>
+                                            <Tab eventKey="contact" title={
+                                                <>
+                                                    <div className='btn-tab-modal'>Đen</div>
+                                                </>
+                                            }>
+                                                <Swiper
+                                                    spaceBetween={50}
+                                                    slidesPerView={1}
+                                                    loop={true}
+                                                    speed={0}
+                                                    navigation={{
+                                                        prevEl: navigationPrevRef.current,
+                                                        nextEl: navigationNextRef.current,
+                                                    }}
+                                                    onBeforeInit={(swiper) => {
+                                                        swiper.params.navigation.prevEl = navigationPrevRef.current;
+                                                        swiper.params.navigation.nextEl = navigationNextRef.current;
+                                                    }}
+                                                >
+                                                    <SwiperSlide className='product-slide__item d-flex align-items-center justify-content-center' key={`slide-header-top-bar`}>
+                                                        <img className='product-slide__item-img' src={slide1} alt={""} />
+                                                    </SwiperSlide>
+                                                    <SwiperSlide className='product-slide__item d-flex align-items-center justify-content-center' key={`slide-header-top-bar`}>
+                                                        <img className='product-slide__item-img' src={slide2} alt={""} />
+                                                    </SwiperSlide>
+                                                    <SwiperSlide className='product-slide__item d-flex align-items-center justify-content-center' key={`slide-header-top-bar`}>
+                                                        <img className='product-slide__item-img' src={slide3} alt={""} />
+                                                    </SwiperSlide>
+
+                                                    <div ref={navigationPrevRef} className="header-top-bar__swiper-button"><GrFormPrevious className='header-top-bar__swiper-icon swiper-button-prev' /></div>
+                                                    <div ref={navigationNextRef} className="header-top-bar__swiper-button"><GrFormNext className='header-top-bar__swiper-icon swiper-button-next' /></div>
+                                                </Swiper>
+                                            </Tab>
+                                            <Tab eventKey="detail" title={
+                                                <>
+                                                    <div className='btn-tab-modal'>Thông tin sản phẩm</div>
+                                                </>
+                                            }>
+                                                <Modal
+                                                    show={show}
+                                                    onHide={handleClose}
+                                                    backdrop="static"
+                                                    keyboard={false}
+                                                    className='product-detail__modal'
+                                                    size="lg" aria-labelledby="example-modal-long-title"
+                                                >
+                                                    <Modal.Body>
+                                                        I will not close if you click outside me. Don't even try to press
+                                                        escape key.
+                                                    </Modal.Body>
+                                                    <Modal.Footer>
+                                                        <Button variant="secondary" onClick={handleClose}>
+                                                            Close
+                                                        </Button>
+                                                        <Button variant="primary">Understood</Button>
+                                                    </Modal.Footer>
+                                                </Modal>
+                                            </Tab>
+                                        </Tabs>
                                     </Modal.Body>
                                     <Modal.Footer>
                                         <Button variant="secondary" onClick={handleClose}>

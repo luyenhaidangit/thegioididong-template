@@ -138,3 +138,17 @@ align-items: center;
   .nav-link:hover{
     color: #000 !important;
   }
+
+  .modal-dialog{
+    min-width: 80%;
+    margin-top: 0 !important;
+  }
+
+  .modal-content{
+    min-width: 80%;
+    border-radius: 0 !important;
+  }
+
+  .btn-tab-modal{
+    padding: 12px 8px;
+  }
