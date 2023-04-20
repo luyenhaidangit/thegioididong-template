@@ -1,10 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import _ from 'lodash';
 import { GetProductDetailPage } from '../../../apis/productApiService';
 import { Button } from 'react-bootstrap';
 import "../../../assets/Styles/Components/Product/ProductDetail.css"
+import { AiFillStar, AiFillLike } from "react-icons/ai"
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import "swiper/css/navigation";
+import { GrFormNext, GrFormPrevious } from "react-icons/gr"
+
+const slide1 = require("../../../assets/Images/Slide/slide-product-detail-1.jpg")
+const slide2 = require("../../../assets/Images/Slide/slide-product-detail-2.jpg")
+const slide3 = require("../../../assets/Images/Slide/slide-product-detail-3.jpg")
 
 const ProductDetail = () => {
     const navigate = useNavigate();
@@ -212,11 +223,150 @@ const ProductDetail = () => {
     const handleClickValue = () => {
 
     }
-
-    console.log(productAttributes)
+    const navigationPrevRef = useRef(null);
+    const navigationNextRef = useRef(null);
 
     return (
         <div className="product-detail container">
+            <ul class="breadcrumb">
+                <li className='cursor-pointer'>
+                    <span>Điện thoại</span>
+                </li>
+                <li className='cursor-pointer'>
+                    <span>›</span>
+                    <span>Điện thoại Samsung</span>
+                </li>
+            </ul>
+
+            <div className='product-header d-flex justify-content-between align-items-center border-bottom pb-3'>
+                <div className='product-header__start d-flex align-items-center'>
+                    <h1 className='product-header__name me-2 mb-0'>Điện thoại Samsung Galaxy S23 5G 128GB</h1>
+                    <div class="product-header__rating d-flex align-items-center gap-2">
+                        <div className='cursor-pointer'>
+                            <AiFillStar size={14} color='FB6E2E' />
+                            <AiFillStar size={14} color='FB6E2E' />
+                            <AiFillStar size={14} color='FB6E2E' />
+                            <AiFillStar size={14} color='FB6E2E' />
+                            <AiFillStar size={14} color='FB6E2E' />
+                            <AiFillStar size={14} color='FB6E2E' />
+                        </div>
+                        <div class="product-header__rating-count cursor-pointer">12 <span>đánh giá</span></div>
+                    </div>
+                </div>
+                <div className='product-header__end'>
+                    <div className='product-header__link d-flex gap-2'>
+                        <div className='product-header__link-item d-flex align-items-center cursor-pointer'>
+                            <AiFillLike />
+                            Thích
+                        </div>
+                        <div className='product-header__link-item d-flex align-items-center cursor-pointer'>
+                            Chia sẻ
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className='product-body'>
+                <div className='product-body__start col-8 pt-3'>
+                    <div className='product-body__gallery d-flex flex-column-reverse'>
+                        <Tabs
+                            defaultActiveKey="home"
+                            id="uncontrolled-tab-example"
+                            className="mb-3"
+                        >
+                            <Tab eventKey="home" title="Home">
+                                <Swiper
+                                    spaceBetween={50}
+                                    slidesPerView={1}
+                                    loop={true}
+                                    speed={0}
+                                    navigation={{
+                                        prevEl: navigationPrevRef.current,
+                                        nextEl: navigationNextRef.current,
+                                    }}
+                                    onBeforeInit={(swiper) => {
+                                        swiper.params.navigation.prevEl = navigationPrevRef.current;
+                                        swiper.params.navigation.nextEl = navigationNextRef.current;
+                                    }}
+                                >
+                                    <SwiperSlide className='product-slide__item d-flex align-items-center justify-content-center' key={`slide-header-top-bar`}>
+                                        <img className='product-slide__item-img' src={slide1} alt={""} />
+                                    </SwiperSlide>
+                                    <SwiperSlide className='product-slide__item d-flex align-items-center justify-content-center' key={`slide-header-top-bar`}>
+                                        <img className='product-slide__item-img' src={slide2} alt={""} />
+                                    </SwiperSlide>
+                                    <SwiperSlide className='product-slide__item d-flex align-items-center justify-content-center' key={`slide-header-top-bar`}>
+                                        <img className='product-slide__item-img' src={slide3} alt={""} />
+                                    </SwiperSlide>
+
+                                    <div ref={navigationPrevRef} className="header-top-bar__swiper-button"><GrFormPrevious className='header-top-bar__swiper-icon swiper-button-prev' /></div>
+                                    <div ref={navigationNextRef} className="header-top-bar__swiper-button"><GrFormNext className='header-top-bar__swiper-icon swiper-button-next' /></div>
+                                </Swiper>
+                            </Tab>
+                            <Tab eventKey="profile" title="Profile">
+                                <Swiper
+                                    spaceBetween={50}
+                                    slidesPerView={1}
+                                    loop={true}
+                                    speed={0}
+                                    navigation={{
+                                        prevEl: navigationPrevRef.current,
+                                        nextEl: navigationNextRef.current,
+                                    }}
+                                    onBeforeInit={(swiper) => {
+                                        swiper.params.navigation.prevEl = navigationPrevRef.current;
+                                        swiper.params.navigation.nextEl = navigationNextRef.current;
+                                    }}
+                                >
+                                    <SwiperSlide className='product-slide__item d-flex align-items-center justify-content-center' key={`slide-header-top-bar`}>
+                                        <img className='product-slide__item-img' src={slide1} alt={""} />
+                                    </SwiperSlide>
+                                    <SwiperSlide className='product-slide__item d-flex align-items-center justify-content-center' key={`slide-header-top-bar`}>
+                                        <img className='product-slide__item-img' src={slide2} alt={""} />
+                                    </SwiperSlide>
+                                    <SwiperSlide className='product-slide__item d-flex align-items-center justify-content-center' key={`slide-header-top-bar`}>
+                                        <img className='product-slide__item-img' src={slide3} alt={""} />
+                                    </SwiperSlide>
+
+                                    <div ref={navigationPrevRef} className="header-top-bar__swiper-button"><GrFormPrevious className='header-top-bar__swiper-icon swiper-button-prev' /></div>
+                                    <div ref={navigationNextRef} className="header-top-bar__swiper-button"><GrFormNext className='header-top-bar__swiper-icon swiper-button-next' /></div>
+                                </Swiper>
+                            </Tab>
+                            <Tab eventKey="contact" title="Contact">
+                                <Swiper
+                                    spaceBetween={50}
+                                    slidesPerView={1}
+                                    loop={true}
+                                    speed={0}
+                                    navigation={{
+                                        prevEl: navigationPrevRef.current,
+                                        nextEl: navigationNextRef.current,
+                                    }}
+                                    onBeforeInit={(swiper) => {
+                                        swiper.params.navigation.prevEl = navigationPrevRef.current;
+                                        swiper.params.navigation.nextEl = navigationNextRef.current;
+                                    }}
+                                >
+                                    <SwiperSlide className='product-slide__item d-flex align-items-center justify-content-center' key={`slide-header-top-bar`}>
+                                        <img className='product-slide__item-img' src={slide1} alt={""} />
+                                    </SwiperSlide>
+                                    <SwiperSlide className='product-slide__item d-flex align-items-center justify-content-center' key={`slide-header-top-bar`}>
+                                        <img className='product-slide__item-img' src={slide2} alt={""} />
+                                    </SwiperSlide>
+                                    <SwiperSlide className='product-slide__item d-flex align-items-center justify-content-center' key={`slide-header-top-bar`}>
+                                        <img className='product-slide__item-img' src={slide3} alt={""} />
+                                    </SwiperSlide>
+
+                                    <div ref={navigationPrevRef} className="header-top-bar__swiper-button"><GrFormPrevious className='header-top-bar__swiper-icon swiper-button-prev' /></div>
+                                    <div ref={navigationNextRef} className="header-top-bar__swiper-button"><GrFormNext className='header-top-bar__swiper-icon swiper-button-next' /></div>
+                                </Swiper>
+                            </Tab>
+                        </Tabs>
+                    </div>
+                </div>
+
+            </div>
+
             <h3>{product.name}</h3>
             <h4 className='text-danger'>{product.originalPrice}</h4>
             {
@@ -262,7 +412,7 @@ const ProductDetail = () => {
             }
 
             <Button className='btn btm-primary d-flex mt-4' onClick={handleButtonClick}>Mua ngay</Button>
-        </div>
+        </div >
     )
 }
 
