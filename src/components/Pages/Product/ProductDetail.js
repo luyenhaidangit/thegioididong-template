@@ -12,10 +12,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/navigation";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr"
+import Modal from 'react-bootstrap/Modal';
 
 const slide1 = require("../../../assets/Images/Slide/slide-product-detail-1.jpg")
 const slide2 = require("../../../assets/Images/Slide/slide-product-detail-2.jpg")
 const slide3 = require("../../../assets/Images/Slide/slide-product-detail-3.jpg")
+const icon1 = require("../../../assets/Images/Icon/medal.png")
+const checkListIcon = require("../../../assets/Images/Icon/check-list-icon.png")
+const icon2 = require("../../../assets/Images/Icon/product-detail-icon-1.jpg")
+const icon3 = require("../../../assets/Images/Icon/product-detail-icon-2.jpg")
 
 const ProductDetail = () => {
     const navigate = useNavigate();
@@ -25,6 +30,24 @@ const ProductDetail = () => {
     const [productVariants, setProductVariants] = useState(null);
     const [productAttributes, setProductAttributes] = useState([]);
     const [valueAttributeClick, setValueAttributeClick] = useState({})
+
+    const [show, setShow] = useState(false);
+    const [activeTab, setActiveTab] = useState('home');
+
+    const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
+    const handleModalDetail = () => {
+        setShow(true);
+    };
+
+    const handleSelect = (key) => {
+        if (key === 'detail') {
+            // Xử lý sự kiện click trên tab thứ hai
+            setShow(true);
+            return false;
+        }
+        setActiveTab(key)
+    };
 
     useEffect(() => {
         fetchProductDetailPage(idVariantCurrent);
@@ -270,11 +293,21 @@ const ProductDetail = () => {
                 <div className='product-body__start col-8 pt-3'>
                     <div className='product-body__gallery d-flex flex-column-reverse'>
                         <Tabs
-                            defaultActiveKey="home"
+                            activeKey={activeTab}
                             id="uncontrolled-tab-example"
-                            className="mb-3"
+                            className="product-slide__navs mb-3"
+                            onSelect={handleSelect}
                         >
-                            <Tab eventKey="home" title="Home">
+                            <Tab eventKey="home" title={<>
+                                <div className='product-slide__button d-flex flex-column mt-3'>
+                                    <div className='product-slide__button-img'>
+                                        <img className='' src={icon1} />
+                                    </div>
+                                    <span className='product-slide__button-title'>
+                                        Điểm nổi bật
+                                    </span>
+                                </div>
+                            </>}>
                                 <Swiper
                                     spaceBetween={50}
                                     slidesPerView={1}
@@ -303,7 +336,18 @@ const ProductDetail = () => {
                                     <div ref={navigationNextRef} className="header-top-bar__swiper-button"><GrFormNext className='header-top-bar__swiper-icon swiper-button-next' /></div>
                                 </Swiper>
                             </Tab>
-                            <Tab eventKey="profile" title="Profile">
+                            <Tab eventKey="profile" title={
+                                <>
+                                    <div className='product-slide__button d-flex flex-column mt-3'>
+                                        <div className='product-slide__button-img'>
+                                            <img className='' src={icon2} />
+                                        </div>
+                                        <span className='product-slide__button-title'>
+                                            Tím nhạt
+                                        </span>
+                                    </div>
+                                </>
+                            }>
                                 <Swiper
                                     spaceBetween={50}
                                     slidesPerView={1}
@@ -332,7 +376,18 @@ const ProductDetail = () => {
                                     <div ref={navigationNextRef} className="header-top-bar__swiper-button"><GrFormNext className='header-top-bar__swiper-icon swiper-button-next' /></div>
                                 </Swiper>
                             </Tab>
-                            <Tab eventKey="contact" title="Contact">
+                            <Tab eventKey="contact" title={
+                                <>
+                                    <div className='product-slide__button d-flex flex-column mt-3'>
+                                        <div className='product-slide__button-img'>
+                                            <img className='' src={icon3} />
+                                        </div>
+                                        <span className='product-slide__button-title'>
+                                            Kem
+                                        </span>
+                                    </div>
+                                </>
+                            }>
                                 <Swiper
                                     spaceBetween={50}
                                     slidesPerView={1}
@@ -360,6 +415,39 @@ const ProductDetail = () => {
                                     <div ref={navigationPrevRef} className="header-top-bar__swiper-button"><GrFormPrevious className='header-top-bar__swiper-icon swiper-button-prev' /></div>
                                     <div ref={navigationNextRef} className="header-top-bar__swiper-button"><GrFormNext className='header-top-bar__swiper-icon swiper-button-next' /></div>
                                 </Swiper>
+                            </Tab>
+                            <Tab eventKey="detail" title={
+                                <>
+                                    <div className='product-slide__button d-flex flex-column mt-3'>
+                                        <div className='product-slide__button-img'>
+                                            <img className='' src={checkListIcon} />
+                                        </div>
+                                        <span className='product-slide__button-title'>
+                                            Thông tin sản phẩm
+                                        </span>
+                                    </div>
+                                </>
+                            }>
+                                <Modal
+                                    show={show}
+                                    onHide={handleClose}
+                                    backdrop="static"
+                                    keyboard={false}
+                                >
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>Modal title</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        I will not close if you click outside me. Don't even try to press
+                                        escape key.
+                                    </Modal.Body>
+                                    <Modal.Footer>
+                                        <Button variant="secondary" onClick={handleClose}>
+                                            Close
+                                        </Button>
+                                        <Button variant="primary">Understood</Button>
+                                    </Modal.Footer>
+                                </Modal>
                             </Tab>
                         </Tabs>
                     </div>
