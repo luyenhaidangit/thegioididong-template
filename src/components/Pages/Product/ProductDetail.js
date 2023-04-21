@@ -13,6 +13,9 @@ import 'swiper/css';
 import "swiper/css/navigation";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr"
 import Modal from 'react-bootstrap/Modal';
+import FormatCurrency from '../../../helpers/Strings/FormatCurrency';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const slide1 = require("../../../assets/Images/Slide/slide-product-detail-1.jpg")
 const slide2 = require("../../../assets/Images/Slide/slide-product-detail-2.jpg")
@@ -222,25 +225,68 @@ const ProductDetail = () => {
         // setValueAttributeClick
     };
 
-    const handleButtonClick = () => {
-        const quantity = window.prompt('Số lượng cần mua?');
-        if (quantity && !isNaN(quantity)) {
+    const handleButtonClick = async  () => {
+        const MySwal = withReactContent(Swal)
 
-            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-            const existingItem = cart.find(item => item.id === product.id);
-            if (existingItem) {
+        MySwal.fire({
+            title: 'Nhập số lượng cần mua',
+            input: 'number',
+            inputAttributes: {
+              autocapitalize: 'off'
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Xác nhận',
+            cancelButtonText: 'Bỏ qua',
+            showLoaderOnConfirm: true,
+            preConfirm: (login) => {
+              return fetch(`//api.github.com/users/${login}`)
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error(response.statusText)
+                  }
+                  return response.json()
+                })
+                .catch(error => {
+                  Swal.showValidationMessage(
+                    `Request failed: ${error}`
+                  )
+                })
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+          }).then((result)=>{
+            if (result.isConfirmed) {
+                const quantity = result?.value?.login;
+              
+             if (quantity && !isNaN(quantity)) {
 
-                existingItem.quantity += Number(quantity);
-            } else {
+              const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+              const existingItem = cart.find(item => item.id === product.id);
+             if (existingItem) {
+
+                    existingItem.quantity += Number(quantity);
+             } else {
 
                 cart.push({
                     ...product,
                     quantity: Number(quantity)
                 });
-            }
+             }
             localStorage.setItem('cart', JSON.stringify(cart));
-            navigate("/gio-hang")
+           
         }
+         MySwal.fire(
+            'Thành công!',
+            'Sản phẩm bạn đặt mua đã được thêm vào giỏ hàng.',
+            'success'
+          ).then(()=>{
+            navigate("/gio-hang");
+          });
+      
+          // Chuyển trang
+          
+            }
+          })
+     
     };
 
     const handleClickValue = () => {
@@ -248,6 +294,8 @@ const ProductDetail = () => {
     }
     const navigationPrevRef = useRef(null);
     const navigationNextRef = useRef(null);
+
+
 
     return (
         <div className="product-detail container">
@@ -289,7 +337,7 @@ const ProductDetail = () => {
                 </div>
             </div>
 
-            <div className='product-body'>
+            <div className='product-body d-flex gap-4'>
                 <div className='product-body__start col-8 pt-3'>
                     <div className='product-body__gallery d-flex flex-column-reverse'>
                         <Tabs
@@ -553,16 +601,13 @@ const ProductDetail = () => {
                         </Tabs>
                     </div>
                 </div>
-
-            </div>
-
-            <h3>{product.name}</h3>
-            <h4 className='text-danger'>{product.originalPrice}</h4>
-            {
+                <div className='product-body__end col-4 pt-3'>
+                    <div className='btn-select-attribute'>
+                    {
                 productAttributes.map((attribute, attributeIndex) => {
                     return (
                         <>
-                            <h4>{attribute.name}</h4>
+                            <div className='mb-2'>
                             {
                                 attribute.attributeValues.map((value, valueIndex) => {
                                     return (
@@ -571,7 +616,7 @@ const ProductDetail = () => {
                                                 value.value && value.isSelected === true &&
                                                 <>
                                                     {
-                                                        <Button onClick={() => { handleClickAttributeValue(attributeIndex, valueIndex); handleClickValue() }} className='btn btn-primary me-3'>{value.value}</Button>
+                                                        <div onClick={() => { handleClickAttributeValue(attributeIndex, valueIndex); handleClickValue() }} className='button-attribute-value active me-3'>{value.value}</div>
                                                     }
                                                 </>
                                             }
@@ -581,11 +626,11 @@ const ProductDetail = () => {
                                                 <>
                                                     {
                                                         valueAttributeClick && value.disable &&
-                                                        <Button className={"btn btn-danger me-3"}>{value.value}</Button>
+                                                        <div className={"button-attribute-value me-3"}>{value.value}</div>
                                                     }
                                                     {
                                                         value.disable !== true &&
-                                                        <Button onClick={() => { handleClickAttributeValue(attributeIndex, valueIndex); handleClickValue() }} className={"btn btn-secondary me-3"}>{value.value}</Button>
+                                                        <div onClick={() => { handleClickAttributeValue(attributeIndex, valueIndex); handleClickValue() }} className={"button-attribute-value me-3"}>{value.value}</div>
                                                     }
                                                 </>
                                             }
@@ -593,14 +638,44 @@ const ProductDetail = () => {
                                     )
                                 })
                             }
-
-
+                            </div>
                         </>
                     )
                 })
             }
+                    </div>
+                    <div className='btn-product-price py-3'>
+                        <span className='btn-product-price__original-price'>{product.originalPrice > 0? FormatCurrency(product.originalPrice): null}</span>
+                        <span className='btn-product-price__old-price ms-2'>22.990.000₫</span>
+                        <span class="product-card__item-discount-percentage ms-2">-5%</span>
+                    </div>
+                    <div className='card-promo mt-2'>
+                        <div className='card-promo__top'>
+                            <div className='card-promo__top-title'>
+                            Khuyến mãi
+                            </div>
+                            <div>
+                            Giá và khuyến mãi dự kiến áp dụng đến 23:00 | 24/04
+                            </div>
+                        </div>
+                        <div className='card-promo__body'>
+                            <div className='card-promo__item d-flex'>
+                                <span class="card-promo__item-number">1</span>
+                                <p className='ps-2'>Tặng gói bảo hành mở rộng 12 tháng (số lượng có hạn, không kèm Trả góp 0% và Thu cũ Đổi mới)</p>
+                            </div>
+                        </div>  
+                    </div>
+                    <div className='button-buy-card'>
+                        <div className='button-buy-cart mt-4' onClick={handleButtonClick}>Mua ngay</div>
+                    </div>
+                </div>            
+            </div>
 
-            <Button className='btn btm-primary d-flex mt-4' onClick={handleButtonClick}>Mua ngay</Button>
+            <h3>{product.name}</h3>
+            <h4 className='text-danger'>{product.originalPrice}</h4>
+            
+
+           
         </div >
     )
 }

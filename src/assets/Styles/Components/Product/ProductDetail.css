@@ -152,3 +152,89 @@ align-items: center;
   .btn-tab-modal{
     padding: 12px 8px;
   }
+
+  .button-attribute-value{
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    color: #333;
+    display: inline-block;
+    font-size: 12px;
+    min-width: 66px;
+    padding: 0 8px;
+    text-align: center;
+    margin-right: 2px;
+    vertical-align: top;
+    height: 36px;
+    line-height: 36px;
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .button-attribute-value.active{
+    border-color: #2f80ed;
+    color: #2f80ed;
+  }
+
+  .button-attribute-value.disable{
+    border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  }
+
+  .btn-product-price__original-price{
+    color: #d0021c;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .btn-product-price__old-price{
+    font-weight: 500;
+  color: #666;
+  font-size: 16px;
+  text-decoration-line: line-through;
+  }
+
+  .card-promo{
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  .card-promo__top{
+    background-color: #f6f6f6;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 8px 10px;
+    max-width: 100% !important;
+  }
+
+  .card-promo__body{
+    padding: 15px 10px 10px 10px;
+  }
+
+  .card-promo__item-number{
+    background-color: #4a90e2;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    float: left;
+    height: 16px;
+    line-height: 16px;
+    margin-top: 2px;
+    text-align: center;
+    width: 32px;
+  }
+
+  .button-buy-cart{
+    background-color: #fb6e2e;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    font-size: 15px;
+    padding: 14px 10px;
+    text-align: center;
+    cursor: pointer;
+  }
