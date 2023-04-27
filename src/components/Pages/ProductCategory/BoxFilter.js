@@ -30,7 +30,7 @@ const BoxFilter = (props) => {
     const { attributeFilters } = props;
     const { nameCategory } = props;
 
-    const [values, setValues] = useState([0, 0]);
+    const [rangePrice, setRangePrice] = useState([0, 0]);
 
 
     // Handle submit
@@ -48,17 +48,29 @@ const BoxFilter = (props) => {
         }
     }
 
+    const handleSelectedRangePrice = (item)=>{
+        console.log(item)
+        if(item?.startPrice===0||item?.startPrice<=startPrice){
+            item.startPrice = startPrice;
+        }
+
+        if(item?.endPrice===0){
+            item.endPrice = endPrice;
+        }
+
+        setRangePrice([item?.startPrice,item?.endPrice]);
+    }
+
     console.log(selectedBrands)
 
     useEffect(() => {
-        setValues([startPrice, endPrice]);
+        setRangePrice([startPrice, endPrice]);
     }, [startPrice, endPrice]);
 
     console.log(startPrice)
 
     const changeRangePrice = (values) => {
-        console.log(values)
-        setValues(values)
+        setRangePrice(values)
     }
 
     console.log(productAttributesFilter)
@@ -130,7 +142,7 @@ const BoxFilter = (props) => {
                                     rangePrices && rangePrices.length > 0 &&
                                     rangePrices.map((item, index) => {
                                         return (
-                                            <div className='box-filter__item-filter box-filter__item-filter__text'>
+                                            <div onClick={() => handleSelectedRangePrice(item)} className={`box-filter__item-filter box-filter__item-filter__text ${((item.startPrice===rangePrice[0]) && item.endPrice===rangePrice[1])?'active': ''}`}>
                                                 {item.name}
                                             </div>
                                         )
@@ -146,11 +158,11 @@ const BoxFilter = (props) => {
                                         <div class="row-input d-flex justify-content-center">
                                             <form class="range-price position-relative overflow-hidden">
                                                 <span class="range-left">
-                                                    <input value={formatInputPrice(values[0])} type="tel" />
+                                                    <input value={formatInputPrice(rangePrice[0])} type="tel" />
                                                     <label class="place-holder">.000đ</label>
                                                 </span>
                                                 <span class="range-right">
-                                                    <input value={formatInputPrice(values[1])} type="tel" />
+                                                    <input value={formatInputPrice(rangePrice[1])} type="tel" />
                                                     <label class="place-holder">.000đ</label>
                                                 </span>
                                             </form>
@@ -161,7 +173,7 @@ const BoxFilter = (props) => {
                                             step={10000}
                                             min={startPrice}
                                             max={endPrice}
-                                            values={values}
+                                            values={rangePrice}
                                             // onChange={values => setValues(values)}
                                             onChange={(values) => changeRangePrice(values)}
                                             renderTrack={({ props, children }) => (
@@ -172,7 +184,7 @@ const BoxFilter = (props) => {
                                                         height: '6px',
                                                         width: '100%',
                                                         background: getTrackBackground({
-                                                            values: values,
+                                                            values: rangePrice,
                                                             colors: ['#ccc', '#4a90e2', '#ccc'],
                                                             min: startPrice,
                                                             max: endPrice,
@@ -200,7 +212,7 @@ const BoxFilter = (props) => {
                                 </p>
                             </div>
                             <div className='filter-item__submit d-flex w-100 justify-content-center align-items-center gap-3'>
-                                <button class="filter-item__submit-close">Bỏ chọn</button>
+                                <button onClick={() => setRangePrice([startPrice,endPrice])} class="filter-item__submit-close">Bỏ chọn</button>
                                 <button class="filter-item__submit-readmore">Xác nhận</button>
                             </div>
                         </div>
