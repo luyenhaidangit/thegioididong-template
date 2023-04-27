@@ -32,6 +32,24 @@ const BoxFilter = (props) => {
 
     const [values, setValues] = useState([0, 0]);
 
+
+    // Handle submit
+    const [selectedBrands, setSelectedBrands] = useState([]);
+
+    const handleSelectedBrandItem = (item)=>{
+        const index = selectedBrands.indexOf(item.id);
+        if (index === -1) {
+            const newSelectedItems = [...selectedBrands, item.id];
+            setSelectedBrands(newSelectedItems);
+          } else {
+            const newSelectedItems = [...selectedBrands];
+            newSelectedItems.splice(index, 1);
+            setSelectedBrands(newSelectedItems);
+        }
+    }
+
+    console.log(selectedBrands)
+
     useEffect(() => {
         setValues([startPrice, endPrice]);
     }, [startPrice, endPrice]);
@@ -82,7 +100,7 @@ const BoxFilter = (props) => {
                                         brandsFilter && brandsFilter.length > 0 &&
                                         brandsFilter.map((item, index) => {
                                             return (
-                                                <div key={`box-filter__item-filter-brand-${index}`} className='box-filter__item-filter'>
+                                                <div key={`box-filter__item-filter-brand-${index}`} onClick={() => handleSelectedBrandItem(item)} className={`box-filter__item-filter ${selectedBrands.includes(item?.id) ? ' active' : ''}`}>
                                                     <img src={item.image} />
                                                 </div>
                                             )
@@ -90,7 +108,7 @@ const BoxFilter = (props) => {
                                     }
                                 </div>
                                 <div className='filter-item__submit d-flex w-100 justify-content-center align-items-center gap-3'>
-                                    <button class="filter-item__submit-close">Bỏ chọn</button>
+                                    <button onClick={() => setSelectedBrands([])} class="filter-item__submit-close">Bỏ chọn</button>
                                     <button class="filter-item__submit-readmore">Xác nhận</button>
                                 </div>
                             </div>

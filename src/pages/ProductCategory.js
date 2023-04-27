@@ -22,6 +22,7 @@ const ProductCategory = () => {
     const [boxFilter, setBoxFilter] = useState({});
     const [dataProductCategory, setDataProductCategory] = useState({});
 
+    const [rangePrices, setRangePrices] = useState([]);
     const [startPrice, setStartPrice] = useState(0);
     const [endPrice, setEndPrice] = useState(0);
     const [productAttributesFilter, setProductAttributesFilter] = useState([]);
@@ -56,12 +57,15 @@ const ProductCategory = () => {
         setStartPrice(res?.rangePricesFilter?.startPrice);
         setEndPrice(res?.rangePricesFilter?.endPrice);
         setProductAttributesFilter(res?.productAttributesFilter);
+        setRangePrices(res?.rangePricesFilter?.rangePrices);
     }
 
     const fetchListProduct = async (request) => {
         let res = await GetProductsProductCategoryDetailPage(request);
         setListProduct(res);
     }
+
+    console.log(boxFilter)
 
     console.log(listProduct)
 
@@ -75,6 +79,7 @@ const ProductCategory = () => {
                 setStartPrice={setStartPrice}
                 setEndPrice={setEndPrice}
                 endPrice={endPrice}
+                rangePrices={rangePrices}
                 productAttributesFilter={productAttributesFilter}
             />
             <ListProduct listProduct={listProduct} />

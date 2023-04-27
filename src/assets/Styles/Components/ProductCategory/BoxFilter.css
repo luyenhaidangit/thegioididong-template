@@ -189,6 +189,10 @@ span.range-right {
     color: #fff;
 }
 
+.box-filter__item-filter.active{
+    border-color: #2f80ed;
+}
+
 @media only screen and (max-width: 992px) {
     .box-filter-main {
         flex-wrap: nowrap !important;
