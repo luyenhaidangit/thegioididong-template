@@ -31,7 +31,7 @@ const BoxFilter = (props) => {
     const { nameCategory } = props;
 
     const [rangePrice, setRangePrice] = useState([0, 0]);
-
+    const [productAttributes,setProductAttributes]= useState([]);
 
     // Handle submit
     const [selectedBrands, setSelectedBrands] = useState([]);
@@ -61,7 +61,38 @@ const BoxFilter = (props) => {
         setRangePrice([item?.startPrice,item?.endPrice]);
     }
 
-    console.log(selectedBrands)
+    // const handleSelectedProductAttribute = (item,value)=>{
+    //     console.log(item)
+    //     console.log(value)
+    // }
+
+    const handleSelectedProductAttribute = (item, value) => {
+        // Tìm vị trí của đối tượng "productAttributes" có "id" tương ứng với "item.id"
+        const index = productAttributes.findIndex(attr => attr.id === item.id);
+        
+        // Nếu tìm thấy đối tượng có "id" tương ứng
+        if (index !== -1) {
+          // Kiểm tra xem "value.id" đã tồn tại trong mảng "attributeValueIds" chưa
+          if (!productAttributes[index].attributeValueIds.includes(value.id)) {
+            // Nếu chưa tồn tại, thêm "value.id" vào mảng "attributeValueIds"
+            productAttributes[index].attributeValueIds.push(value.id);
+            
+            // Cập nhật lại trạng thái "productAttributes" của ứng dụng hoặc hệ thống
+            setProductAttributes(productAttributes);
+          }
+        } else {
+          // Nếu không tìm thấy, tạo một đối tượng mới và thêm vào mảng "productAttributes"
+          const newAttribute = {
+            id: item.id,
+            attributeValueIds: [value.id]
+          };
+          productAttributes.push(newAttribute);
+          
+          // Cập nhật lại trạng thái "productAttributes" của ứng dụng hoặc hệ thống
+          setProductAttributes(productAttributes);
+        }
+      }
+      
 
     useEffect(() => {
         setRangePrice([startPrice, endPrice]);
@@ -237,8 +268,19 @@ const BoxFilter = (props) => {
                                                 {
                                                     item?.attributeValueProducts && item?.attributeValueProducts?.length > 0 &&
                                                     item?.attributeValueProducts.map((value) => {
+                                                        // let idSelected = false;
+                                                        // const index = productAttributes.findIndex(attr => attr.id === item.id);
+
+                                                        // console.log(index)
+
+                                                        // if(index!==1){
+                                                        //     if (productAttributes[index].attributeValueIds.includes(value.id)) {
+                                                        //         // Nếu chưa tồn tại, thêm "value.id" vào mảng "attributeValueIds"
+                                                        //         idSelected = true;
+                                                        //       }
+                                                        // }
                                                         return (
-                                                            <div className='box-filter__item-filter box-filter__item-filter__text'>
+                                                            <div onClick={() => handleSelectedProductAttribute(item,value)} className={`box-filter__item-filter box-filter__item-filter__text ${idSelected=== true ?'active':''}`}>
                                                                 {value?.value}
                                                             </div>
                                                         )
