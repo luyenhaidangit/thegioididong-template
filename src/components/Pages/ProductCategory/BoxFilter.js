@@ -76,13 +76,16 @@ const BoxFilter = (props) => {
     // }, [rangePrice]);
 
     const handleSumitFilterRange = ()=>{
+        // if(selectedBrands.length===0){
+        //     setSelectedBrands = null
+        // }
         const request = {
             productCategoryIds: [props?.id],
             pageIndex: 1,
             pageSize: 20,
             startPrice: rangePrice[0],
             endPrice: rangePrice[1],
-            brandIds: selectedBrands,
+            // brandIds: selectedBrands,
             productAttributes: productAttributes,
         }
 
