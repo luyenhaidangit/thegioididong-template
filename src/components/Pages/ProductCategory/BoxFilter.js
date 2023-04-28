@@ -82,7 +82,11 @@ const BoxFilter = (props) => {
             pageSize: 20,
             startPrice: rangePrice[0],
             endPrice: rangePrice[1],
+            brandIds: selectedBrands,
+            productAttributes: productAttributes,
         }
+
+        console.log(request)
         fetchListProduct(request);
     }
 
@@ -191,7 +195,7 @@ const BoxFilter = (props) => {
                                 </div>
                                 <div className='filter-item__submit d-flex w-100 justify-content-center align-items-center gap-3'>
                                     <button onClick={() => setSelectedBrands([])} className="filter-item__submit-close">Bỏ chọn</button>
-                                    <button className="filter-item__submit-readmore">Xác nhận</button>
+                                    <button onClick={()=> handleSumitFilterRange()} className="filter-item__submit-readmore">Xác nhận</button>
                                 </div>
                             </div>
 
@@ -318,7 +322,7 @@ const BoxFilter = (props) => {
                                             </div>
                                             <div className='filter-item__submit d-flex w-100 justify-content-center align-items-center gap-3'>
                                                 <button className="filter-item__submit-close">Bỏ chọn</button>
-                                                <button onClick={() => handleSelectedSubmitProductAttribute()} className="filter-item__submit-readmore">Xác nhận</button>
+                                                <button onClick={()=> handleSumitFilterRange()} className="filter-item__submit-readmore">Xác nhận</button>
                                             </div>
                                         </div>
                                     </Menu>
