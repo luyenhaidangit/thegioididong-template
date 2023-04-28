@@ -20,7 +20,7 @@ import "../../../assets/Styles/Components/ProductCategory/BoxFilter.css"
 const BoxFilter = (props) => {
     const { brandsFilter } = props;
     const { rangePrices } = props;
-
+    console.log(props)
     const { startPrice } = props;
     const { setStartPrice } = props;
     const { endPrice } = props;
@@ -31,7 +31,7 @@ const BoxFilter = (props) => {
     const { nameCategory } = props;
 
     const [rangePrice, setRangePrice] = useState([0, 0]);
-    const [productAttributes,setProductAttributes]= useState([]);
+    const [productAttributes, setProductAttributes ]= useState([]);
 
     // Handle submit
     const [selectedBrands, setSelectedBrands] = useState([]);
@@ -61,11 +61,6 @@ const BoxFilter = (props) => {
         setRangePrice([item?.startPrice,item?.endPrice]);
     }
 
-    // const handleSelectedProductAttribute = (item,value)=>{
-    //     console.log(item)
-    //     console.log(value)
-    // }
-
     const handleSelectedProductAttribute = (item, value) => {
         // Tìm vị trí của đối tượng "productAttributes" có "id" tương ứng với "item.id"
         const index = productAttributes.findIndex(attr => attr.id === item.id);
@@ -76,7 +71,6 @@ const BoxFilter = (props) => {
           if (!productAttributes[index].attributeValueIds.includes(value.id)) {
             // Nếu chưa tồn tại, thêm "value.id" vào mảng "attributeValueIds"
             productAttributes[index].attributeValueIds.push(value.id);
-            
             // Cập nhật lại trạng thái "productAttributes" của ứng dụng hoặc hệ thống
             setProductAttributes(productAttributes);
           }
@@ -88,10 +82,16 @@ const BoxFilter = (props) => {
           };
           productAttributes.push(newAttribute);
           
+         
           // Cập nhật lại trạng thái "productAttributes" của ứng dụng hoặc hệ thống
           setProductAttributes(productAttributes);
         }
+
+        // console.log(productAttributes)
       }
+
+
+   
       
 
     useEffect(() => {
@@ -104,12 +104,20 @@ const BoxFilter = (props) => {
         setRangePrice(values)
     }
 
+    const handleSelectedSubmitProductAttribute = ()=>{
+        console.log(productAttributes)
+    }
+
     console.log(productAttributesFilter)
 
     const formatInputPrice = (price) => {
         const formattedNumber = (price / 1000).toLocaleString('vi-VN');
         return formattedNumber;
     }
+
+    // useEffect(() => {
+    //     console.log("hahahahaha")
+    //   }, [productAttributes]);
 
     return (
         <div className='box-filter'>
@@ -151,8 +159,8 @@ const BoxFilter = (props) => {
                                     }
                                 </div>
                                 <div className='filter-item__submit d-flex w-100 justify-content-center align-items-center gap-3'>
-                                    <button onClick={() => setSelectedBrands([])} class="filter-item__submit-close">Bỏ chọn</button>
-                                    <button class="filter-item__submit-readmore">Xác nhận</button>
+                                    <button onClick={() => setSelectedBrands([])} className="filter-item__submit-close">Bỏ chọn</button>
+                                    <button className="filter-item__submit-readmore">Xác nhận</button>
                                 </div>
                             </div>
 
@@ -181,20 +189,20 @@ const BoxFilter = (props) => {
                                 }
                             </div>
                             <div className='select-filter-range d-flex'>
-                                <p class="range-toggle d-flex flex-column">
+                                <p className="range-toggle d-flex flex-column">
                                     <div className='select-filter-range__title'>
-                                        <span class="">Hoặc chọn mức giá phù hợp với bạn</span>
+                                        <span className="">Hoặc chọn mức giá phù hợp với bạn</span>
                                     </div>
                                     <div className='sele-filter-range__input-range mt-4 pb-4 d-flex justify-content-center'>
-                                        <div class="row-input d-flex justify-content-center">
-                                            <form class="range-price position-relative overflow-hidden">
-                                                <span class="range-left">
+                                        <div className="row-input d-flex justify-content-center">
+                                            <form className="range-price position-relative overflow-hidden">
+                                                <span className="range-left">
                                                     <input value={formatInputPrice(rangePrice[0])} type="tel" />
-                                                    <label class="place-holder">.000đ</label>
+                                                    <label className="place-holder">.000đ</label>
                                                 </span>
-                                                <span class="range-right">
+                                                <span className="range-right">
                                                     <input value={formatInputPrice(rangePrice[1])} type="tel" />
-                                                    <label class="place-holder">.000đ</label>
+                                                    <label className="place-holder">.000đ</label>
                                                 </span>
                                             </form>
                                         </div>
@@ -243,8 +251,8 @@ const BoxFilter = (props) => {
                                 </p>
                             </div>
                             <div className='filter-item__submit d-flex w-100 justify-content-center align-items-center gap-3'>
-                                <button onClick={() => setRangePrice([startPrice,endPrice])} class="filter-item__submit-close">Bỏ chọn</button>
-                                <button class="filter-item__submit-readmore">Xác nhận</button>
+                                <button onClick={() => setRangePrice([startPrice,endPrice])} className="filter-item__submit-close">Bỏ chọn</button>
+                                <button className="filter-item__submit-readmore">Xác nhận</button>
                             </div>
                         </div>
 
@@ -268,19 +276,9 @@ const BoxFilter = (props) => {
                                                 {
                                                     item?.attributeValueProducts && item?.attributeValueProducts?.length > 0 &&
                                                     item?.attributeValueProducts.map((value) => {
-                                                        // let idSelected = false;
-                                                        // const index = productAttributes.findIndex(attr => attr.id === item.id);
-
-                                                        // console.log(index)
-
-                                                        // if(index!==1){
-                                                        //     if (productAttributes[index].attributeValueIds.includes(value.id)) {
-                                                        //         // Nếu chưa tồn tại, thêm "value.id" vào mảng "attributeValueIds"
-                                                        //         idSelected = true;
-                                                        //       }
-                                                        // }
+                                                        console.log(productAttributesFilter)
                                                         return (
-                                                            <div onClick={() => handleSelectedProductAttribute(item,value)} className={`box-filter__item-filter box-filter__item-filter__text ${idSelected=== true ?'active':''}`}>
+                                                            <div onClick={() => handleSelectedProductAttribute(item,value)} className={`box-filter__item-filter box-filter__item-filter__text`}>
                                                                 {value?.value}
                                                             </div>
                                                         )
@@ -288,21 +286,12 @@ const BoxFilter = (props) => {
                                                 }
                                             </div>
                                             <div className='filter-item__submit d-flex w-100 justify-content-center align-items-center gap-3'>
-                                                <button class="filter-item__submit-close">Bỏ chọn</button>
-                                                <button class="filter-item__submit-readmore">Xác nhận</button>
+                                                <button className="filter-item__submit-close">Bỏ chọn</button>
+                                                <button onClick={() => handleSelectedSubmitProductAttribute()} className="filter-item__submit-readmore">Xác nhận</button>
                                             </div>
                                         </div>
                                     </Menu>
                                 </>
-                                // <div key={`filter-attribute-${index}`} className='filter-item filter-attribute'>
-                                //     <div className='filter-item__title d-flex align-items-center gap-1'>
-                                //         {item.name}
-                                //         <IoMdArrowDropdown />
-                                //     </div>
-                                //     <div className='filter-item__box'>
-
-                                //     </div>
-                                // </div>
                             )
                         })
                     }
@@ -338,7 +327,7 @@ const BoxFilter = (props) => {
                                                     item?.attributeValues && item?.attributeValues?.length > 0 &&
                                                     item?.attributeValues?.map((itemValue, index) => {
                                                         return (
-                                                            <div key={`filter-item__attribute-${index}`} className='filter-item__brand-title'>
+                                                            <div onClick={()=>console.log(productAttributes)} key={`filter-item__attribute-${index}`} className='filter-item__brand-title'>
                                                                 {
                                                                     itemValue.value
                                                                 }
