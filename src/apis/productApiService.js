@@ -17,7 +17,7 @@ const GetProductDetailPage = (id) => {
 }
 
 const GetProductsProductCategoryDetailPage = (request) => {
-    return axios.post('api/Product/GetProductsProductCategoryDetailPage', request);
+    return axios.post('api/product', request);
 }
 
 export {

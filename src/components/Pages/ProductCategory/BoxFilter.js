@@ -11,6 +11,7 @@ import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 import Form from 'react-bootstrap/Form';
 import { Range, getTrackBackground } from 'react-range';
+import { GetProductsProductCategoryDetailPage } from '../../../apis/productApiService';
 
 
 // Styles
@@ -59,6 +60,36 @@ const BoxFilter = (props) => {
         }
 
         setRangePrice([item?.startPrice,item?.endPrice]);
+
+        // props.setStartPrice([item?.startPrice])
+    }
+
+    // useEffect(() => {
+    //     const request = {
+    //         productCategoryIds: [props?.id],
+    //         pageIndex: 1,
+    //         pageSize: 20,
+    //         startPrice: rangePrice[0],
+    //         endPrice: rangePrice[1],
+    //     }
+    //     fetchListProduct(request);
+    // }, [rangePrice]);
+
+    const handleSumitFilterRange = ()=>{
+        const request = {
+            productCategoryIds: [props?.id],
+            pageIndex: 1,
+            pageSize: 20,
+            startPrice: rangePrice[0],
+            endPrice: rangePrice[1],
+        }
+        fetchListProduct(request);
+    }
+
+    const fetchListProduct = async (request) => {
+        let res = await GetProductsProductCategoryDetailPage(request);
+        console.log(res)
+        props.setListProduct(res?.items);
     }
 
     const handleSelectedProductAttribute = (item, value) => {
@@ -252,7 +283,7 @@ const BoxFilter = (props) => {
                             </div>
                             <div className='filter-item__submit d-flex w-100 justify-content-center align-items-center gap-3'>
                                 <button onClick={() => setRangePrice([startPrice,endPrice])} className="filter-item__submit-close">Bỏ chọn</button>
-                                <button className="filter-item__submit-readmore">Xác nhận</button>
+                                <button onClick={()=> handleSumitFilterRange()} className="filter-item__submit-readmore">Xác nhận</button>
                             </div>
                         </div>
 

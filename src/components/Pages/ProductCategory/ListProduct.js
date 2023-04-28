@@ -43,7 +43,7 @@ const ListProduct = (props) => {
             <div className='container'>
                 <div className='sort-box d-flex justify-content-between'>
                     <div className='sort-box__left d-flex gap-3'>
-                        <span className='sort-box__total font-weight-bold'>117 điện thoại</span>
+                        <span className='sort-box__total font-weight-bold'>{listProduct.length} điện thoại</span>
                         <Form className='sort-box__checkbox'>
                             <Form.Group controlId="sortOptions" className='d-flex align-items-center gap-3'>
                                 <Form.Check
@@ -89,129 +89,59 @@ const ListProduct = (props) => {
                 </div>
                 <div className='product-box mt-3'>
                     <div className="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-2">
-                        {
-                            listProduct && listProduct.length > 0 &&
-                            listProduct.map((item, index) => {
-                                return (
-                                    <div className='col' key={`latestProducts-${index}`}>
-                                        <div className='product-card__item product-category__product-item px-3 cursor-pointer border' key={`product__item-${index}`}>
-                                            <div className='product-card__item-label d-flex gap-3 mb-3'>
-                                                {
-                                                    item?.isInterest && item.isInterest === true
-                                                    && <span className='product-card__item-label__item' style={{ backgroundColor: "#f1f1f1", color: "#333" }}>Trả góp 0%</span>
-                                                }
-                                            </div>
-                                            <div className='product-card__item-image d-flex justify-content-center mb-3'>
-                                                <img className='img-fluid' src={item.image} alt={"Product Card Imgae"} />
-                                            </div>
-                                            {
-                                                item?.badgeProduct &&
-                                                <div className='product-card__item-note d-flex gap-3 mb-2'>
-                                                    <span className='product-card__item-note__item d-inline-flex align-items-center gap-1 cursor-pointer' style={{ background: item?.badgeProduct?.backgroundColor, borderRadius: "20px", color: "#fff", padding: "0 10px 0 0", }}>
-                                                        {
-                                                            item?.badgeProduct?.image &&
-                                                            <img className='product-card__item-note__item-img' src={item?.badgeProduct?.image} alt="product-card__item-note__item" />
-                                                        }
-                                                        {
-                                                            item?.badgeProduct?.name
-                                                        }
-                                                    </span>
-                                                </div>
-                                            }
-
-                                            <h3 className='product-card__item-name mb-1'>
-                                                {item.name}
-                                            </h3>
-                                            {
-                                                item?.specialAttribute && item?.specialAttribute.length > 0 &&
-                                                <div className='product-card__item-label d-flex gap-1 mb-2'>
-                                                    {
-                                                        item?.specialAttribute && item?.specialAttribute.length > 0 &&
-                                                        item?.specialAttribute?.map((value, index) => {
-                                                            return (
-                                                                <span key={`product-card__item-label__item-${index}`} className='product-card__item-label__item' style={{ backgroundColor: "#f1f1f1", color: "#333" }}>{value.value}</span>
-                                                            )
-                                                        })
-                                                    }
-                                                </div>
-                                            }
-                                            {
-                                                item?.productAttributesOption && item?.productAttributesOption.length > 0 &&
-                                                <div className='product-card__item-label d-flex gap-1 mb-1'>
-                                                    {
-                                                        item?.productAttributesOption && item?.productAttributesOption.length > 0 &&
-                                                        item?.productAttributesOption?.map((attribute, index) => {
-                                                            return (
-                                                                <div key={`product-card__item-label-attribute__item-${index}`} className='d-flex gap-1'>
-                                                                    {/* {
-                                                                        value.selected && value.selected === true &&
-                                                                        <span className='product-card__item-label-attribute__item active' style={{ backgroundColor: "#f1f1f1", color: "#333" }}>{value.name}</span>
-                                                                    }
-
-                                                                    {
-                                                                        value.selected &&
-                                                                        <span className='product-card__item-label-attribute__item' style={{ backgroundColor: "#f1f1f1", color: "#333" }}>{value.name}</span>
-                                                                    } */}
-                                                                    {
-                                                                        attribute.attributeValueProducts && attribute.attributeValueProducts.length > 0 &&
-                                                                        attribute.attributeValueProducts.map((value) => {
-                                                                            return (
-                                                                                <>
-                                                                                    {
-                                                                                        // value?.selected && value?.selected === true &&
-                                                                                        <span className='product-card__item-label-attribute__item active' style={{ backgroundColor: "#f1f1f1", color: "#333" }}>{value.value}</span>
-                                                                                    }
-
-                                                                                    {
-                                                                                        value?.selected &&
-                                                                                        <span className='product-card__item-label-attribute__item active' style={{ backgroundColor: "#f1f1f1", color: "#333" }}>{value.value}</span>
-                                                                                    }
-                                                                                </>
-
-                                                                            )
-                                                                        })
-                                                                    }
+                    {
+                                            listProduct && listProduct.length > 0 &&
+                                            listProduct.map((item, index) => {
+                                                return (
+                                                    <div className='col' key={`latestProducts-${index}`}>
+                                                        <div className='product-card__item cursor-pointer' key={`hotdeal__item-${index}`}>
+                                                            {
+                                                                item.isInterest && item.isInterest === true &&
+                                                                <div className='product-card__item-label d-flex gap-3 mb-3'>
+                                                                    <span className='product-card__item-label__item' style={{ backgroundColor: "#f1f1f1", color: "#333" }}>Trả góp 0%</span>
                                                                 </div>
-                                                            )
-                                                        })
-                                                    }
-                                                </div>
-                                            }
+                                                            }
+                                                            <div className='product-card__item-image d-flex justify-content-center mb-3'>
+                                                                <img className='img-fluid' src={item.image} alt={"Product Card Imgae"} />
+                                                            </div>
+                                                            {
+                                                                item.badgeProduct &&
+                                                                <div className='product-card__item-note d-flex gap-3 mb-2'>
+                                                                    <span className='product-card__item-note__item d-inline-flex align-items-center gap-1 cursor-pointer' style={{ background: item?.badgeProduct?.backgroundColor, borderRadius: "20px", color: "#fff", padding: "0 6px 0 0", }}>
+                                                                        <img className='product-card__item-note__item-img' src={item?.badgeProduct?.image} alt="product-card__item-note__item" />
+                                                                        {
+                                                                            item?.badgeProduct?.name
+                                                                        }
+                                                                    </span>
+                                                                </div>
+                                                            }
 
-                                            {
-                                                item.discountedPrice && item.discountedPrice !== item.originalPrice &&
-                                                <span className="text-decoration-line-through product-card__item-original-price mb-3">{FormatCurrency(item.originalPrice)}</span>
-                                            }
-                                            {
-                                                item.discountPercent &&
-                                                <span className='product-card__item-discount-percent ms-2'>-{item.discountPercent}%</span>
-                                            }
-                                            {
-                                                <p className='product-card__item-price mb-1'>{FormatCurrency(item.discountedPrice)}</p>
-                                            }
-                                            {
-                                                item.starRating > 0 &&
-                                                <>
-                                                    <p className='product-card__item-rating d-flex align-items-center mb-1'>
-                                                        <b className='product-card__item-number-star d-inline-flex align-items-center me-2'>{item.starRating} <AiFillStar /></b>
-                                                        ({item.reviewCount})
-                                                    </p>
-                                                </>
+                                                            <h3 className='product-card__item-name mb-1'>
+                                                                {item.name}
+                                                            </h3>
+                                                            {/* <p className='product-card__item-availability mb-1'>
+                                                    Hàng sắp về
+                                                </p> */}
+                                                            <strong className='product-card__item-price mb-1'>{FormatCurrency(item.discountedPrice)} <small className='product-card__item-discount-percentage ms-2'>-{item.discountPercent}%</small></strong>
+                                                            {
+                                                                item.starRating > 0 &&
+                                                                <>
+                                                                    <p className='product-card__item-rating d-flex align-items-center mb-1'>
+                                                                        <b className='product-card__item-number-star d-inline-flex align-items-center me-2'>{item.starRating} <AiFillStar /></b>
+                                                                        ({item.reviewCount})
+                                                                    </p>
+                                                                </>
 
-                                            }
+                                                            }
 
-
-
-
-                                            {/* 
-                                           
-                                            
-                                            <p className='product-card__item-comment p-0'>Giảm 3 triệu, Trả góp 0%, Thu cũ tài trợ 3 triệu, Ốp lưng BTS</p> */}
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
+                                                            {
+                                                                <p className='product-card__item-comment p-0 mt-1'>{item.shortDescription}</p>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })
+                                        }
 
                     </div>
                     <div className='readmore-btn d-flex justify-content-center mt-3 mb-0 cursor-pointer'>

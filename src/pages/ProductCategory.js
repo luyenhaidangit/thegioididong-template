@@ -35,10 +35,16 @@ const ProductCategory = () => {
         fetchDataProductCategory();
 
         const request = {
-            productCategoryId: id,
+            productCategoryIds: [id],
+            pageIndex: 1,
+            pageSize: 20,
         }
         fetchListProduct(request);
     }, [id]);
+
+    useEffect(() => {
+       console.log(startPrice)
+    }, [startPrice,endPrice]);
 
     // Function
     const fetchDataProductCategory = async () => {
@@ -62,7 +68,8 @@ const ProductCategory = () => {
 
     const fetchListProduct = async (request) => {
         let res = await GetProductsProductCategoryDetailPage(request);
-        setListProduct(res);
+        console.log(res)
+        setListProduct(res?.items);
     }
 
     console.log(boxFilter)
@@ -73,6 +80,7 @@ const ProductCategory = () => {
         <div className='bg-white'>
             <TopBanner slide={topBanner?.slide} bannerFirst={topBanner?.bannerFirst} bannerSecond={topBanner?.bannerSecond} />
             <BoxFilter
+                id={id}
                 nameCategory={dataProductCategory?.name}
                 brandsFilter={boxFilter?.brandsFilter}
                 startPrice={startPrice}
@@ -80,7 +88,9 @@ const ProductCategory = () => {
                 setEndPrice={setEndPrice}
                 endPrice={endPrice}
                 rangePrices={rangePrices}
+                setRangePrices={setRangePrices}
                 productAttributesFilter={productAttributesFilter}
+                setListProduct={setListProduct}
             />
             <ListProduct listProduct={listProduct} />
         </div>
