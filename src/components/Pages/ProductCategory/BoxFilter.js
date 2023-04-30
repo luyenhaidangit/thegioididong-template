@@ -59,23 +59,7 @@ const BoxFilter = (props) => {
         setRangePrice([item?.startPrice,item?.endPrice]);
     }
 
-    // useEffect(() => {
-    //     const request = {
-    //         productCategoryIds: [props?.id],
-    //         pageIndex: 1,
-    //         pageSize: 20,
-    //         startPrice: rangePrice[0],
-    //         endPrice: rangePrice[1],
-    //     }
-    //     fetchListProduct(request);
-    // }, [rangePrice]);
-
     const handleSumitFilterRange = ()=>{
-        // if(selectedBrands.length===0){
-        //     setSelectedBrands = null
-        // }
-        // productAttributes = productAttributes.length>0?productAttributes:null;
-
         const request = {
             productCategoryIds: [props?.id],
             pageIndex: 1,
@@ -96,38 +80,60 @@ const BoxFilter = (props) => {
         props.setListProduct(res?.items);
     }
 
-    const handleSelectedProductAttribute = (item, value) => {
-        // Tìm vị trí của đối tượng "productAttributes" có "id" tương ứng với "item.id"
-        const index = productAttributes.findIndex(attr => attr.id === item.id);
+    // const handleSelectedProductAttribute = (item, value) => {
+  
+    //     const index = productAttributes.findIndex(attr => attr.id === item.id);
         
-        // Nếu tìm thấy đối tượng có "id" tương ứng
-        if (index !== -1) {
-          // Kiểm tra xem "value.id" đã tồn tại trong mảng "attributeValueIds" chưa
-          if (!productAttributes[index].attributeValueIds.includes(value.id)) {
-            // Nếu chưa tồn tại, thêm "value.id" vào mảng "attributeValueIds"
-            productAttributes[index].attributeValueIds.push(value.id);
-            // Cập nhật lại trạng thái "productAttributes" của ứng dụng hoặc hệ thống
-            setProductAttributes(productAttributes);
-          }
-        } else {
-          // Nếu không tìm thấy, tạo một đối tượng mới và thêm vào mảng "productAttributes"
-          const newAttribute = {
-            id: item.id,
-            attributeValueIds: [value.id]
-          };
-          productAttributes.push(newAttribute);
-          
-         
-          // Cập nhật lại trạng thái "productAttributes" của ứng dụng hoặc hệ thống
-          setProductAttributes(productAttributes);
-        }
+    //     if (index !== -1) {
+    //       // Kiểm tra xem "value.id" đã tồn tại trong mảng "attributeValueIds" chưa
+    //       if (!productAttributes[index].attributeValueIds.includes(value.id)) {
+    //         // Nếu chưa tồn tại, thêm "value.id" vào mảng "attributeValueIds"
+    //         productAttributes[index].attributeValueIds.push(value.id);
+    //         // Cập nhật lại trạng thái "productAttributes" của ứng dụng hoặc hệ thống
+    //         setProductAttributes(productAttributes);
+    //       }
+    //     } else {
 
-        // console.log(productAttributes)
-      }
+    //       const newAttribute = {
+    //         id: item.id,
+    //         attributeValueIds: [value.id]
+    //       };
+    //       productAttributes.push(newAttribute);
+          
+    //       setProductAttributes(productAttributes);
+    //       console.log("olkklsdjflslk")
+    //     }
+    //   }
+
+    const handleSelectedProductAttribute = (item, value) => {
+        setProductAttributes(prevAttributes => {
+        const index = prevAttributes.findIndex(attr => attr.id === item.id);
+        if (index !== -1) {
+        if (!prevAttributes[index].attributeValueIds.includes(value.id)) {
+        const newAttributes = [...prevAttributes];
+        newAttributes[index] = {
+        ...newAttributes[index],
+        attributeValueIds: [...newAttributes[index].attributeValueIds, value.id],
+        };
+        return newAttributes;
+        }
+        } else {
+        return [
+        ...prevAttributes,
+        {
+        id: item.id,
+        attributeValueIds: [value.id],
+        },
+        ];
+        }
+        });
+        }
 
 
    
-      
+      useEffect(() => {
+        console.log("Thay doi")
+    }, [productAttributes]);
 
     useEffect(() => {
         setRangePrice([startPrice, endPrice]);
@@ -139,20 +145,10 @@ const BoxFilter = (props) => {
         setRangePrice(values)
     }
 
-    const handleSelectedSubmitProductAttribute = ()=>{
-        console.log(productAttributes)
-    }
-
-    console.log(productAttributesFilter)
-
     const formatInputPrice = (price) => {
         const formattedNumber = (price / 1000).toLocaleString('vi-VN');
         return formattedNumber;
     }
-
-    // useEffect(() => {
-    //     console.log("hahahahaha")
-    //   }, [productAttributes]);
 
     return (
         <div className='box-filter'>
@@ -296,6 +292,7 @@ const BoxFilter = (props) => {
                     {
                         productAttributesFilter && productAttributesFilter.length > 0 &&
                         productAttributesFilter.map((item, index) => {
+                            
                             return (
                                 <>
                                     <Menu
@@ -311,9 +308,11 @@ const BoxFilter = (props) => {
                                                 {
                                                     item?.attributeValueProducts && item?.attributeValueProducts?.length > 0 &&
                                                     item?.attributeValueProducts.map((value) => {
-                                                        console.log(productAttributesFilter)
+                                                        // console.log(value)
+                                                        const foundObject = productAttributes.find((object) => object.id === item.id);
+                                                        const isSelected = foundObject?.attributeValueIds.includes(value?.id)
                                                         return (
-                                                            <div onClick={() => handleSelectedProductAttribute(item,value)} className={`box-filter__item-filter box-filter__item-filter__text`}>
+                                                            <div onClick={() => handleSelectedProductAttribute(item,value)} className={`box-filter__item-filter box-filter__item-filter__text ${isSelected?'active':''}`}>
                                                                 {value?.value}
                                                             </div>
                                                         )
@@ -361,6 +360,7 @@ const BoxFilter = (props) => {
                                                 {
                                                     item?.attributeValues && item?.attributeValues?.length > 0 &&
                                                     item?.attributeValues?.map((itemValue, index) => {
+                                                        // console.log(item?.attributeValues)
                                                         return (
                                                             <div onClick={()=>console.log(productAttributes)} key={`filter-item__attribute-${index}`} className='filter-item__brand-title'>
                                                                 {
