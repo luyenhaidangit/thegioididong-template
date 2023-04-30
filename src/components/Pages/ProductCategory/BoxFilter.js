@@ -50,18 +50,13 @@ const BoxFilter = (props) => {
     }
 
     const handleSelectedRangePrice = (item)=>{
-        console.log(item)
         if(item?.startPrice===0||item?.startPrice<=startPrice){
             item.startPrice = startPrice;
         }
-
         if(item?.endPrice===0){
             item.endPrice = endPrice;
         }
-
         setRangePrice([item?.startPrice,item?.endPrice]);
-
-        // props.setStartPrice([item?.startPrice])
     }
 
     // useEffect(() => {
@@ -79,14 +74,16 @@ const BoxFilter = (props) => {
         // if(selectedBrands.length===0){
         //     setSelectedBrands = null
         // }
+        // productAttributes = productAttributes.length>0?productAttributes:null;
+
         const request = {
             productCategoryIds: [props?.id],
             pageIndex: 1,
             pageSize: 20,
             startPrice: rangePrice[0],
             endPrice: rangePrice[1],
-            // brandIds: selectedBrands,
-            productAttributes: productAttributes,
+            brandIds: selectedBrands.length>0?selectedBrands: null,
+            productAttributes: productAttributes.length>0?productAttributes:null,
         }
 
         console.log(request)
