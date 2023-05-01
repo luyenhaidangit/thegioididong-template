@@ -12,10 +12,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "swiper/css/navigation";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr"
+import {BsFillBoxFill} from "react-icons/gr"
 import Modal from 'react-bootstrap/Modal';
 import FormatCurrency from '../../../helpers/Strings/FormatCurrency';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import {AiOutlineInbox} from "react-icons/ai"
 
 const slide1 = require("../../../assets/Images/Slide/slide-product-detail-1.jpg")
 const slide2 = require("../../../assets/Images/Slide/slide-product-detail-2.jpg")
@@ -24,6 +26,9 @@ const icon1 = require("../../../assets/Images/Icon/medal.png")
 const checkListIcon = require("../../../assets/Images/Icon/check-list-icon.png")
 const icon2 = require("../../../assets/Images/Icon/product-detail-icon-1.jpg")
 const icon3 = require("../../../assets/Images/Icon/product-detail-icon-2.jpg")
+
+
+
 
 const ProductDetail = () => {
     const navigate = useNavigate();
@@ -600,6 +605,55 @@ const ProductDetail = () => {
                             </Tab>
                         </Tabs>
                     </div>
+                    <div class="accompanying-program-product">
+                                    <div class="row border-bottom">
+                                        <div class="col-12 col-md-6">
+                                            <div class="accompanying-program-product__item d-flex py-2">
+                                                {/* <AiOutlineInbox fontSize={40} className='me-2 text-primary'/> */}
+                                                <div class="product-item-core__text text-dark">   
+                                                    Hư gì đổi nấy <strong>12 tháng</strong> tại 3301 siêu thị toàn quốc (miễn phí tháng đầu) <a class="ms-2" href="#">Xem chi tiết</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-6">
+                                            <div class="accompanying-program-product__item d-flex py-2">
+                                                <i class="fad fa-shield-check text-primary me-2"></i>
+                                                <div class="product-item-core__text text-dark">   
+                                                    Bảo hành <strong>chính hãng điện thoại 1 năm</strong> tại các trung tâm bảo hành hãng <a class="ms-2" href="#">Xem chi tiết</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-md-6">
+                                            <div class="accompanying-program-product__item d-flex py-2">
+                                                <i class="fad fa-box text-primary me-2"></i>
+                                                <div class="product-item-core__text text-dark">   
+                                                    Bộ sản phẩm gồm: Hộp, Sách hướng dẫn, Cây lấy sim, Ốp lưng, Cáp Type C, Củ sạc nhanh Type C  <a class="ms-2" href="#">Xem chi tiết</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-12 col-md-6">
+
+                                        </div>
+                                    </div>
+                    </div>
+                    <div className='product-description'>
+                        <img className='w-100' src="https://cdn.tgdd.vn/Products/Images/42/251192/Kit/iphone-14-pro-max-note.jpg"/>
+                        <h3 class="article__content__title">Thông tin sản phẩm</h3>
+                        <h4>iPhone 14 Pro Max một siêu phẩm trong giới smartphone được nhà Táo tung ra thị trường vào tháng 09/2022. Máy trang bị con chip Apple A16 Bionic vô cùng mạnh mẽ, đi kèm theo đó là thiết kế hình màn hình mới, hứa hẹn mang lại những trải nghiệm đầy mới mẻ cho người dùng iPhone.</h4>
+                        <p>
+                        iPhone năm nay sẽ được thừa hưởng nét đặc trưng từ người anh iPhone 13 Pro Max, vẫn sẽ là khung thép không gỉ và mặt lưng kính cường lực kết hợp với tạo hình vuông vức hiện đại thông qua cách tạo hình phẳng ở các cạnh và phần mặt lưng.
+                        </p>
+                        <img className='w-100' src="https://cdn.tgdd.vn/Products/Images/42/251192/iphone-14-pro-max-041222-103237.jpg"/>
+                        <p>Nhìn vào màn hình ta sẽ thấy được một độ trong trẻo vô cùng thích mắt, nội dung hiển thị có chiều sâu, cảm giác khi xem phim hay chơi game cũng trở nên sống động hơn.
+
+Điểm vượt trội nhất mà các loại tấm nền khác khó mà đạt được là độ chuẩn các về màu sắc cao, mình cũng đã sử dụng iPhone 14 Pro Max để thiết kế một vài ấn phẩm như poster hay sticker đơn giản và thành quả lúc in ra sau khi đối chiếu lại với ảnh trên điện thoại thì gần như là bằng nhau, độ sai lệch không quá đáng kể giúp mình an tâm hơn trong việc thiết kế hình ảnh.</p>
+                    </div>
+
                 </div>
                 <div className='product-body__end col-4 pt-3'>
                     <div className='btn-select-attribute'>
@@ -668,14 +722,69 @@ const ProductDetail = () => {
                     <div className='button-buy-card'>
                         <div className='button-buy-cart mt-4' onClick={handleButtonClick}>Mua ngay</div>
                     </div>
+
+                    <div class="box-info-product mt-4">
+                                    <h5>Cấu hình Điện thoại OPPO Reno8 Z 5G</h5>
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td scope="row">Màn hình:</td>
+                                                <td>AMOLED6.43"Full HD+</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">Hệ điều hành:</td>
+                                                <td>Android 12</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">Camera sau:</td>
+                                                <td>Chính 64 MP & Phụ 2 MP, 2 MP</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">Camera trước:</td>
+                                                <td>16 MP</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">Chip:</td>
+                                                <td>Snapdragon 695 5G</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">RAM:</td>
+                                                <td>8GB</td>
+                                            </tr>
+
+
+                                            <tr>
+                                                <td scope="row">Bộ nhớ trong: </td>
+                                                <td>256GB</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">SIM:</td>
+                                                <td>2 Nano SIMHỗ trợ 5G</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td scope="row">Pin, Sạc:</td>
+                                                <td>4500 mAh33 W</td>
+                                            </tr>                                                               
+                                        </tbody>
+                                    </table>
+
+                                    <div class="nav-item" role="presentation">
+                                        <div class="product-preview-tab d-flex justify-content-center" control="#childButtonTab7" id="pills-home-tab" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button" role="tab" aria-controls="pills-preview-product-7" aria-selected="false" tabindex="-1">
+
+                                            <button type="button" class="btn btn-outline-primary w-60">Xem thêm cấu hình chi tiết</button>
+                                        </div>
+                                    </div>
+                                </div>
                 </div>            
             </div>
-
-            <h3>{product.name}</h3>
-            <h4 className='text-danger'>{product.originalPrice}</h4>
             
-
-           
         </div >
     )
 }

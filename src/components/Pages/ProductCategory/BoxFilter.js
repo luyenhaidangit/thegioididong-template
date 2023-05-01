@@ -80,57 +80,6 @@ const BoxFilter = (props) => {
         props.setListProduct(res?.items);
     }
 
-    // const handleSelectedProductAttribute = (item, value) => {
-  
-    //     const index = productAttributes.findIndex(attr => attr.id === item.id);
-        
-    //     if (index !== -1) {
-    //       // Kiểm tra xem "value.id" đã tồn tại trong mảng "attributeValueIds" chưa
-    //       if (!productAttributes[index].attributeValueIds.includes(value.id)) {
-    //         // Nếu chưa tồn tại, thêm "value.id" vào mảng "attributeValueIds"
-    //         productAttributes[index].attributeValueIds.push(value.id);
-    //         // Cập nhật lại trạng thái "productAttributes" của ứng dụng hoặc hệ thống
-    //         setProductAttributes(productAttributes);
-    //       }
-    //     } else {
-
-    //       const newAttribute = {
-    //         id: item.id,
-    //         attributeValueIds: [value.id]
-    //       };
-    //       productAttributes.push(newAttribute);
-          
-    //       setProductAttributes(productAttributes);
-    //       console.log("olkklsdjflslk")
-    //     }
-    //   }
-
-    // const handleSelectedProductAttribute = (item, value) => {
-    //     setProductAttributes(prevAttributes => {
-    //         const index = prevAttributes.findIndex(attr => attr.id === item.id);
-    //         if (index !== -1) {
-    //             if (!prevAttributes[index].attributeValueIds.includes(value.id)) {
-    //                 const newAttributes = [...prevAttributes];
-    //                 newAttributes[index] = {
-    //                     ...newAttributes[index],
-    //                     attributeValueIds: [...newAttributes[index].attributeValueIds, value.id],
-    //                 };
-    //                 return newAttributes;
-    //             }
-    //         } else {
-    //             return [
-    //                 ...prevAttributes,
-    //                 {
-    //                     id: item.id,
-    //                     attributeValueIds: [value.id],
-    //                 },
-    //             ];
-    //         }
-    //     });
-
-    //     console.log(productAttributes)
-    // }
-
     const handleSelectedProductAttribute = (item, value) => {
         setProductAttributes((prevAttributes) => {
           const index = prevAttributes.findIndex((attr) => attr.id === item.id);
@@ -166,8 +115,6 @@ const BoxFilter = (props) => {
     useEffect(() => {
         setRangePrice([startPrice, endPrice]);
     }, [startPrice, endPrice]);
-
-    console.log(startPrice)
 
     const changeRangePrice = (values) => {
         setRangePrice(values)
