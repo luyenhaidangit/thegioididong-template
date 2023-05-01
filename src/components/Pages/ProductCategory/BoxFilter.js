@@ -105,35 +105,63 @@ const BoxFilter = (props) => {
     //     }
     //   }
 
+    // const handleSelectedProductAttribute = (item, value) => {
+    //     setProductAttributes(prevAttributes => {
+    //         const index = prevAttributes.findIndex(attr => attr.id === item.id);
+    //         if (index !== -1) {
+    //             if (!prevAttributes[index].attributeValueIds.includes(value.id)) {
+    //                 const newAttributes = [...prevAttributes];
+    //                 newAttributes[index] = {
+    //                     ...newAttributes[index],
+    //                     attributeValueIds: [...newAttributes[index].attributeValueIds, value.id],
+    //                 };
+    //                 return newAttributes;
+    //             }
+    //         } else {
+    //             return [
+    //                 ...prevAttributes,
+    //                 {
+    //                     id: item.id,
+    //                     attributeValueIds: [value.id],
+    //                 },
+    //             ];
+    //         }
+    //     });
+
+    //     console.log(productAttributes)
+    // }
+
     const handleSelectedProductAttribute = (item, value) => {
-        setProductAttributes(prevAttributes => {
-        const index = prevAttributes.findIndex(attr => attr.id === item.id);
-        if (index !== -1) {
-        if (!prevAttributes[index].attributeValueIds.includes(value.id)) {
-        const newAttributes = [...prevAttributes];
-        newAttributes[index] = {
-        ...newAttributes[index],
-        attributeValueIds: [...newAttributes[index].attributeValueIds, value.id],
-        };
-        return newAttributes;
-        }
-        } else {
-        return [
-        ...prevAttributes,
-        {
-        id: item.id,
-        attributeValueIds: [value.id],
-        },
-        ];
-        }
+        setProductAttributes((prevAttributes) => {
+          const index = prevAttributes.findIndex((attr) => attr.id === item.id);
+      
+          if (index !== -1) {
+            const newAttributeValueIds = prevAttributes[index].attributeValueIds.filter((id) => id !== value.id);
+      
+            if (newAttributeValueIds.length === prevAttributes[index].attributeValueIds.length) {
+              // Nếu giá trị đã tồn tại, hãy xóa nó khỏi mảng attributeValueIds.
+              newAttributeValueIds.push(value.id);
+            }
+      
+            const newAttributes = [...prevAttributes];
+            newAttributes[index] = {
+              ...newAttributes[index],
+              attributeValueIds: newAttributeValueIds,
+            };
+      
+            return newAttributes;
+          } else {
+            return [
+              ...prevAttributes,
+              {
+                id: item.id,
+                attributeValueIds: [value.id],
+              },
+            ];
+          }
         });
-        }
-
-
-   
-      useEffect(() => {
-        console.log("Thay doi")
-    }, [productAttributes]);
+      };
+      
 
     useEffect(() => {
         setRangePrice([startPrice, endPrice]);
