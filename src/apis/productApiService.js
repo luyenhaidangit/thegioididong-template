@@ -13,7 +13,7 @@ const GetProductDailySuggest = () => {
 }
 
 const GetProductDetailPage = (id) => {
-    return axios.get('api/Product/GetProductDetailPage?id=' + id);
+    return axios.get('api/product?id=' + id);
 }
 
 const GetProductsProductCategoryDetailPage = (request) => {

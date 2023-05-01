@@ -15,6 +15,7 @@ import ProductCategory from './pages/ProductCategory';
 import Cart from './components/Pages/Cart/Cart';
 import Login from './pages/Login';
 import ProductInfo from './components/Pages/Product/ProductInfo';
+import CheckOut from './components/Pages/Cart/CheckOut';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path='san-pham/:id' element={<Product />} />
             <Route path='loai-san-pham/:id' element={<ProductCategory />} />
             <Route path='gio-hang' element={<Cart />} />
+            <Route path='xac-nhan-don-hang' element={<CheckOut />} />
             <Route path='dang-nhap' element={<Login />} />
           </Route>
         </Routes>

@@ -1,0 +1,45 @@
+.alertsuccess-new{
+    display: block;
+    overflow: hidden;
+    background-color: #f0fff7;
+    text-align: center;
+    padding: 20px 30px;
+}
+
+.alertsuccess-new strong{
+    color: #219653;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.order-content-p{
+    margin: 8px 32px;
+    font-size: 14px;
+    color: #333;
+}
+
+.infor-order{
+    display: block;
+    background-color: #f3f3f3;
+    padding: 10px 12px;
+    margin: 8px 32px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.infor-order label{
+    margin: 4px 0;
+}
+
+.order-infor-alert{
+    margin: 8px 32px;
+    color: #fb6e2e;
+    background: rgba(251,110,46,.05);
+    border: 1px dashed #fb6e2e;
+    box-sizing: border-box;
+    border-radius: 4px;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+}
+

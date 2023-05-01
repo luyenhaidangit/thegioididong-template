@@ -37,6 +37,20 @@ const Cart = () => {
         setEmail(event.target.value);
     };
 
+    const handleOnSubmitCart = ()=>{
+        const data = {
+            products: products,
+            sex: sex,
+            name: name,
+            email: email,
+            deliveryMethod: deliveryMethod,
+            andress: andress,
+            note: note
+        }
+
+        console.log(data)
+    }
+
     console.log(products)
 
     return (
@@ -223,14 +237,6 @@ const Cart = () => {
                                         className='info-customer__basic-input w-100'
                                     />
                                 </div>
-
-                                {/* <div className='info-customer__basic-item w-100'>
-                                    <input
-                                        type="text"
-                                        placeholder='Số điện thoại'
-                                        className='info-customer__basic-input w-100'
-                                    />
-                                </div> */}
                             </div>
                             <div className='info-customer__basic d-flex gap-3'>
                                 <div className='info-customer__basic-item w-100'>
@@ -261,7 +267,7 @@ const Cart = () => {
                             <strong className='total-cart-price__price'>{FormatCurrency(totalPrice)}</strong>
                         </div>
                         <div className='cart__submit-button'>
-                            <buttom className='btn btn-primary w-100'>Đặt hàng</buttom>
+                            <buttom onClick={()=>handleOnSubmitCart()} className='btn btn-primary w-100'>Đặt hàng</buttom>
                         </div>
                     </div>
                 </div>

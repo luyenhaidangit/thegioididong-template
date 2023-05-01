@@ -43,7 +43,7 @@ const Header = (props) => {
                         <div className="header-search-result"></div>
                     </form>
                     <div className='header__history-order text-center me-3'>
-                        Lịch sử đơn <br />hàng
+                        Tài khoản & <br />  đơn hàng
                     </div>
                     <div onClick={() => navigate('/gio-hang')} className='header__order d-flex justify-content-center align-items-center'>
                         <AiOutlineShoppingCart size={"24px"} />
