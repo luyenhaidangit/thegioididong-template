@@ -195,6 +195,7 @@
     background: #fff;
     border-radius: 4px;
     border: 1px solid #eee;
+    min-width: 400px;
 }
 
 .main-nav__item:hover .main-sub-nav {
@@ -247,12 +248,12 @@
 }
 
 .main-nav__item:nth-child(4) .main-sub-nav__group.group-product-category {
-    min-width: 800px;
+    /* min-width: 800px; */
     max-height: 420px;
 }
 
 #root>div>header>div>ul>div:nth-child(4)>ul {
-    width: 800px;
+    /* width: 800px; */
     max-height: 420px;
 }
 

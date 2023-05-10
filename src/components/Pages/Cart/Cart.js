@@ -38,14 +38,26 @@ const Cart = () => {
     };
 
     const handleOnSubmitCart = ()=>{
-        const data = {
-            products: products,
-            sex: sex,
+        const customer ={
             name: name,
-            email: email,
+            sex: sex,
+            numberPhone: "",
+            email: email
+        }
+
+        const orderDetails = products.map(product => {
+            product.ProductId = product.id
+            // Tạo đối tượng mới với thuộc tính productId và các thuộc tính khác giống với đối tượng ban đầu
+            return product;
+          });
+
+        const data = {
+            orderDetails: orderDetails,
+            customer: customer,
             deliveryMethod: deliveryMethod,
             andress: andress,
-            note: note
+            note: note,
+            status: 1
         }
 
         console.log(data)
