@@ -16,9 +16,14 @@ const GetSlideShoppingTrends = () => {
     return axios.get('api/Slide/shopping-trends');
 }
 
+const GetSlideDiscountPayOnline = () => {
+    return axios.get('api/slide/discount-pay-online');
+}
+
 export {
     GetSlideHeaderTopClient,
     GetSlideBigCampaign,
     GetSlideOptionPromo,
-    GetSlideShoppingTrends
+    GetSlideShoppingTrends,
+    GetSlideDiscountPayOnline
 };

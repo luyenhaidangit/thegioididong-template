@@ -1,31 +1,19 @@
 // Libraries
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import ScrollContainer from 'react-indiana-drag-scroll'
 
 // Styles
 import "../../assets/Styles/Components/Home/DiscountPayOnline.css"
 
-// Data
-import DiscountPayOnlineApi from '../../data/DiscountPayOnline';
-
-const DiscountPayOnline = () => {
+const DiscountPayOnline = (props) => {
     // Hook
-    const [dataDiscountPayOnline, setDataDiscountPayOnline] = useState([]);
-
-    useEffect(() => {
-        fetchDataDiscountPayOnline();
-    }, []);
-
-    const fetchDataDiscountPayOnline = async () => {
-        let res = await DiscountPayOnlineApi;
-        setDataDiscountPayOnline(res);
-    }
+    const {dataSlideDiscountPayOnline} = props;
 
     return (
         <>
             {
-                dataDiscountPayOnline && dataDiscountPayOnline.length > 0 &&
+                dataSlideDiscountPayOnline && dataSlideDiscountPayOnline?.slideItems?.length > 0 &&
                 <div className='discount-pay-online'>
                     <div className='container'>
                         <div className='discount-pay-online__title'>
@@ -33,8 +21,8 @@ const DiscountPayOnline = () => {
                         </div>
                         <ScrollContainer className='discount-pay-online__content d-flex gap-4'>
                             {
-                                dataDiscountPayOnline && dataDiscountPayOnline.length > 0 &&
-                                dataDiscountPayOnline.map((item, index) => {
+                                dataSlideDiscountPayOnline && dataSlideDiscountPayOnline?.slideItems.length > 0 &&
+                                dataSlideDiscountPayOnline?.slideItems?.map((item, index) => {
                                     return (
                                         <div key={`discount-pay-online__item-${index}`} className='discount-pay-online__item d-flex flex-column justify-content-start align-items-center cursor-pointer gap-2'>
                                             <img className="dicount-pay-online__item-img" src={item.image} alt="Discount Pay Online" />

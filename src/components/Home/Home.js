@@ -18,7 +18,7 @@ import TechNew from './TechNew'
 import TradeMark from './TradeMark'
 
 // Data
-import { GetSlideBigCampaign, GetSlideOptionPromo, GetSlideShoppingTrends } from "../../apis/slideApiService";
+import { GetSlideBigCampaign, GetSlideOptionPromo, GetSlideShoppingTrends, GetSlideDiscountPayOnline } from "../../apis/slideApiService";
 import { GetBannerMain, GetBannerTopzone } from '../../apis/bannerApiService';
 import { GetProductsHotDeal, GetProductDailySuggest } from '../../apis/productApiService'
 import { GetProductFeaturesHome } from '../../apis/productApiService'
@@ -38,9 +38,10 @@ const Home = () => {
         dataProductCategoryFeatureHome: [],
         dataProductDailySuggest: [],
         dataSlideShoppingTrends: {}, 
+        dataSlideDiscountPayOnline: {},
     }); 
 
-    const { dataSlideBigCampaign,dataSlideOptionPromo,dataBannerTopzone,dataBannerMain,dataProductsHotDeal,dataProductFeaturesHome,dataProductCategoryFeatureHome,dataProductDailySuggest,dataSlideShoppingTrends } = data;
+    const { dataSlideBigCampaign,dataSlideOptionPromo,dataBannerTopzone,dataBannerMain,dataProductsHotDeal,dataProductFeaturesHome,dataProductCategoryFeatureHome,dataProductDailySuggest,dataSlideShoppingTrends, dataSlideDiscountPayOnline } = data;
 
     useEffect(() => {
         fetchData();
@@ -57,7 +58,8 @@ const Home = () => {
                 dataProductFeaturesHome,
                 dataProductCategoryFeatureHome,
                 dataProductDailySuggest,
-                dataSlideShoppingTrends
+                dataSlideShoppingTrends,
+                dataSlideDiscountPayOnline
             ] = await Promise.all(
             [
                 GetSlideBigCampaign(),
@@ -69,6 +71,7 @@ const Home = () => {
                 GetProductCategoriesFeaturesHome(),
                 GetProductDailySuggest(),
                 GetSlideShoppingTrends(),
+                GetSlideDiscountPayOnline(),
             ]);
     
             setData({
@@ -80,7 +83,8 @@ const Home = () => {
                 dataProductFeaturesHome: dataProductFeaturesHome,
                 dataProductCategoryFeatureHome: dataProductCategoryFeatureHome,
                 dataProductDailySuggest: dataProductDailySuggest,
-                dataSlideShoppingTrends: dataSlideShoppingTrends
+                dataSlideShoppingTrends: dataSlideShoppingTrends,
+                dataSlideDiscountPayOnline: dataSlideDiscountPayOnline,
             });
         } catch (error) {
             setData({
@@ -93,6 +97,7 @@ const Home = () => {
                 dataProductCategoryFeatureHome: [],
                 dataProductDailySuggest: [],
                 dataSlideShoppingTrends: {}, 
+                dataSlideDiscountPayOnline: {},
             });
         }
     };
@@ -108,7 +113,7 @@ const Home = () => {
                 <PromoAnother productFeatures={dataProductFeaturesHome} />
                 <ShoppingTrend slide={dataSlideShoppingTrends} />
                 <CategoryFeature productCategories={dataProductCategoryFeatureHome} />
-                <DiscountPayOnline />
+                <DiscountPayOnline dataSlideDiscountPayOnline={dataSlideDiscountPayOnline} />
                 <ServiceConversation slide={dataSlideShoppingTrends} />
                 <DailySuggest
                     latestProducts={dataProductDailySuggest?.latestProducts}
