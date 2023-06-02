@@ -1,9 +1,11 @@
 // Libraries
-import React from 'react'
+import React, { useState } from 'react'
 
 import { useNavigate } from 'react-router-dom';
 
 import { AiOutlineCaretDown, AiOutlineSearch, AiOutlineShoppingCart, AiOutlineMenu } from "react-icons/ai"
+
+import { GetSearchResult } from '../../apis/productApiService';
 
 // Styles
 import "../../assets/Styles/Layouts/Header.css"
@@ -15,6 +17,19 @@ import LogoSmall from "../../assets/Images/Logo/logo-dagstore-small.png"
 const Header = (props) => {
     // Hook
     const { productCategories } = props;
+
+    const [searchKey,setSearchKey] = useState('');
+    const [searchResult,setSearchResult] = useState('');
+
+    const handleChangeSearchKey = async (e)=>{
+        setSearchKey(e.target.value);
+        console.log(e.target.value)
+        if(e.target.value!==null && e.target.value!==''){
+            const res = await GetSearchResult(e.target.value);
+            setSearchResult(res);
+            console.log(res)
+        }
+    }
 
     const navigate = useNavigate();
 
@@ -35,12 +50,58 @@ const Header = (props) => {
                             <AiOutlineCaretDown />
                         </div>
                     </div>
-                    <form className="header__search flex-fill me-3">
-                        <input type="text" className="header__search-input" placeholder="Bạn tìm gì..." autoComplete="off" maxLength="100" />
+                    <form className="header__search flex-fill me-3 position-relative">
+                        <input value={searchKey} onChange={(e) => handleChangeSearchKey(e)} type="text" className="header__search-input" placeholder="Bạn tìm gì..." autoComplete="off" maxLength="100" />
                         <span className="header__search-submit">
                             <AiOutlineSearch size={"20px"} />
                         </span>
-                        <div className="header-search-result"></div>
+                        {
+                            searchResult && searchResult!== '' &&
+                            <div className="header-search__result">
+                            <div className='header-search__result-container'>
+                                ok
+                                {/* {
+                                    searchResult?.products && searchResult?.product?.length > 0 &&
+                                    <>
+                                         <div className='header-search__result-title'>
+                                            Có phải bạn muốn tìm
+                                         </div>
+                                         {
+                                            
+                                            searchResult?.products.map((item)=>{
+                                                return(
+                                                    <div className='header-search__result__category-item'>
+                                                        {item?.name}
+                                                    </div>
+                                                )
+                                            })
+                                         }     
+                                    </>
+                                } */}
+                               
+                                {/* <div className='header-search__result-title'>
+                                    Sản phẩm gợi ý
+                                </div>
+                                <div className='header-search__result__product-item d-flex ps-2 py-2'>
+                                    <img className='product-search-img' height={40} src='https://cdn.tgdd.vn/Products/Images/42/247508/iphone-14-pro-vang-thumb-600x600.jpg'/>
+                                    <div className='d-flex flex-column ps-2'>
+                                        <h4 className='product-search-title'>Iphone 14 Pro 128GB</h4>
+                                        <strong class="product-search-price text-danger mt-1">25.490.000₫</strong>
+                                    </div>
+                                </div>
+                                <div className='header-search__result-title'>
+                                    Tin tức liên quan
+                                </div>
+                                <div className='header-search__result__product-item d-flex ps-2 py-2'>
+                                    <img className='product-search-img' height={40} src='https://cdn.tgdd.vn/Products/Images/42/247508/iphone-14-pro-vang-thumb-600x600.jpg'/>
+                                    <div className='d-flex flex-column ps-2'>
+                                        <h4 className='product-search-title'>Iphone 14 Pro 128GB</h4>
+                                    </div>
+                                </div> */}
+                            </div>
+                        </div>
+                        }
+                        
                     </form>
                     <div className='header__history-order text-center me-3'>
                         Tài khoản & <br />  đơn hàng
@@ -63,7 +124,9 @@ const Header = (props) => {
                     <span className="header__search-submit">
                         <AiOutlineSearch size={"20px"} />
                     </span>
-                    <div className="header-search-result"></div>
+                    <div className="header-search__result">
+                        <div></div>
+                    </div>
                 </div>
                 <ul className='header__main main-nav d-flex justify-content-between align-items-center mt-4 mb-0 p-0'>
                     {

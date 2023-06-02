@@ -20,10 +20,15 @@ const GetProductsProductCategoryDetailPage = (request) => {
     return axios.post('api/product', request);
 }
 
+const GetSearchResult = (key) => {
+    return axios.get('api/Search/suggest?keyword='+key);
+}
+
 export {
     GetProductsHotDeal,
     GetProductFeaturesHome,
     GetProductDailySuggest,
     GetProductDetailPage,
-    GetProductsProductCategoryDetailPage
+    GetProductsProductCategoryDetailPage,
+    GetSearchResult
 };

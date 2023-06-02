@@ -7,33 +7,46 @@ import Footer from './Footer'
 import Header from './Header'
 import HeaderTopBar from './HeaderTopBar'
 
-// Data
+// Api
 import { GetSlideHeaderTopClient } from '../../apis/slideApiService';
 import { GetProductCategoryNavigation } from '../../apis/productCategoryApiService'
 
 const Layout = () => {
-    const [dataSlideHeaderTopBar, setDataSlideHeaderTopBar] = useState({});
-    const [dataProductCategoriesNavigation, setDataProductCategoriesNavigation] = useState([]);
+    // Data
+    const [data, setData] = useState({
+        slideHeaderTopBar: {},
+        productCategoriesNavigation: []
+    }); 
+
+    const { slideHeaderTopBar, productCategoriesNavigation } = data;
 
     useEffect(() => {
-        fetchSlidesHeaderTopBar();
-        fetchDataProductCategoriesNavigation();
+        fetchData();
     }, []);
 
-    // Func
-    const fetchSlidesHeaderTopBar = async () => {
-        let res = await GetSlideHeaderTopClient();
-        setDataSlideHeaderTopBar(res);
-    }
+    const fetchData = async () => {
+        try {
+            const [slideData, productCategoriesData] = await Promise.all([
+                GetSlideHeaderTopClient(),
+                GetProductCategoryNavigation(),
+            ]);
+    
+            setData({
+                slideHeaderTopBar: slideData,
+                productCategoriesNavigation: productCategoriesData
+            });
+        } catch (error) {
+            setData({
+                slideHeaderTopBar: {},
+                productCategoriesNavigation: []
+            });
+        }
+    };
 
-    const fetchDataProductCategoriesNavigation = async () => {
-        let res = await GetProductCategoryNavigation();
-        setDataProductCategoriesNavigation(res);
-    }
     return (
         <>
-            <HeaderTopBar slide={dataSlideHeaderTopBar} />
-            <Header productCategories={dataProductCategoriesNavigation} />
+            <HeaderTopBar slide={slideHeaderTopBar} />
+            <Header productCategories={productCategoriesNavigation} />
             <Outlet />
             <Footer />
         </>
