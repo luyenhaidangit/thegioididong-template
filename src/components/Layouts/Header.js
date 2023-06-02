@@ -1,10 +1,9 @@
 // Libraries
 import React, { useState } from 'react'
-
 import { useNavigate } from 'react-router-dom';
-
 import { AiOutlineCaretDown, AiOutlineSearch, AiOutlineShoppingCart, AiOutlineMenu } from "react-icons/ai"
 
+// Api
 import { GetSearchResult } from '../../apis/productApiService';
 
 // Styles
@@ -15,23 +14,23 @@ import Logo from "../../assets/Images/Logo/logo-dagstore.png"
 import LogoSmall from "../../assets/Images/Logo/logo-dagstore-small.png"
 
 const Header = (props) => {
-    // Hook
+    const navigate = useNavigate();
+
     const { productCategories } = props;
 
-    const [searchKey,setSearchKey] = useState('');
-    const [searchResult,setSearchResult] = useState('');
+    const [search, setSearch] = useState('');
+    const [searchResult, setSearchResult] = useState({});
 
-    const handleChangeSearchKey = async (e)=>{
-        setSearchKey(e.target.value);
-        console.log(e.target.value)
-        if(e.target.value!==null && e.target.value!==''){
+    const handleChangeSearchKey = async (e) => {
+        setSearch(e.target.value);
+
+        if (e.target.value !== null && e.target.value !== '') {
             const res = await GetSearchResult(e.target.value);
             setSearchResult(res);
-            console.log(res)
+        }else{
+            setSearchResult({});
         }
     }
-
-    const navigate = useNavigate();
 
     return (
         <header className='header pt-2'>
@@ -51,57 +50,79 @@ const Header = (props) => {
                         </div>
                     </div>
                     <form className="header__search flex-fill me-3 position-relative">
-                        <input value={searchKey} onChange={(e) => handleChangeSearchKey(e)} type="text" className="header__search-input" placeholder="Bạn tìm gì..." autoComplete="off" maxLength="100" />
+                        <input value={search} onChange={(e) => handleChangeSearchKey(e)} type="text" className="header__search-input" placeholder="Bạn tìm gì..." autoComplete="off" maxLength="100" />
                         <span className="header__search-submit">
                             <AiOutlineSearch size={"20px"} />
                         </span>
                         {
-                            searchResult && searchResult!== '' &&
+                            searchResult && searchResult !== '' &&
                             <div className="header-search__result">
-                            <div className='header-search__result-container'>
-                                ok
-                                {/* {
-                                    searchResult?.products && searchResult?.product?.length > 0 &&
-                                    <>
-                                         <div className='header-search__result-title'>
-                                            Có phải bạn muốn tìm
-                                         </div>
-                                         {
-                                            
-                                            searchResult?.products.map((item)=>{
-                                                return(
-                                                    <div className='header-search__result__category-item'>
-                                                        {item?.name}
-                                                    </div>
-                                                )
-                                            })
-                                         }     
-                                    </>
-                                } */}
-                               
-                                {/* <div className='header-search__result-title'>
-                                    Sản phẩm gợi ý
+                                <div className='header-search__result-container'>
+
+                                    {
+                                        searchResult?.productCategories && searchResult?.productCategories?.length > 0 &&
+                                        <>
+                                            <div className='header-search__result-title'>
+                                                Có phải bạn muốn tìm
+                                            </div>
+                                            { 
+                                                searchResult?.productCategories.slice(0,3).map((item,index)=>{
+                                                    return(
+                                                        <div key={'product-category'+index} className='header-search__result__category-item'>
+                                                            {item?.name}
+                                                        </div>
+                                                    )
+                                                })
+                                            }     
+                                        </>
+                                    }
+                                    
+                                    {
+                                        searchResult?.products && searchResult?.products?.length > 0 &&
+                                        <>
+                                            <div className='header-search__result-title'>
+                                                Sản phẩm gợi ý
+                                            </div>
+                                            {
+                                                searchResult?.products.slice(0,3).map((item,index)=>{
+                                                    return(
+                                                        <div key={'product-search-'+index} className='header-search__result__product-item d-flex ps-2 py-2'>
+                                                            <img className='product-search-img' height={40} width={40} src={"https://localhost:7039"+item?.image}/>
+                                                            <div className='d-flex flex-column ps-2'>
+                                                                <h4 className='product-search-title'>{item?.name}</h4>
+                                                                <strong className="product-search-price text-danger mt-1">{item?.originalPrice}</strong>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </>
+                                    }
+
+                                    {
+                                        searchResult?.news && searchResult?.news?.length > 0 &&
+                                        <>
+                                            <div className='header-search__result-title'>
+                                                Tin tức liên quan
+                                            </div>
+                                            { 
+                                                searchResult?.news.slice(0,3).map((item,index)=>{
+                                                    return(
+                                                        <div key={'new-search'+index} className='header-search__result__product-item d-flex ps-2 py-2'>
+                                                            <img className='product-search-img' height={40} width={40} src={"https://localhost:7039"+item?.image}/>
+                                                            <div className='d-flex flex-column ps-2'>
+                                                                <h4 className='product-search-title'>{item?.name}</h4>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                })
+                                            }     
+                                        </>
+                                    }
                                 </div>
-                                <div className='header-search__result__product-item d-flex ps-2 py-2'>
-                                    <img className='product-search-img' height={40} src='https://cdn.tgdd.vn/Products/Images/42/247508/iphone-14-pro-vang-thumb-600x600.jpg'/>
-                                    <div className='d-flex flex-column ps-2'>
-                                        <h4 className='product-search-title'>Iphone 14 Pro 128GB</h4>
-                                        <strong class="product-search-price text-danger mt-1">25.490.000₫</strong>
-                                    </div>
-                                </div>
-                                <div className='header-search__result-title'>
-                                    Tin tức liên quan
-                                </div>
-                                <div className='header-search__result__product-item d-flex ps-2 py-2'>
-                                    <img className='product-search-img' height={40} src='https://cdn.tgdd.vn/Products/Images/42/247508/iphone-14-pro-vang-thumb-600x600.jpg'/>
-                                    <div className='d-flex flex-column ps-2'>
-                                        <h4 className='product-search-title'>Iphone 14 Pro 128GB</h4>
-                                    </div>
-                                </div> */}
                             </div>
-                        </div>
                         }
-                        
+
                     </form>
                     <div className='header__history-order text-center me-3'>
                         Tài khoản & <br />  đơn hàng
