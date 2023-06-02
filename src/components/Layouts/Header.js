@@ -13,6 +13,9 @@ import "../../assets/Styles/Layouts/Header.css"
 import Logo from "../../assets/Images/Logo/logo-dagstore.png"
 import LogoSmall from "../../assets/Images/Logo/logo-dagstore-small.png"
 
+// Hepler
+import FormatCurrency from '../../helpers/Strings/FormatCurrency';
+
 const Header = (props) => {
     const navigate = useNavigate();
 
@@ -90,7 +93,7 @@ const Header = (props) => {
                                                             <img className='product-search-img' height={40} width={40} src={"https://localhost:7039"+item?.image}/>
                                                             <div className='d-flex flex-column ps-2'>
                                                                 <h4 className='product-search-title'>{item?.name}</h4>
-                                                                <strong className="product-search-price text-danger mt-1">{item?.originalPrice}</strong>
+                                                                <strong className="product-search-price text-danger mt-1">{FormatCurrency(item?.originalPrice)}</strong>
                                                             </div>
                                                         </div>
                                                     )
