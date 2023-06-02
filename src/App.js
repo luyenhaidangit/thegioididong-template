@@ -4,18 +4,20 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // Components
 import Layout from './components/Layouts/Layout';
-import Home from './pages/Home';
+
 import Product from './pages/Product'
 
 // Styles
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/Styles/Common/Common.css'
+import Home from './components/Home/Home';
 import ProductCategory from './pages/ProductCategory';
 import Cart from './components/Pages/Cart/Cart';
 import Login from './pages/Login';
 import ProductInfo from './components/Pages/Product/ProductInfo';
 import CheckOut from './components/Pages/Cart/CheckOut';
+
 
 
 function App() {
