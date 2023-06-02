@@ -15,7 +15,6 @@ import Home from './components/Home/Home';
 import ProductCategory from './pages/ProductCategory';
 import Cart from './components/Pages/Cart/Cart';
 import Login from './pages/Login';
-import ProductInfo from './components/Pages/Product/ProductInfo';
 import CheckOut from './components/Pages/Cart/CheckOut';
 
 

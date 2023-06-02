@@ -90,7 +90,7 @@ const Header = (props) => {
                                                 searchResult?.products.slice(0,3).map((item,index)=>{
                                                     return(
                                                         <div key={'product-search-'+index} className='header-search__result__product-item d-flex ps-2 py-2'>
-                                                            <img className='product-search-img' height={40} width={40} src={"https://localhost:7039"+item?.image}/>
+                                                            <img alt='' className='product-search-img' height={40} width={40} src={"https://localhost:7039"+item?.image}/>
                                                             <div className='d-flex flex-column ps-2'>
                                                                 <h4 className='product-search-title'>{item?.name}</h4>
                                                                 <strong className="product-search-price text-danger mt-1">{FormatCurrency(item?.originalPrice)}</strong>
@@ -112,7 +112,7 @@ const Header = (props) => {
                                                 searchResult?.news.slice(0,3).map((item,index)=>{
                                                     return(
                                                         <div key={'new-search'+index} className='header-search__result__product-item d-flex ps-2 py-2'>
-                                                            <img className='product-search-img' height={40} width={40} src={"https://localhost:7039"+item?.image}/>
+                                                            <img alt='' className='product-search-img' height={40} width={40} src={"https://localhost:7039"+item?.image}/>
                                                             <div className='d-flex flex-column ps-2'>
                                                                 <h4 className='product-search-title'>{item?.name}</h4>
                                                             </div>
