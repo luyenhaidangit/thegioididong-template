@@ -679,8 +679,8 @@ const ProductDetail = () => {
                                                 value.value && value.isSelected === false &&
                                                 <>
                                                     {
-                                                        valueAttributeClick && value.disable &&
-                                                        <div className={"button-attribute-value me-3"}>{value.value}</div>
+                                                        value.disable === true &&
+                                                        <div className={"button-attribute-value me-3 button-attribute-value disable"}>{value.value}</div>
                                                     }
                                                     {
                                                         value.disable !== true &&

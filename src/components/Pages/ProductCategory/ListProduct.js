@@ -5,6 +5,9 @@ import { Form } from 'react-bootstrap';
 import { IoIosFlash } from 'react-icons/io'
 import { AiFillStar } from 'react-icons/ai'
 
+import { useNavigate } from "react-router-dom";
+
+
 // Helper
 import FormatCurrency from '../../../helpers/Strings/FormatCurrency';
 
@@ -13,6 +16,9 @@ import "../../../assets/Styles/Components/ProductCategory/ListProduct.css"
 
 const ListProduct = (props) => {
     const { listProduct } = props;
+    const navigate = useNavigate();
+
+    console.log(listProduct);
 
     const [sortOptions, setSortOptions] = useState({
         sortOption1: false,
@@ -94,7 +100,7 @@ const ListProduct = (props) => {
                                             listProduct.map((item, index) => {
                                                 return (
                                                     <div className='col' key={`latestProducts-${index}`}>
-                                                        <div className='product-card__item cursor-pointer' key={`hotdeal__item-${index}`}>
+                                                        <div   onClick={() => navigate(`/san-pham/${item.id}`)} className='product-card__item cursor-pointer' key={`hotdeal__item-${index}`}>
                                                             {
                                                                 item.isInterest && item.isInterest === true &&
                                                                 <div className='product-card__item-label d-flex gap-3 mb-3'>
