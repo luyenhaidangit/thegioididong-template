@@ -3,6 +3,10 @@ import "../../../assets/Styles/Components/Cart/Cart.css"
 import { AiOutlineCloseCircle } from "react-icons/ai"
 import { GrFormAdd, GrFormSubtract } from "react-icons/gr"
 import FormatCurrency from '../../../helpers/Strings/FormatCurrency';
+import { PostOrder } from '../../../apis/orderApiService';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
     const products = JSON.parse(localStorage.getItem('cart')) || [];
@@ -13,6 +17,9 @@ const Cart = () => {
     const [paymentMethod, setPaymentMethod] = useState(0);
     const [andress, setAndress] = useState(null);
     const [note, setNote] = useState(null);
+    const [coupon, setCoupon] = useState(null);
+
+    const navigate = useNavigate();
 
     const totalPrice = products.reduce((total, item) => total + item.originalPrice * item.quantity, 0);
     console.log(totalPrice)
@@ -37,11 +44,11 @@ const Cart = () => {
         setEmail(event.target.value);
     };
 
-    const handleOnSubmitCart = ()=>{
+    const handleOnSubmitCart = async ()=>{
         const customer ={
             name: name,
             sex: sex,
-            numberPhone: "",
+            numberPhone: "0922002360",
             email: email
         }
 
@@ -55,12 +62,51 @@ const Cart = () => {
             orderDetails: orderDetails,
             customer: customer,
             deliveryMethod: deliveryMethod,
+            paymentMethod: paymentMethod,
             andress: andress,
             note: note,
             status: 1
         }
 
         console.log(data)
+
+        const res = await PostOrder(data);
+        console.log(res)
+        if(res){
+            // if(res?.data?.directUrl){
+            //     window.open(res?.data?.directUrl, '_blank');
+            // }
+
+            if (res.statusCode === 201) {
+                toast.success(res.message, {
+                    position: toast.POSITION.TOP_RIGHT, // Vị trí hiển thị của thông báo
+                    autoClose: 3000, // Thời gian tự động đóng thông báo (đơn vị là miliseconds)
+                    hideProgressBar: false, // Ẩn hoặc hiển thị thanh tiến trình
+                    closeOnClick: true, // Đóng thông báo khi click vào nó
+                    pauseOnHover: true, // Tạm dừng thời gian tự động đóng khi hover chuột vào thông báo
+                    draggable: true, // Cho phép kéo thông báo
+                    progress: undefined // Không sử dụng thanh tiến trình tích lũy
+                });
+                navigate("/xac-nhan-don-hang");
+                localStorage.setItem('cart', JSON.stringify([]));
+
+            } else {
+                toast.error(res.message, {
+                    position: toast.POSITION.TOP_RIGHT, // Vị trí hiển thị của thông báo
+                    autoClose: 3000, // Thời gian tự động đóng thông báo (đơn vị là miliseconds)
+                    hideProgressBar: false, // Ẩn hoặc hiển thị thanh tiến trình
+                    closeOnClick: true, // Đóng thông báo khi click vào nó
+                    pauseOnHover: true, // Tạm dừng thời gian tự động đóng khi hover chuột vào thông báo
+                    draggable: true, // Cho phép kéo thông báo
+                    progress: undefined // Không sử dụng thanh tiến trình tích lũy
+                });
+            }
+
+            
+        }else{
+            alert("Đặt hàng thất bại có lỗi xảy ra!");
+        }
+
     }
 
     console.log(products)
@@ -244,8 +290,21 @@ const Cart = () => {
                             <div className='info-customer__basic d-flex gap-3'>
                                 <div className='info-customer__basic-item w-100'>
                                     <input
+                                        value={andress}
+                                        onChange={(e) => setAndress(e.target.value)}
                                         type="text"
                                         placeholder='Địa chỉ nhận hàng'
+                                        className='info-customer__basic-input w-100'
+                                    />
+                                </div>
+                            </div>
+                            <div className='info-customer__basic d-flex gap-3'>
+                                <div className='info-customer__basic-item w-100'>
+                                    <input
+                                        value={note}
+                                        onChange={(e) => setNote(e.target.value)}
+                                        type="text"
+                                        placeholder='Ghi chú'
                                         className='info-customer__basic-input w-100'
                                     />
                                 </div>
@@ -256,6 +315,8 @@ const Cart = () => {
                                         type="text"
                                         placeholder='Sử dụng mã giảm giá ( Nếu có )'
                                         className='info-customer__basic-input w-100'
+                                        value={coupon}
+                                        onChange={(e) => setCoupon(e.target.value)}
                                     />
                                 </div>
                             </div>

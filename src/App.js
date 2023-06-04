@@ -16,6 +16,7 @@ import ProductCategory from './pages/ProductCategory';
 import Cart from './components/Pages/Cart/Cart';
 import Login from './pages/Login';
 import CheckOut from './components/Pages/Cart/CheckOut';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -33,6 +34,7 @@ function App() {
             <Route path='dang-nhap' element={<Login />} />
           </Route>
         </Routes>
+        <ToastContainer />
       </BrowserRouter>
     </div>
   );

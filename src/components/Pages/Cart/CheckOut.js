@@ -75,28 +75,28 @@ const CheckOut = () => {
                             <label>
                                 <span class="">
                                     <span>
-                                        <strong>Người nhận hàng: </strong>Anh Test, 0979999997
+                                        <strong>Người nhận hàng: </strong>Anh Luyện Hải Đăng, 0922002360
                                     </span>
                                 </span>
                             </label>
                             <label>
                                 <span class="">
                                     <span>
-                                        <strong>Giao đến: </strong>Yên Mỹ - Hưng Yên
+                                        <strong>Giao đến: </strong>Hưng Yên
                                     </span>
                                 </span>
                             </label>
                             <label>
                                 <span class="">
-                                    <span>
+                                    {/* <span>
                                         <strong>Tổng tiền: </strong>12.000.000đ
-                                    </span>
+                                    </span> */}
                                 </span>
                             </label>
                             <label>
                                 <span class="">
                                     <span>
-                                        <strong>Ghi chú: </strong>Hehe
+                                        <strong>Ghi chú: </strong>ok
                                     </span>
                                 </span>
                             </label>
